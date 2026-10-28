@@ -1,0 +1,890 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/cupqc_override.css?v=ee9d665e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+
+
+    <script src="_static/documentation_options.js?v=7f41d439"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Libraries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="libraries/cupqc_bigint/index.html">cuPQC-BigInt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="libraries/cupqc_bigint/cupqc_bigint_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries/cupqc_bigint/cupqc_bigint_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="libraries/cupqc_bigint/cupqc_bigint_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="libraries/cupqc_bigint/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libraries/cupqc_bigint/api/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libraries/cupqc_bigint/api/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="libraries/cupqc_ntt/index.html">cuPQC-NTT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="libraries/cupqc_ntt/cupqc_ntt_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries/cupqc_ntt/cupqc_ntt_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="libraries/cupqc_ntt/cupqc_ntt_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="libraries/cupqc_ntt/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libraries/cupqc_ntt/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libraries/cupqc_ntt/api/host.html">Host Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libraries/cupqc_ntt/api/prime_fields.html">Prime Field Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libraries/cupqc_ntt/api/types.html">Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="libraries/cupqc_hash/index.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="libraries/cupqc_hash/cupqc_hash_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries/cupqc_hash/cupqc_hash_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="libraries/cupqc_hash/cupqc_hash_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="libraries/cupqc_hash/api/hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="libraries/cupqc_hash/api/hash/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libraries/cupqc_hash/api/hash/traits.html">Traits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libraries/cupqc_hash/api/hash/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="libraries/cupqc_hash/api/merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="libraries/cupqc_hash/api/merkle/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libraries/cupqc_hash/api/merkle/objects.html">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="libraries/cupqc_hash/api/merkle/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="libraries/cupqc_pk/index.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="libraries/cupqc_pk/cupqc_pk_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libraries/cupqc_pk/cupqc_pk_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="libraries/cupqc_pk/cupqc_pk_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="libraries/cupqc_pk/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libraries/cupqc_pk/api/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libraries/cupqc_pk/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="libraries/cupqc_pk/api/host.html">Host Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="additional/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional/security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#C"><strong>C</strong></a>
+ 
+</div>
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4N5cupqc9algorithmE">cupqc::algorithm (C++ enum)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4I_9algorithmEN5cupqc9AlgorithmEv">cupqc::Algorithm (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4N5cupqc9algorithm3NTTE">cupqc::algorithm::NTT (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc2BI6bigintE">cupqc::BI::bigint (C++ type)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc2BI11bigint_wideE">cupqc::BI::bigint_wide (C++ type)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc2BI9bit_widthE">cupqc::BI::bit_width (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc2BI12error_policyE">cupqc::BI::error_policy (C++ type)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc2BI7modulusE">cupqc::BI::modulus (C++ type)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc2BI9num_limbsE">cupqc::BI::num_limbs (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc2BI7sm_archE">cupqc::BI::sm_arch (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc2BI3tpiE">cupqc::BI::tpi (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc6bigintE">cupqc::bigint (C++ class)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint7add_modERK6bigintRK6bigint">cupqc::bigint::add_mod (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint10add_scalarE8uint32_t">cupqc::bigint::add_scalar (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigint6bigintE8uint32_t">cupqc::bigint::bigint (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigint6bigintE8uint64_t">[1]</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigint6bigintEPK8uint32_t">[2]</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigint6bigintEPK8uint32_tj">[3]</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigint6bigintEv">[4]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint3clzEv">cupqc::bigint::clz (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint7compareE8uint32_t">cupqc::bigint::compare (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint7compareE8uint64_t">[1]</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint7compareERK6bigint">[2]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4I_j_jENK5cupqc6bigint7div_remE12bigint_errorRK11bigint_implI13DIVISOR_LIMBS3TPI11ErrorPolicyER11bigint_implI14QUOTIENT_LIMBS3TPI11ErrorPolicyER11bigint_implI13DIVISOR_LIMBS3TPI11ErrorPolicyE">cupqc::bigint::div_rem (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint7div_remERK6bigintR6bigintR6bigint">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint15from_montgomeryERK18montgomery_modulus">cupqc::bigint::from_montgomery (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint7inv_modERK6bigintR6bigint">cupqc::bigint::inv_mod (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint3modERK6bigint">cupqc::bigint::mod (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint8mul_highERK6bigint">cupqc::bigint::mul_high (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint7mul_lowERK6bigint">cupqc::bigint::mul_low (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint7mul_modERK6bigintRK6bigint">cupqc::bigint::mul_mod (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint14mul_montgomeryERK6bigintRK18montgomery_modulus">cupqc::bigint::mul_montgomery (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint10mul_scalarE8uint32_t">cupqc::bigint::mul_scalar (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint8mul_wideERK6bigint">cupqc::bigint::mul_wide (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintneERK6bigint">cupqc::bigint::operator!= (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintrmERK6bigint">cupqc::bigint::operator% (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintanERK6bigint">cupqc::bigint::operator&amp; (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigintaNERK6bigint">cupqc::bigint::operator&amp;= (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintmlE8uint32_t">cupqc::bigint::operator* (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintmlERK6bigint">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigintmLE8uint32_t">cupqc::bigint::operator*= (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintplE8uint32_t">cupqc::bigint::operator+ (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintplERK6bigint">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigintpLE8uint32_t">cupqc::bigint::operator+= (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigintpLERK6bigint">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintmiE8uint32_t">cupqc::bigint::operator- (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintmiERK6bigint">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigintmIE8uint32_t">cupqc::bigint::operator-= (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigintmIERK6bigint">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintdvERK6bigint">cupqc::bigint::operator/ (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintltERK6bigint">cupqc::bigint::operator&lt; (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintlsEj">cupqc::bigint::operator&lt;&lt; (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigintlSEj">cupqc::bigint::operator&lt;&lt;= (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintleERK6bigint">cupqc::bigint::operator&lt;= (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6biginteqERK6bigint">cupqc::bigint::operator== (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintgtERK6bigint">cupqc::bigint::operator&gt; (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintgeERK6bigint">cupqc::bigint::operator&gt;= (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintrsEj">cupqc::bigint::operator&gt;&gt; (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigintrSEj">cupqc::bigint::operator&gt;&gt;= (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigintixEj">cupqc::bigint::operator[] (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintixEj">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6biginteoERK6bigint">cupqc::bigint::operator^ (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6biginteOERK6bigint">cupqc::bigint::operator^= (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintorERK6bigint">cupqc::bigint::operator| (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigintoRERK6bigint">cupqc::bigint::operator|= (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigintcoEv">cupqc::bigint::operator~ (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint7pow_modE8uint64_tRK6bigint">cupqc::bigint::pow_mod (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint7pow_modERK6bigintRK6bigint">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigint14reduce_barrettER6bigintRK11bigint_wideRK6bigintRK6biginti">cupqc::bigint::reduce_barrett (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc6bigint13setup_barrettERK6bigintR6bigintRi">cupqc::bigint::setup_barrett (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint6squareEv">cupqc::bigint::square (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint5storeEP8uint32_t">cupqc::bigint::store (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint5storeEP8uint32_tj">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint7sub_modERK6bigintRK6bigint">cupqc::bigint::sub_mod (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint10sub_scalarE8uint32_t">cupqc::bigint::sub_scalar (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint13to_montgomeryERK18montgomery_modulus">cupqc::bigint::to_montgomery (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint9to_uint32Ev">cupqc::bigint::to_uint32 (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc6bigint9to_uint64Ev">cupqc::bigint::to_uint64 (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc12bigint_errorE">cupqc::bigint_error (C++ enum)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc12bigint_error22barrett_divide_by_zeroE">cupqc::bigint_error::barrett_divide_by_zero (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc12bigint_error32barrett_input_invariant_violatedE">cupqc::bigint_error::barrett_input_invariant_violated (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc12bigint_error14divide_by_zeroE">cupqc::bigint_error::divide_by_zero (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc12bigint_error20inv_mod_even_modulusE">cupqc::bigint_error::inv_mod_even_modulus (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc12bigint_error23inv_mod_invalid_modulusE">cupqc::bigint_error::inv_mod_invalid_modulus (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc12bigint_error22inv_mod_not_invertibleE">cupqc::bigint_error::inv_mod_not_invertible (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc12bigint_error18inv_mod_zero_inputE">cupqc::bigint_error::inv_mod_zero_input (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc12bigint_error17quotient_overflowE">cupqc::bigint_error::quotient_overflow (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc12bigint_error7successE">cupqc::bigint_error::success (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc11bigint_wideE">cupqc::bigint_wide (C++ class)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc11bigint_wide11bigint_wideEPK8uint32_t">cupqc::bigint_wide::bigint_wide (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc11bigint_wide11bigint_wideEPK8uint32_tj">[1]</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc11bigint_wide11bigint_wideEv">[2]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4I_j_jENK5cupqc11bigint_wide7div_remE12bigint_errorRK11bigint_implI13DIVISOR_LIMBS3TPI11ErrorPolicyER11bigint_implI14QUOTIENT_LIMBS3TPI11ErrorPolicyER11bigint_implI13DIVISOR_LIMBS3TPI11ErrorPolicyE">cupqc::bigint_wide::div_rem (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc11bigint_wide2hiE">cupqc::bigint_wide::hi (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc11bigint_wide2loE">cupqc::bigint_wide::lo (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4N5cupqc11bigint_wideixEj">cupqc::bigint_wide::operator[] (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc11bigint_wideixEj">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc11bigint_wide17reduce_montgomeryERK18montgomery_modulus">cupqc::bigint_wide::reduce_montgomery (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc11bigint_wide5storeEP8uint32_t">cupqc::bigint_wide::store (C++ function)</a>, <a href="libraries/cupqc_bigint/api/device.html#_CPPv4NK5cupqc11bigint_wide5storeEP8uint32_tj">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/operators.html#_CPPv4I_jEN5cupqc8BitWidthEv">cupqc::BitWidth (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4N5cupqc5BlockEv">cupqc::Block (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4I_j_j_jEN5cupqc8BlockDimEv">cupqc::BlockDim (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4I_12nttDirectionEN5cupqc9DirectionEv">cupqc::Direction (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/host.html#_CPPv4I_8uint32_t_8uint32_t0EN5cupqc37fwd_stage_1_ntt_shared_workspace_sizeE6size_tv">cupqc::fwd_stage_1_ntt_shared_workspace_size (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/host.html#_CPPv4I_8uint32_t_8uint32_t0EN5cupqc37fwd_stage_2_ntt_shared_workspace_sizeE6size_tv">cupqc::fwd_stage_2_ntt_shared_workspace_size (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4N5cupqc4hash9algorithmE">cupqc::hash::algorithm (C++ enum)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4I_9algorithmEN5cupqc4hash9AlgorithmEv">cupqc::hash::Algorithm (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4N5cupqc4hash9algorithm9POSEIDON2E">cupqc::hash::algorithm::POSEIDON2 (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4N5cupqc4hash9algorithm7SHA2_32E">cupqc::hash::algorithm::SHA2_32 (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4N5cupqc4hash9algorithm7SHA2_64E">cupqc::hash::algorithm::SHA2_64 (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4N5cupqc4hash9algorithm4SHA3E">cupqc::hash::algorithm::SHA3 (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4N5cupqc4hash9algorithm5SHAKEE">cupqc::hash::algorithm::SHAKE (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/operators.html#_CPPv4N5cupqc4hash5BlockEv">cupqc::hash::Block (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/operators.html#_CPPv4I_j_j_jEN5cupqc4hash8BlockDimEv">cupqc::hash::BlockDim (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4I_jEN5cupqc4hash8CapacityEv">cupqc::hash::Capacity (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4I_5fieldEN5cupqc4hash5FieldEv">cupqc::hash::Field (C++ function)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="libraries/cupqc_hash/api/hash/traits.html#_CPPv4N5cupqc4hash4HASH10block_sizeE">cupqc::hash::HASH::block_size (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/device.html#_CPPv4N5cupqc4hash4HASH6digestEP7uint8_tK6size_t">cupqc::hash::HASH::digest (C++ function)</a>, <a href="libraries/cupqc_hash/api/hash/device.html#_CPPv4N5cupqc4hash4HASH6digestEP8uint32_tK6size_t">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/traits.html#_CPPv4N5cupqc4hash4HASH11digest_sizeE">cupqc::hash::HASH::digest_size (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/device.html#_CPPv4N5cupqc4hash4HASH8finalizeEv">cupqc::hash::HASH::finalize (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/device.html#_CPPv4N5cupqc4hash4HASH5resetEv">cupqc::hash::HASH::reset (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/device.html#_CPPv4N5cupqc4hash4HASH6updateEPK7uint8_tK6size_t">cupqc::hash::HASH::update (C++ function)</a>, <a href="libraries/cupqc_hash/api/hash/device.html#_CPPv4N5cupqc4hash4HASH6updateEPK8uint32_tK6size_t">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/device.html#_CPPv4I00EN5cupqc4hash6MERKLE11create_leafEvP9PrecisionPK9PrecisionR4HASHK6size_t">cupqc::hash::MERKLE::create_leaf (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/device.html#_CPPv4I00EN5cupqc4hash6MERKLE14generate_proofEvR5proofI1N4HASH9PrecisionEPK9PrecisionK8uint32_tRK4treeI1N4HASH9PrecisionE">cupqc::hash::MERKLE::generate_proof (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/device.html#_CPPv4I00EN5cupqc4hash6MERKLE17generate_sub_treeEvR4HASHR4treeI1N4HASH9PrecisionEK6size_t">cupqc::hash::MERKLE::generate_sub_tree (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/device.html#_CPPv4I00EN5cupqc4hash6MERKLE13generate_treeEvR4HASHR4treeI1N4HASH9PrecisionE">cupqc::hash::MERKLE::generate_tree (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/device.html#_CPPv4I00EN5cupqc4hash6MERKLE12verify_proofEbRK5proofI1N4HASH9PrecisionEPK9PrecisionK8uint32_tPK9PrecisionR4HASH">cupqc::hash::MERKLE::verify_proof (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/operators.html#_CPPv4I0EN5cupqc4hash9PrecisionEv">cupqc::hash::Precision (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/objects.html#_CPPv4I_7uin32_t00EN5cupqc4hash5proofE">cupqc::hash::proof (C++ class)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4I_jEN5cupqc4hash16SecurityCategoryEv">cupqc::hash::SecurityCategory (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/operators.html#_CPPv4I_jEN5cupqc4hash4SizeEv">cupqc::hash::Size (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/operators.html#_CPPv4N5cupqc4hashSt8uint32_tE">cupqc::hash::std::uint32_t (C++ type)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/operators.html#_CPPv4N5cupqc4hashSt7uint8_tE">cupqc::hash::std::uint8_t (C++ type)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4N5cupqc4hash6ThreadEv">cupqc::hash::Thread (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/merkle/objects.html#_CPPv4I_7uin32_t00EN5cupqc4hash4treeE">cupqc::hash::tree (C++ class)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4N5cupqc4hash4WarpEv">cupqc::hash::Warp (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_hash/api/hash/operators.html#_CPPv4I_jEN5cupqc4hash5WidthEv">cupqc::hash::Width (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/host.html#_CPPv4I_8uint32_t_8uint32_t0EN5cupqc37inv_stage_1_ntt_shared_workspace_sizeE6size_tv">cupqc::inv_stage_1_ntt_shared_workspace_size (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/host.html#_CPPv4I_8uint32_t_8uint32_t0EN5cupqc37inv_stage_2_ntt_shared_workspace_sizeE6size_tv">cupqc::inv_stage_2_ntt_shared_workspace_size (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc18montgomery_modulusE">cupqc::montgomery_modulus (C++ class)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4NK5cupqc18montgomery_modulus7m_primeEv">cupqc::montgomery_modulus::m_prime (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc18montgomery_modulus18montgomery_modulusEPK8uint32_t">cupqc::montgomery_modulus::montgomery_modulus (C++ function)</a>, <a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc18montgomery_modulus18montgomery_modulusEPK8uint32_tj">[1]</a>, <a href="libraries/cupqc_bigint/api/types.html#_CPPv4N5cupqc18montgomery_modulus18montgomery_modulusERK6bigint">[2]</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/host.html#_CPPv4I_8uint32_t0EN5cupqc5n_invE9Precision9Precision">cupqc::n_inv (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT3addEP9PrecisionPK9PrecisionK9Precision">cupqc::NTT::add (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4N5cupqc3NTT8BlockDimE">cupqc::NTT::BlockDim (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9Precision">cupqc::NTT::execute (C++ function)</a>, <a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9PrecisionK9Precision">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT9from_montE9PrecisionK8nttConstI9PrecisionE">cupqc::NTT::from_mont (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT4loadEP9PrecisionPK9Precision">cupqc::NTT::load (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT12load_to_montEP9PrecisionPK9PrecisionK8nttConstI9PrecisionE">cupqc::NTT::load_to_mont (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT13make_twiddlesEP9PrecisionK9PrecisionK9Precision">cupqc::NTT::make_twiddles (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT3mulEP9PrecisionPK9PrecisionK9Precision">cupqc::NTT::mul (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4N5cupqc3NTT4SizeE">cupqc::NTT::Size (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT15stage_1_executeEP9PrecisionPK9PrecisionK9Precision">cupqc::NTT::stage_1_execute (C++ function)</a>, <a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT15stage_1_executeEP9PrecisionPK9PrecisionK9Precision">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT12stage_1_loadEP9PrecisionPK9PrecisionKi">cupqc::NTT::stage_1_load (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT20stage_1_load_to_montEP9PrecisionPK9PrecisionKiK8nttConstI9PrecisionE">cupqc::NTT::stage_1_load_to_mont (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT13stage_1_storeEP9PrecisionP9PrecisionKi">cupqc::NTT::stage_1_store (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT15stage_2_executeEP9PrecisionPK9PrecisionK9Precision">cupqc::NTT::stage_2_execute (C++ function)</a>, <a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT15stage_2_executeEP9PrecisionPK9PrecisionK9PrecisionK9Precision">[1]</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT12stage_2_loadEP9PrecisionPK9PrecisionKi">cupqc::NTT::stage_2_load (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT13stage_2_storeEP9PrecisionP9PrecisionKi">cupqc::NTT::stage_2_store (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT23stage_2_store_from_montEP9PrecisionP9PrecisionKiK8nttConstI9PrecisionE">cupqc::NTT::stage_2_store_from_mont (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT5storeEP9PrecisionP9Precision">cupqc::NTT::store (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT15store_from_montEP9PrecisionP9PrecisionK8nttConstI9PrecisionE">cupqc::NTT::store_from_mont (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT3subEP9PrecisionPK9PrecisionK9Precision">cupqc::NTT::sub (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT7to_montE9PrecisionK8nttConstI9PrecisionE">cupqc::NTT::to_mont (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/device.html#_CPPv4N5cupqc3NTT26transform_twiddles_to_montEP9PrecisionK9Precision">cupqc::NTT::transform_twiddles_to_mont (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/host.html#_CPPv4I_8uint32_t0EN5cupqc25ntt_shared_workspace_sizeE6size_tv">cupqc::ntt_shared_workspace_size (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/types.html#_CPPv4I0EN5cupqc8nttConstE">cupqc::nttConst (C++ struct)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/types.html#_CPPv4N5cupqc8nttConst6n_dashE">cupqc::nttConst::n_dash (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/types.html#_CPPv4N5cupqc8nttConst8nttConstE9Precision">cupqc::nttConst::nttConst (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/types.html#_CPPv4N5cupqc8nttConst1pE">cupqc::nttConst::p (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/types.html#_CPPv4N5cupqc8nttConst2r2E">cupqc::nttConst::r2 (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4N5cupqc12nttDirectionE">cupqc::nttDirection (C++ enum)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4N5cupqc12nttDirection7FORWARDE">cupqc::nttDirection::FORWARD (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4N5cupqc12nttDirection7INVERSEE">cupqc::nttDirection::INVERSE (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/operators.html#_CPPv4N5cupqc11OnErrorNoneEv">cupqc::OnErrorNone (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/operators.html#_CPPv4N5cupqc16OnErrorPrintTrapEv">cupqc::OnErrorPrintTrap (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/operators.html#_CPPv4N5cupqc11OnErrorTrapEv">cupqc::OnErrorTrap (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4N5cupqc2pk9algorithmE">cupqc::pk::algorithm (C++ enum)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4I_9algorithmEN5cupqc2pk9AlgorithmEv">cupqc::pk::Algorithm (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4N5cupqc2pk9algorithm6ML_DSAE">cupqc::pk::algorithm::ML_DSA (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4N5cupqc2pk9algorithm6ML_KEME">cupqc::pk::algorithm::ML_KEM (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4N5cupqc2pk5BlockEv">cupqc::pk::Block (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4I_j_j_jEN5cupqc2pk8BlockDimEv">cupqc::pk::BlockDim (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/host.html#_CPPv4N5cupqc2pk17destroy_workspaceEP7uint8_t12cudaStream_t">cupqc::pk::destroy_workspace (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4N5cupqc2pk8functionE">cupqc::pk::function (C++ enum)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4I_8functionEN5cupqc2pk8FunctionEv">cupqc::pk::Function (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4N5cupqc2pk8function6DecapsE">cupqc::pk::function::Decaps (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4N5cupqc2pk8function6EncapsE">cupqc::pk::function::Encaps (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4N5cupqc2pk8function6KeygenE">cupqc::pk::function::Keygen (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4N5cupqc2pk8function4SignE">cupqc::pk::function::Sign (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4N5cupqc2pk8function6VerifyE">cupqc::pk::function::Verify (C++ enumerator)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/host.html#_CPPv4I0EN5cupqc2pk11get_entropyEP7uint8_t6size_t12cudaStream_t">cupqc::pk::get_entropy (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/host.html#_CPPv4I0EN5cupqc2pk14make_workspaceEP7uint8_t6size_t12cudaStream_t">cupqc::pk::make_workspace (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/traits.html#_CPPv4N5cupqc2pk2PK8BlockDimE">cupqc::pk::PK::BlockDim (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/traits.html#_CPPv4N5cupqc2pk2PK15ciphertext_sizeE">cupqc::pk::PK::ciphertext_size (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/traits.html#_CPPv4N5cupqc2pk2PK12entropy_sizeE">cupqc::pk::PK::entropy_size (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/device.html#_CPPv4N5cupqc2pk2PK7executeEP7uint8_tP7uint8_tP7uint8_tP7uint8_tP7uint8_t">cupqc::pk::PK::execute (C++ function)</a>, <a href="libraries/cupqc_pk/api/device.html#_CPPv4N5cupqc2pk2PK7executeEP7uint8_tP7uint8_tPK7uint8_tP7uint8_tP7uint8_tP7uint8_t">[1]</a>, <a href="libraries/cupqc_pk/api/device.html#_CPPv4N5cupqc2pk2PK7executeEP7uint8_tPK7uint8_tK6size_tPK7uint8_tP7uint8_tP7uint8_tP7uint8_t">[2]</a>, <a href="libraries/cupqc_pk/api/device.html#_CPPv4N5cupqc2pk2PK7executeEP7uint8_tPK7uint8_tPK7uint8_tP7uint8_tP7uint8_t">[3]</a>, <a href="libraries/cupqc_pk/api/device.html#_CPPv4N5cupqc2pk2PK7executeEPK7uint8_tK6size_tPK7uint8_tPK7uint8_tP7uint8_tP7uint8_t">[4]</a>, <a href="libraries/cupqc_pk/api/device.html#_CPPv4N5cupqc2pk2PK7executeEz">[5]</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/traits.html#_CPPv4N5cupqc2pk2PK15public_key_sizeE">cupqc::pk::PK::public_key_size (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/traits.html#_CPPv4N5cupqc2pk2PK15secret_key_sizeE">cupqc::pk::PK::secret_key_size (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/traits.html#_CPPv4N5cupqc2pk2PK18shared_memory_sizeE">cupqc::pk::PK::shared_memory_size (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/traits.html#_CPPv4N5cupqc2pk2PK18shared_secret_sizeE">cupqc::pk::PK::shared_secret_size (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/traits.html#_CPPv4N5cupqc2pk2PK14signature_sizeE">cupqc::pk::PK::signature_size (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/traits.html#_CPPv4N5cupqc2pk2PK14workspace_sizeE">cupqc::pk::PK::workspace_size (C++ member)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/host.html#_CPPv4N5cupqc2pk15release_entropyEP7uint8_t12cudaStream_t">cupqc::pk::release_entropy (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_pk/api/operators.html#_CPPv4I_jEN5cupqc2pk16SecurityCategoryEv">cupqc::pk::SecurityCategory (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4I0EN5cupqc9PrecisionEv">cupqc::Precision (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4I_jEN5cupqc4SizeEv">cupqc::Size (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/operators.html#_CPPv4I_jEN5cupqc2SMEv">cupqc::SM (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4N5cupqcSt8uint16_tE">cupqc::std::uint16_t (C++ type)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4N5cupqcSt8uint32_tE">cupqc::std::uint32_t (C++ type)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4N5cupqcSt8uint64_tE">cupqc::std::uint64_t (C++ type)</a>
+</li>
+      <li><a href="libraries/cupqc_ntt/api/operators.html#_CPPv4I_jEN5cupqc7SubSizeEv">cupqc::SubSize (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/operators.html#_CPPv4N5cupqc6ThreadEv">cupqc::Thread (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/operators.html#_CPPv4I_jEN5cupqc3TPIEv">cupqc::TPI (C++ function)</a>
+</li>
+      <li><a href="libraries/cupqc_bigint/api/operators.html#_CPPv4N5cupqc4WarpEv">cupqc::Warp (C++ function)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+<div class="bd-sidebar-secondary"></div>
+
+
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2026, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

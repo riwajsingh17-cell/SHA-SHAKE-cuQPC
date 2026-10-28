@@ -1,0 +1,694 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>cuPQC-NTT: Number Theoretic Transform &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cupqc_override.css?v=ee9d665e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+
+
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'libraries/cupqc_ntt/cupqc_ntt_feature';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="../../_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="cuPQC-NTT Usage" href="cupqc_ntt_usage.html" />
+    <link rel="prev" title="cuPQC-NTT" href="index.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Libraries</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cupqc_bigint/index.html">cuPQC-BigInt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_bigint/cupqc_bigint_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_bigint/cupqc_bigint_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cupqc_bigint/cupqc_bigint_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_bigint/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_bigint/api/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_bigint/api/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">cuPQC-NTT</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cupqc_ntt_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="cupqc_ntt_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/host.html">Host Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/prime_fields.html">Prime Field Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/types.html">Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cupqc_hash/index.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_hash/cupqc_hash_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_hash/cupqc_hash_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cupqc_hash/cupqc_hash_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../cupqc_hash/api/hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/hash/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/hash/traits.html">Traits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/hash/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../cupqc_hash/api/merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/merkle/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/merkle/objects.html">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/merkle/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cupqc_pk/index.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_pk/cupqc_pk_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_pk/cupqc_pk_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cupqc_pk/cupqc_pk_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/host.html">Host Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../additional/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../additional/security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../additional/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">cuPQC-NTT</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">cuPQC-NTT: Number Theoretic Transform</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cupqc-ntt-number-theoretic-transform">
+<h1>cuPQC-NTT: Number Theoretic Transform<a class="headerlink" href="#cupqc-ntt-number-theoretic-transform" title="Link to this heading">#</a></h1>
+<p>The cuPQC-NTT library provides GPU-optimized implementations of the Number Theoretic Transform
+(NTT) designed for direct integration into CUDA kernels. The NTT is the modular-arithmetic
+analogue of the Fast Fourier Transform and is a core building block of lattice-based
+cryptography, zero-knowledge proof systems, and modular ring arithmetic over finite fields.
+As a device-side library, cuPQC-NTT integrates directly into your CUDA kernels, enabling you
+to fuse NTTs with other GPU computations for maximum performance.
+Transforms run in the Montgomery domain; convert at load/store boundaries and convert
+twiddle tables once before reuse.</p>
+<p>The notation in the panel below is used throughout the rest of this page for transform lengths and two-pass tiling.</p>
+<div class="admonition-notation-for-n-m-k-and-d cupqc-ntt-standard-eq-prose admonition" id="cupqc-ntt-notation">
+<p class="admonition-title">Notation for <code class="docutils literal notranslate"><span class="pre">N</span></code>, <code class="docutils literal notranslate"><span class="pre">M</span></code>, <code class="docutils literal notranslate"><span class="pre">K</span></code>, and <code class="docutils literal notranslate"><span class="pre">d</span></code></p>
+<p>Transform length <code class="docutils literal notranslate"><span class="pre">N</span></code> is a <span class="cupqc-pow2">power-of-two</span>, with <span class="cupqc-codesup cupqc-codesup-eq"><span class="cupqc-codesup-prefix">N =</span><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span></code><sup><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">d</span></code></sup></span> and <code class="docutils literal notranslate"><span class="pre">d</span></code> = log<sub>2</sub>(<code class="docutils literal notranslate"><span class="pre">N</span></code>).</p>
+<p>Sub-transform size <code class="docutils literal notranslate"><span class="pre">M</span></code> (a <span class="cupqc-pow2">power-of-two</span>) is set with <code class="docutils literal notranslate"><span class="pre">SubSize&lt;M&gt;</span></code>; <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">N/M</span></code>.</p>
+</div>
+<section id="ntt-transform-modes">
+<h2>NTT Transform Modes<a class="headerlink" href="#ntt-transform-modes" title="Link to this heading">#</a></h2>
+<p>The cuPQC-NTT library provides two execution modes:</p>
+<ul class="simple">
+<li><p><strong>Standard NTT:</strong> A complete <code class="docutils literal notranslate"><span class="pre">N</span></code>-point transform is performed in a single kernel launch per length-<code class="docutils literal notranslate"><span class="pre">N</span></code> buffer, with the full working set held in shared memory. This mode is ideal for transform lengths that fit within available shared memory.</p></li>
+<li><p><strong>Staged NTT:</strong> For large <code class="docutils literal notranslate"><span class="pre">N</span></code>, per-block shared memory cannot hold the full workspace for an <code class="docutils literal notranslate"><span class="pre">N</span></code>-point transform in a single pass, so a staged NTT is required. With <code class="docutils literal notranslate"><span class="pre">SubSize&lt;M&gt;</span></code> and <strong>two</strong> kernel passes: the first stage runs <code class="docutils literal notranslate"><span class="pre">M</span></code> parallel <code class="docutils literal notranslate"><span class="pre">K</span></code>-point contiguous NTTs (<code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">N/M</span></code>); the second runs <code class="docutils literal notranslate"><span class="pre">K</span></code> parallel <code class="docutils literal notranslate"><span class="pre">M</span></code>-point strided NTTs. Each stage limits the per-block working set to <code class="docutils literal notranslate"><span class="pre">max(K,</span> <span class="pre">M)</span></code> elements, enabling transforms that would not fit in a single block’s shared memory.</p></li>
+</ul>
+</section>
+<section id="supported-configurations">
+<h2>Supported Configurations<a class="headerlink" href="#supported-configurations" title="Link to this heading">#</a></h2>
+<p>The table below summarizes the supported <strong>Execution Modes</strong>, <strong>Transform Type</strong>, <strong>Prime Fields</strong>, and <strong>Precomputed Roots</strong>.</p>
+<div class="pst-scrollable-table-container"><table class="cupqc-feature-table ntt-feature-table ntt-feature-table-aspect table">
+<colgroup>
+<col style="width: 28.0%" />
+<col style="width: 72.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Summary</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Execution modes</strong></p></td>
+<td><p><strong>Standard:</strong> One-kernel transform of length-<code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+<p><strong>Staged:</strong> Two-kernel transforms of <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">SubSize&lt;M&gt;)</span></code> pairs.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Transform type</strong></p></td>
+<td><p><strong>Cyclic:</strong> Length-<code class="docutils literal notranslate"><span class="pre">N</span></code> transforms for arithmetic in the cyclic
+polynomial ring (modulo <code class="docutils literal notranslate">x<sup>N</sup> - 1</code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Prime field</strong></p></td>
+<td><p><strong>Custom:</strong> User-selected prime <code class="docutils literal notranslate"><span class="pre">p</span></code> &lt; <span class="cupqc-codesup"><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span></code><sup><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">62</span></code></sup></span>.</p>
+<p><strong>Built-in:</strong> <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BabyBear</span></code> / <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">KoalaBear</span></code>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Precomputed roots</strong></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BabyBear</span></code> / <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">KoalaBear</span></code>: <code class="docutils literal notranslate"><span class="pre">*_primitive_root_S</span></code> (<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">10</span></code> ≤ <code class="docutils literal notranslate"><span class="pre">S</span></code> ≤ <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">24</span></code>).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>See <a class="reference internal" href="api/prime_fields.html"><span class="doc">Prime Field Constants</span></a> for built-in prime values and compile-time root symbols.</p>
+<p>Both <strong>Standard NTT</strong> and <strong>Staged NTT</strong> support <code class="docutils literal notranslate"><span class="pre">uint16_t</span></code>, <code class="docutils literal notranslate"><span class="pre">uint32_t</span></code>, and <code class="docutils literal notranslate"><span class="pre">uint64_t</span></code> as precisions for any prime modulus.
+The next two subsections tabulate supported transform-size limits for <strong>Standard NTT</strong> and <strong>Staged NTT</strong>.</p>
+<section id="standard-ntt-limits">
+<h3>Standard NTT Limits<a class="headerlink" href="#standard-ntt-limits" title="Link to this heading">#</a></h3>
+<p class="cupqc-ntt-standard-eq-prose">The table lists <strong>Standard NTT</strong> (single-kernel) limits on transform length <code class="docutils literal notranslate"><span class="pre">N</span></code> and exponent <code class="docutils literal notranslate"><span class="pre">d</span></code>. Coefficients and the modulus use the same type width (for example both <code class="docutils literal notranslate"><span class="pre">uint32_t</span></code>) for each prime and coefficient-width row.</p>
+<div class="pst-scrollable-table-container"><table class="cupqc-feature-table ntt-feature-table ntt-feature-table-limits table">
+<colgroup>
+<col style="width: 26.0%" />
+<col style="width: 26.0%" />
+<col style="width: 48.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Prime</p></th>
+<th class="head"><p>Width (precision)</p></th>
+<th class="head"><p>Transform Size (<span class="cupqc-codesup cupqc-codesup-eq"><span class="cupqc-codesup-prefix">N =</span><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span></code><sup><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">d</span></code></sup></span>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="3"><p><strong>Custom</strong> <code class="docutils literal notranslate"><span class="pre">p</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16_t</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">≤</span> <span class="pre">d</span> <span class="pre">≤</span> <span class="pre">14</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uint32_t</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">≤</span> <span class="pre">d</span> <span class="pre">≤</span> <span class="pre">13</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uint64_t</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">≤</span> <span class="pre">d</span> <span class="pre">≤</span> <span class="pre">13</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="staged-ntt-limits">
+<h3>Staged NTT Limits<a class="headerlink" href="#staged-ntt-limits" title="Link to this heading">#</a></h3>
+<p class="cupqc-ntt-standard-eq-prose">The table lists <strong>Staged NTT</strong> (two-kernel) limits, pairing each supported transform length <code class="docutils literal notranslate"><span class="pre">N</span></code> with allowed <code class="docutils literal notranslate"><span class="pre">SubSize&lt;M&gt;</span></code> values.</p>
+<div class="pst-scrollable-table-container"><table class="cupqc-feature-table ntt-feature-table ntt-feature-table-staged table">
+<colgroup>
+<col style="width: 38.0%" />
+<col style="width: 62.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Transform Size (<span class="cupqc-codesup cupqc-codesup-eq"><span class="cupqc-codesup-prefix">N =</span><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span></code><sup><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">d</span></code></sup></span>)</p></th>
+<th class="head"><p>Allowed Sub-transform Size (<code class="docutils literal notranslate"><span class="pre">SubSize&lt;M&gt;</span></code>)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">14</span> <span class="pre">≤</span> <span class="pre">d</span> <span class="pre">≤</span> <span class="pre">21</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">256</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">512</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1024</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2048</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4096</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">8192</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">22</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">512</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1024</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2048</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4096</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">8192</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">23</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1024</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2048</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4096</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">8192</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">d</span> <span class="pre">=</span> <span class="pre">24</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2048</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4096</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">8192</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>High Performance:</strong> GPU-optimized NTT kernels exploit shared memory and warp-level
+parallelism for maximum throughput.</p></li>
+<li><p><strong>Montgomery Domain:</strong> Device transforms operate on Montgomery-domain data, with
+conversion at load/store (<code class="docutils literal notranslate"><span class="pre">load_to_mont</span></code> / <code class="docutils literal notranslate"><span class="pre">store_from_mont</span></code> and staged counterparts);
+twiddle tables are converted once before reuse.</p></li>
+<li><p><strong>Cyclic Transforms:</strong> Implements the cyclic NTT for rings modulo <code class="docutils literal notranslate">x<sup>N</sup> - 1</code>.</p></li>
+<li><p><strong>Flexible Field Support:</strong> Supports user-selected primes up to <strong>62-bit</strong> and built-in primes <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BabyBear</span></code> / <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">KoalaBear</span></code>.</p></li>
+<li><p><strong>Staged Transforms:</strong> The <code class="docutils literal notranslate"><span class="pre">SubSize&lt;M&gt;</span></code> operator enables memory-efficient transforms at
+large <code class="docutils literal notranslate"><span class="pre">N</span></code> by decomposing them into two kernel passes.</p></li>
+<li><p><strong>Reusable Twiddle Tables:</strong> Twiddle factors are computed once and reused across an entire
+batch, minimizing startup overhead.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">cuPQC-NTT</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cupqc_ntt_usage.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">cuPQC-NTT Usage</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ntt-transform-modes">NTT Transform Modes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-configurations">Supported Configurations</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-ntt-limits">Standard NTT Limits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#staged-ntt-limits">Staged NTT Limits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">Key Features</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2026, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

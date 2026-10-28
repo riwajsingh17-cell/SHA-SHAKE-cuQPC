@@ -1,0 +1,110 @@
+
+===== SHAKE256-128s cuPQC | Mon Oct 26 04:12:09 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 862c26917804abe7
+kernel_ms (CUDA events, GPU only): 0.681 4.258 2.365
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.708 4.310 2.427
+
+===== SHAKE256-128f cuPQC | Mon Oct 26 04:12:13 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): fde2f0cf38d0522c
+kernel_ms (CUDA events, GPU only): 0.254 0.800 5.519
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.280 0.849 5.581
+
+===== SHAKE256-192s cuPQC | Mon Oct 26 04:12:16 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 7499a185d9c60839
+kernel_ms (CUDA events, GPU only): 0.977 7.871 3.083
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+1.003 7.925 3.146
+
+===== SHAKE256-192f cuPQC | Mon Oct 26 04:12:22 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 66bc13cd8e59c908
+kernel_ms (CUDA events, GPU only): 0.337 1.512 7.525
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.363 1.562 7.586
+
+===== SHAKE256-256s cuPQC | Mon Oct 26 04:12:26 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 467a9be3fe3cd5e5
+kernel_ms (CUDA events, GPU only): 0.945 9.140 4.459
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.971 9.194 4.523
+
+===== SHAKE256-256f cuPQC | Mon Oct 26 04:12:32 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): bcf36f432effaca3
+kernel_ms (CUDA events, GPU only): 0.462 2.372 8.589
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.487 2.425 8.651
+
+===== SHAKE256-128s cuPQC | Tue Oct 27 12:01:21 AM UTC 2026 =====
+
+===== SHAKE256-128s cuPQC | Tue Oct 27 00:03:48 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 862c26917804abe7
+kernel_ms (CUDA events, GPU only): 0.677 4.264 2.370
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.706 4.323 2.439
+
+===== SHAKE256-128f cuPQC | Tue Oct 27 00:03:52 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): fde2f0cf38d0522c
+kernel_ms (CUDA events, GPU only): 0.256 0.803 5.536
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.286 0.864 5.612
+
+===== SHAKE256-192s cuPQC | Tue Oct 27 00:03:56 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 7499a185d9c60839
+kernel_ms (CUDA events, GPU only): 0.981 7.921 3.096
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+1.011 7.985 3.172
+
+===== SHAKE256-192f cuPQC | Tue Oct 27 00:04:01 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 66bc13cd8e59c908
+kernel_ms (CUDA events, GPU only): 0.339 1.510 7.538
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.368 1.579 7.621
+
+===== SHAKE256-256s cuPQC | Tue Oct 27 00:04:05 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 467a9be3fe3cd5e5
+kernel_ms (CUDA events, GPU only): 0.950 9.136 4.470
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.985 9.209 4.553
+
+===== SHAKE256-256f cuPQC | Tue Oct 27 00:04:11 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): bcf36f432effaca3
+kernel_ms (CUDA events, GPU only): 0.464 2.374 8.610
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.493 2.447 8.692

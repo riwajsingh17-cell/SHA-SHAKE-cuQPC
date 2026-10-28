@@ -1,0 +1,1099 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>cuPQC-BigInt: Multi-Precision Integer Arithmetic &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cupqc_override.css?v=ee9d665e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+
+
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'libraries/cupqc_bigint/cupqc_bigint_feature';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="../../_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="cuPQC-BigInt Usage" href="cupqc_bigint_usage.html" />
+    <link rel="prev" title="cuPQC-BigInt" href="index.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Libraries</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">cuPQC-BigInt</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cupqc_bigint_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="cupqc_bigint_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cupqc_ntt/index.html">cuPQC-NTT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_ntt/cupqc_ntt_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_ntt/cupqc_ntt_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cupqc_ntt/cupqc_ntt_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_ntt/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_ntt/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_ntt/api/host.html">Host Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_ntt/api/prime_fields.html">Prime Field Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_ntt/api/types.html">Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cupqc_hash/index.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_hash/cupqc_hash_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_hash/cupqc_hash_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cupqc_hash/cupqc_hash_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../cupqc_hash/api/hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/hash/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/hash/traits.html">Traits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/hash/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../cupqc_hash/api/merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/merkle/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/merkle/objects.html">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/merkle/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cupqc_pk/index.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_pk/cupqc_pk_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_pk/cupqc_pk_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cupqc_pk/cupqc_pk_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/host.html">Host Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../additional/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../additional/security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../additional/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">cuPQC-BigInt</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">cuPQC-BigInt: Multi-Precision Integer Arithmetic</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cupqc-bigint-multi-precision-integer-arithmetic">
+<h1>cuPQC-BigInt: Multi-Precision Integer Arithmetic<a class="headerlink" href="#cupqc-bigint-multi-precision-integer-arithmetic" title="Link to this heading">#</a></h1>
+<p>The cuPQC-BigInt library provides GPU-optimized, fixed-width, <strong>unsigned</strong> multi-precision
+(big) integer arithmetic designed for direct integration into CUDA kernels. Its API is exposed
+entirely as <code class="docutils literal notranslate"><span class="pre">__device__</span></code> functions, so every operation is called directly from within your
+kernel rather than launched or dispatched from the host. It is a core building block for
+classical public-key primitives, modular exponentiation, and any workload that needs
+integers wider than the native 32/64-bit hardware types. As a device-side library, cuPQC-BigInt
+integrates directly into your CUDA kernels, enabling you to fuse big-integer arithmetic with
+other GPU computations for maximum performance.</p>
+<section id="execution-modes">
+<h2>Execution Modes<a class="headerlink" href="#execution-modes" title="Link to this heading">#</a></h2>
+<p>The cuPQC-BigInt library provides two execution modes that determine how a single big-integer
+instance is distributed across CUDA threads:</p>
+<ul class="simple">
+<li><p><strong>Thread execution:</strong> A single CUDA thread owns and operates on the entire big integer.
+Selected with the <code class="docutils literal notranslate"><span class="pre">Thread()</span></code> operator. Requires <code class="docutils literal notranslate"><span class="pre">TPI</span></code> to be unset (implicitly <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1</span></code>).</p></li>
+<li><p><strong>Warp execution:</strong> <code class="docutils literal notranslate"><span class="pre">TPI</span></code> (Threads Per Instance) consecutive lanes of a warp cooperate on
+a single big-integer instance, with each lane holding a contiguous slice of the limbs.
+Selected with the <code class="docutils literal notranslate"><span class="pre">Warp()</span></code> operator together with <code class="docutils literal notranslate"><span class="pre">TPI&lt;T&gt;</span></code>. Multiple independent
+instances can be packed into one warp—for example <code class="docutils literal notranslate"><span class="pre">TPI&lt;8&gt;</span></code> packs four independent
+instances into a 32-lane warp, each computed cooperatively by 8 lanes.</p></li>
+</ul>
+<p>Exactly one of <code class="docutils literal notranslate"><span class="pre">Thread()</span></code> or <code class="docutils literal notranslate"><span class="pre">Warp()</span></code> must be specified in a descriptor.</p>
+<p>The notation in the panel below is used throughout the rest of this page for widths, lane
+counts, and modular arithmetic.</p>
+<div class="admonition-notation-for-bw-t-and-m admonition" id="cupqc-bigint-notation">
+<p class="admonition-title">Notation for <code class="docutils literal notranslate"><span class="pre">BW</span></code>, <code class="docutils literal notranslate"><span class="pre">T</span></code>, and <code class="docutils literal notranslate"><span class="pre">m</span></code></p>
+<p>Bit width <code class="docutils literal notranslate"><span class="pre">BW</span></code> is a multiple of <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code>, set with <code class="docutils literal notranslate"><span class="pre">BitWidth&lt;BW&gt;</span></code>; the limb count is
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BW</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">32</span></code>.</p>
+<p>Threads per instance <code class="docutils literal notranslate"><span class="pre">T</span></code> is a power of two, <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">32</span></code>, set with <code class="docutils literal notranslate"><span class="pre">TPI&lt;T&gt;</span></code>. It may
+not exceed the limb count.</p>
+<p><code class="docutils literal notranslate"><span class="pre">m</span></code> is the modulus of a modular operation, and <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">e</span></code> are its operands
+and exponent.</p>
+</div>
+</section>
+<section id="bit-width-and-limb-layout">
+<h2>Bit Width and Limb Layout<a class="headerlink" href="#bit-width-and-limb-layout" title="Link to this heading">#</a></h2>
+<p>Every big-integer value is a fixed-width unsigned integer made of 32-bit limbs:</p>
+<div class="pst-scrollable-table-container"><table class="cupqc-feature-table table">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 32.0%" />
+<col style="width: 48.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Constraint</p></th>
+<th class="head"><p>Detail</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>Bit width</strong></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">BitWidth&lt;BW&gt;()</span></code></div>
+</div>
+</td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BW</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">k</span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">k</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span></code></p></td>
+<td><p>Must be a multiple of <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code> and greater than <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">0</span></code>. The number of limbs is <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BW</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">32</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Limb order</strong></p></td>
+<td><p>Little endian</p></td>
+<td><p>Limb <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">0</span></code> is least significant. Values are stored and loaded as arrays, plain or
+batched, of <code class="docutils literal notranslate"><span class="pre">uint32_t</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><strong>Threads per instance</strong></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">TPI&lt;T&gt;()</span></code></div>
+</div>
+</td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">8</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">16</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code></p>
+<p>Also no larger than the limb count <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BW</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">32</span></code>.</p>
+</td>
+<td><p>Required with <code class="docutils literal notranslate"><span class="pre">Warp()</span></code>, forbidden with <code class="docutils literal notranslate"><span class="pre">Thread()</span></code>; every value in this range is
+validated. Limbs are distributed across the <code class="docutils literal notranslate"><span class="pre">TPI</span></code> cooperating lanes with the
+lowest-index lane holding the least-significant limbs; any padding limbs are placed
+at the top of the highest-index lane.</p></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><strong>Wide results</strong></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">bigint_wide</span></code></div>
+</div>
+</td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">BW</span></code> bits</p></td>
+<td><p>Split into <code class="docutils literal notranslate"><span class="pre">lo</span></code> and <code class="docutils literal notranslate"><span class="pre">hi</span></code> halves. Produced by <code class="docutils literal notranslate"><span class="pre">mul_wide</span></code>, <code class="docutils literal notranslate"><span class="pre">operator*</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">square</span></code>, and consumed by <code class="docutils literal notranslate"><span class="pre">reduce_barrett</span></code>, <code class="docutils literal notranslate"><span class="pre">reduce_montgomery</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">bigint_wide::div_rem</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="supported-widths">
+<span id="cupqc-bigint-supported-widths-label"></span><h2>Supported Widths<a class="headerlink" href="#supported-widths" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">BitWidth</span></code> accepts any multiple of <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code>, but the shipped library is built for a specific set
+of widths per <code class="docutils literal notranslate"><span class="pre">TPI</span></code>. The ranges below are inclusive, and every integer limb count inside them
+is built rather than only the powers of two, so <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">37</span></code> limbs (<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1184</span></code> bits) at <code class="docutils literal notranslate"><span class="pre">TPI&lt;4&gt;</span></code> is a real
+configuration.</p>
+<div class="pst-scrollable-table-container"><table class="cupqc-feature-table table">
+<colgroup>
+<col style="width: 12.0%" />
+<col style="width: 44.0%" />
+<col style="width: 44.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">TPI</span></code></p></th>
+<th class="head"><p>Limb counts</p></th>
+<th class="head"><p>Bit widths</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">8</span></code>–<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">64</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">128</span></code> <span class="cupqc-list-sep">&middot;</span> <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">256</span></code>–<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1024</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4</span></code>–<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">64</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">128</span></code>–<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2048</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">8</span></code>–<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">128</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">256</span></code>–<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4096</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">8</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">16</span></code>–<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">128</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">512</span></code>–<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4096</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">16</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code>–<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">128</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1024</span></code>–<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4096</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">64</span></code>–<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">128</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2048</span></code>–<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4096</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Two rules shape the table. Each warp configuration starts at two limbs per lane, <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">T</span></code>, and
+stops at <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code> limbs per lane or <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">128</span></code> limbs in total, whichever is smaller. That is why thread
+execution ends at <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code> limbs and <code class="docutils literal notranslate"><span class="pre">TPI&lt;2&gt;</span></code> at <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">64</span></code>, while everything from <code class="docutils literal notranslate"><span class="pre">TPI&lt;4&gt;</span></code> up ends at
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">128</span></code>.</p>
+<p>Thread execution is the exception at the bottom, adding <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1</span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span></code>, and <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4</span></code> limbs below its range:
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code>-, <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">64</span></code>-, and <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">128</span></code>-bit thread instances work, while <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">3</span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">5</span></code>, <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">6</span></code>, and <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">7</span></code> limbs are gaps. A
+width outside these sets satisfies the type system and then fails to link.</p>
+</section>
+<section id="operand-widths">
+<span id="cupqc-bigint-operand-widths-label"></span><h2>Operand Widths<a class="headerlink" href="#operand-widths" title="Link to this heading">#</a></h2>
+<p>Every binary operation requires both operands to be the same type: the same bit width, the
+same threads per instance, and the same error policy. Nothing is implicitly promoted,
+truncated, or converted between widths, so passing a <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">256</span></code>-bit value where a <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">512</span></code>-bit one is
+expected is a compile error rather than a silent conversion. Adding two <code class="docutils literal notranslate"><span class="pre">BW</span></code>-bit values
+yields a <code class="docutils literal notranslate"><span class="pre">BW</span></code>-bit result; multiplying them yields a <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">BW</span></code>-bit <code class="docutils literal notranslate"><span class="pre">bigint_wide</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">div_rem</span></code> is the one operation that accepts operands of differing widths:</p>
+<div class="pst-scrollable-table-container"><table class="cupqc-feature-table table">
+<colgroup>
+<col style="width: 34.0%" />
+<col style="width: 16.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Overload</p></th>
+<th class="head"><p>Dividend</p></th>
+<th class="head"><p>Divisor and remainder</p></th>
+<th class="head"><p>Quotient</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint7div_remERK6bigintR6bigintR6bigint" title="cupqc::bigint::div_rem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">bigint::div_rem</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BW</span></code></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BW</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BW</span></code> or <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BW</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/device.html#_CPPv4I_j_jENK5cupqc11bigint_wide7div_remE12bigint_errorRK11bigint_implI13DIVISOR_LIMBS3TPI11ErrorPolicyER11bigint_implI14QUOTIENT_LIMBS3TPI11ErrorPolicyER11bigint_implI13DIVISOR_LIMBS3TPI11ErrorPolicyE" title="cupqc::bigint_wide::div_rem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">bigint_wide::div_rem</span></code></a></p></td>
+<td><p><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">BW</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BW</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BW</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The remainder always matches the divisor. A quotient that is neither the dividend width nor
+half of it is rejected at compile time, and the divisor widths above are the ones the shipped
+library provides—other combinations the type system would accept are not built, so they fail
+to link rather than to compile.</p>
+<p>Everywhere else, a narrower value has to be widened explicitly first. There is no in-register
+widening: zero a buffer of the wider limb count, <code class="docutils literal notranslate"><span class="pre">store</span></code> the narrow value into its low
+limbs, and construct the wider type from that buffer.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">BI256</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">BitWidth</span><span class="o">&lt;</span><span class="mi">256</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SM</span><span class="o">&lt;</span><span class="mi">800</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">());</span>
+<span class="k">using</span><span class="w"> </span><span class="n">BI512</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">BitWidth</span><span class="o">&lt;</span><span class="mi">512</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SM</span><span class="o">&lt;</span><span class="mi">800</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">());</span>
+
+<span class="kt">uint32_t</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">512</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">32</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span><span class="w">        </span><span class="c1">// zero-filled</span>
+<span class="n">narrow</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span><span class="w">                  </span><span class="c1">// 256-bit value occupies the low limbs</span>
+<span class="k">typename</span><span class="w"> </span><span class="nc">BI512</span><span class="o">::</span><span class="n">bigint</span><span class="w"> </span><span class="nf">wide</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span><span class="w">   </span><span class="c1">// same value, 512-bit type</span>
+</pre></div>
+</div>
+<p>Scalar operands are a separate facility and do not imply mixed-width support. Addition,
+subtraction, and multiplication take a <code class="docutils literal notranslate"><span class="pre">uint32_t</span></code>; comparisons take a <code class="docutils literal notranslate"><span class="pre">uint32_t</span></code> or
+<code class="docutils literal notranslate"><span class="pre">uint64_t</span></code> on either side; <code class="docutils literal notranslate"><span class="pre">pow_mod</span></code> takes a <code class="docutils literal notranslate"><span class="pre">uint64_t</span></code> exponent; a bigint wider than one
+limb can be constructed from a <code class="docutils literal notranslate"><span class="pre">uint64_t</span></code>; and <code class="docutils literal notranslate"><span class="pre">to_uint32</span></code> and <code class="docutils literal notranslate"><span class="pre">to_uint64</span></code> read a scalar
+back out. There are no <code class="docutils literal notranslate"><span class="pre">uint64_t</span></code> overloads for addition, subtraction, or multiplication.</p>
+</section>
+<section id="supported-operations">
+<h2>Supported Operations<a class="headerlink" href="#supported-operations" title="Link to this heading">#</a></h2>
+<p>Each function name below links to its entry in the <a class="reference internal" href="api/device.html"><span class="doc">Device functions</span></a>
+reference; the section and category labels link to the matching headings there.</p>
+<div class="pst-scrollable-table-container"><table class="cupqc-feature-table bigint-feature-table bigint-ops-span-table table">
+<colgroup>
+<col style="width: 13.0%" />
+<col style="width: 12.0%" />
+<col style="width: 15.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p>Category</p></th>
+<th class="head"><p>Functions</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="2"><p><a class="reference internal" href="api/device.html#cupqc-bigint-construction-label"><span class="std std-ref">Construction and Access</span></a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4N5cupqc6bigint6bigintEv" title="cupqc::bigint::bigint"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">bigint</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint5storeEP8uint32_t" title="cupqc::bigint::store"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">store</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint9to_uint32Ev" title="cupqc::bigint::to_uint32"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">to_uint32</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint9to_uint64Ev" title="cupqc::bigint::to_uint64"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">to_uint64</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4N5cupqc6bigintixEj" title="cupqc::bigint::operator[]"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">[]</span></code></a></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">bigint</span></code> — construct from a
+<code class="docutils literal notranslate"><span class="pre">uint32_t</span></code>/<code class="docutils literal notranslate"><span class="pre">uint64_t</span></code> scalar, or from a limb
+pointer (plain or batched).</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">store</span></code> — write back to global memory the same
+way.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">to_uint32</span></code> / <code class="docutils literal notranslate"><span class="pre">to_uint64</span></code> — read the low bits
+back as a scalar.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">[]</span></code> — index individual limbs in thread execution.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p><a class="reference internal" href="api/device.html#cupqc-bigint-arithmetic-group-label"><span class="std std-ref">Basic Arithmetic</span></a></p></td>
+<td><p><a class="reference internal" href="api/device.html#cupqc-bigint-arithmetic-label"><span class="std std-ref">Addition and Subtraction</span></a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint10add_scalarE8uint32_t" title="cupqc::bigint::add_scalar"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">add_scalar</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint10sub_scalarE8uint32_t" title="cupqc::bigint::sub_scalar"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">sub_scalar</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintplE8uint32_t" title="cupqc::bigint::operator+"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">+</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintmiE8uint32_t" title="cupqc::bigint::operator-"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">-</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4N5cupqc6bigintpLE8uint32_t" title="cupqc::bigint::operator+="><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">+=</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4N5cupqc6bigintmIE8uint32_t" title="cupqc::bigint::operator-="><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">-=</span></code></a></div>
+</div>
+</td>
+<td><p>Fixed-width, bigint-bigint and bigint-scalar. Results
+wrap modulo <span class="cupqc-codesup"><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span></code><sup><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">BW</span></code></sup></span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/device.html#cupqc-bigint-multiplication-label"><span class="std std-ref">Multiplication</span></a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint10mul_scalarE8uint32_t" title="cupqc::bigint::mul_scalar"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">mul_scalar</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint7mul_lowERK6bigint" title="cupqc::bigint::mul_low"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">mul_low</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint8mul_highERK6bigint" title="cupqc::bigint::mul_high"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">mul_high</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint8mul_wideERK6bigint" title="cupqc::bigint::mul_wide"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">mul_wide</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint6squareEv" title="cupqc::bigint::square"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">square</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintmlERK6bigint" title="cupqc::bigint::operator*"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">*</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4N5cupqc6bigintmLE8uint32_t" title="cupqc::bigint::operator*="><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">*=</span></code></a></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">mul_low</span></code> — about half the cost of a full wide
+multiply.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">mul_wide</span></code> / <code class="docutils literal notranslate"><span class="pre">square</span></code> — double-width product.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">*</span></code> — full double-width product; <code class="docutils literal notranslate"><span class="pre">*=</span></code> multiplies
+in place by a scalar.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/device.html#cupqc-bigint-division-label"><span class="std std-ref">Division</span></a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint7div_remERK6bigintR6bigintR6bigint" title="cupqc::bigint::div_rem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">div_rem</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintdvERK6bigint" title="cupqc::bigint::operator/"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">/</span></code></a></div>
+</div>
+</td>
+<td><p>Same-width divisor, quotient and remainder — or
+independently sized divisor and quotient widths. The
+<code class="docutils literal notranslate"><span class="pre">bigint_wide</span></code> overload divides a double-width
+dividend.</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p><a class="reference internal" href="api/device.html#cupqc-bigint-comparison-label"><span class="std std-ref">Comparison</span></a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint7compareERK6bigint" title="cupqc::bigint::compare"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">compare</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6biginteqERK6bigint" title="cupqc::bigint::operator=="><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">==</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintneERK6bigint" title="cupqc::bigint::operator!="><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">!=</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintltERK6bigint" title="cupqc::bigint::operator&lt;"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">&lt;</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintleERK6bigint" title="cupqc::bigint::operator&lt;="><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">&lt;=</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintgtERK6bigint" title="cupqc::bigint::operator&gt;"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">&gt;</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintgeERK6bigint" title="cupqc::bigint::operator&gt;="><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">&gt;=</span></code></a></div>
+</div>
+</td>
+<td><p>Three-way compare against another instance, a
+<code class="docutils literal notranslate"><span class="pre">uint32_t</span></code>, or a <code class="docutils literal notranslate"><span class="pre">uint64_t</span></code>. Full relational and
+equality set, including scalar forms on either side.</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p><a class="reference internal" href="api/device.html#cupqc-bigint-bitwise-label"><span class="std std-ref">Bitwise and Shift</span></a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint3clzEv" title="cupqc::bigint::clz"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">clz</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintanERK6bigint" title="cupqc::bigint::operator&amp;"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">&amp;</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintorERK6bigint" title="cupqc::bigint::operator|"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">|</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6biginteoERK6bigint" title="cupqc::bigint::operator^"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">^</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintcoEv" title="cupqc::bigint::operator~"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">~</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4N5cupqc6bigintaNERK6bigint" title="cupqc::bigint::operator&amp;="><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">&amp;=</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4N5cupqc6bigintoRERK6bigint" title="cupqc::bigint::operator|="><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">|=</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4N5cupqc6biginteOERK6bigint" title="cupqc::bigint::operator^="><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">^=</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintlsEj" title="cupqc::bigint::operator&lt;&lt;"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">&lt;&lt;</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintrsEj" title="cupqc::bigint::operator&gt;&gt;"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">&gt;&gt;</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4N5cupqc6bigintlSEj" title="cupqc::bigint::operator&lt;&lt;="><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">&lt;&lt;=</span></code></a>
+<a class="reference internal" href="api/device.html#_CPPv4N5cupqc6bigintrSEj" title="cupqc::bigint::operator&gt;&gt;="><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">&gt;&gt;=</span></code></a></div>
+</div>
+</td>
+<td><p>Bitwise and logical shift operators over the full
+width, plus a leading-zero count.</p></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p><a class="reference internal" href="api/device.html#cupqc-bigint-modular-group-label"><span class="std std-ref">Modular Arithmetic</span></a></p></td>
+<td><p><a class="reference internal" href="api/device.html#cupqc-bigint-modular-label"><span class="std std-ref">Direct</span></a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint3modERK6bigint" title="cupqc::bigint::mod"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">mod</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint7add_modERK6bigintRK6bigint" title="cupqc::bigint::add_mod"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">add_mod</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint7sub_modERK6bigintRK6bigint" title="cupqc::bigint::sub_mod"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">sub_mod</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint7mul_modERK6bigintRK6bigint" title="cupqc::bigint::mul_mod"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">mul_mod</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint7pow_modE8uint64_tRK6bigint" title="cupqc::bigint::pow_mod"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">pow_mod</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint7inv_modERK6bigintR6bigint" title="cupqc::bigint::inv_mod"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">inv_mod</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigintrmERK6bigint" title="cupqc::bigint::operator%"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">%</span></code></a></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">mod</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code> — plain remainder.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">add_mod</span></code>, <code class="docutils literal notranslate"><span class="pre">sub_mod</span></code> — operands must already be
+reduced.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">mul_mod</span></code> — full multiply plus remainder, not
+Montgomery.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">pow_mod</span></code> — <code class="docutils literal notranslate"><span class="pre">uint64_t</span></code> or bigint exponent.</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">inv_mod</span></code> — odd and even moduli, scalar and
+warp-cooperative.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="api/device.html#cupqc-bigint-barrett-label"><span class="std std-ref">Barrett</span></a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4N5cupqc6bigint13setup_barrettERK6bigintR6bigintRi" title="cupqc::bigint::setup_barrett"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">setup_barrett</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4N5cupqc6bigint14reduce_barrettER6bigintRK11bigint_wideRK6bigintRK6biginti" title="cupqc::bigint::reduce_barrett"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">reduce_barrett</span></code></a></div>
+</div>
+</td>
+<td><p>Static helpers for fast remainder across repeated
+reductions against the same modulus.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="api/device.html#cupqc-bigint-montgomery-label"><span class="std std-ref">Montgomery</span></a></p></td>
+<td><div class="line-block">
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint13to_montgomeryERK18montgomery_modulus" title="cupqc::bigint::to_montgomery"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">to_montgomery</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint15from_montgomeryERK18montgomery_modulus" title="cupqc::bigint::from_montgomery"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">from_montgomery</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc6bigint14mul_montgomeryERK6bigintRK18montgomery_modulus" title="cupqc::bigint::mul_montgomery"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">mul_montgomery</span></code></a></div>
+<div class="line"><a class="reference internal" href="api/device.html#_CPPv4NK5cupqc11bigint_wide17reduce_montgomeryERK18montgomery_modulus" title="cupqc::bigint_wide::reduce_montgomery"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">reduce_montgomery</span></code></a></div>
+</div>
+</td>
+<td><p>REDC-based conversion and Montgomery multiplication.
+<code class="docutils literal notranslate"><span class="pre">montgomery_modulus</span></code> precomputes the constant
+<code class="docutils literal notranslate"><span class="pre">m' = -m<sup>-1</sup> mod 2<sup>32</sup></span></code> once, and <code class="docutils literal notranslate"><span class="pre">reduce_montgomery</span></code> reduces a
+double-width value.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="warp-execution-coverage">
+<span id="cupqc-bigint-warp-coverage-label"></span><h2>Warp Execution Coverage<a class="headerlink" href="#warp-execution-coverage" title="Link to this heading">#</a></h2>
+<p>Warp execution (<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">TPI</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span></code>) covers most of the interface, including all modular arithmetic,
+Barrett, and Montgomery. The following are built for
+<a class="reference internal" href="api/operators.html#_CPPv4N5cupqc6ThreadEv" title="cupqc::Thread"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Thread()</span></code></a> execution only:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">div_rem</span></code>, <code class="docutils literal notranslate"><span class="pre">operator/</span></code>, and <code class="docutils literal notranslate"><span class="pre">operator%</span></code>, including
+<a class="reference internal" href="api/device.html#_CPPv4I_j_jENK5cupqc11bigint_wide7div_remE12bigint_errorRK11bigint_implI13DIVISOR_LIMBS3TPI11ErrorPolicyER11bigint_implI14QUOTIENT_LIMBS3TPI11ErrorPolicyER11bigint_implI13DIVISOR_LIMBS3TPI11ErrorPolicyE" title="cupqc::bigint_wide::div_rem"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">bigint_wide::div_rem</span></code></a>. Use <code class="docutils literal notranslate"><span class="pre">mod</span></code> where only a
+remainder is needed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to_uint32</span></code> and <code class="docutils literal notranslate"><span class="pre">to_uint64</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">uint64_t</span></code> constructor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">operator+=</span></code> and <code class="docutils literal notranslate"><span class="pre">operator-=</span></code> with a bigint right-hand operand; the <code class="docutils literal notranslate"><span class="pre">uint32_t</span></code> forms
+are available.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">operator[]</span></code>, which no single lane can satisfy when the instance spans several.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OnErrorTrap</span></code> and <code class="docutils literal notranslate"><span class="pre">OnErrorPrintTrap</span></code>; <code class="docutils literal notranslate"><span class="pre">OnErrorNone</span></code> is the only policy available.</p></li>
+</ul>
+<p>Calling one of these on a warp descriptor compiles and then fails to link.</p>
+</section>
+<section id="choosing-modular-reduction">
+<span id="cupqc-bigint-modular-path-label"></span><h2>Choosing Modular Reduction<a class="headerlink" href="#choosing-modular-reduction" title="Link to this heading">#</a></h2>
+<p>cuPQC-BigInt exposes several ways to reduce modulo a user modulus. They differ mainly in
+whether they pay a division on every operation or precompute once to avoid it, so the paths
+below are grouped by how much setup each one needs:</p>
+<div class="pst-scrollable-table-container"><table class="cupqc-feature-table bigint-modular-group-table table">
+<colgroup>
+<col style="width: 16.0%" />
+<col style="width: 21.0%" />
+<col style="width: 25.0%" />
+<col style="width: 38.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Setup</p></th>
+<th class="head"><p>Operation</p></th>
+<th class="head"><p>Functions</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td rowspan="3"><p><strong>None</strong></p>
+<p>One-off use</p>
+</td>
+<td><p><strong>Add / subtract</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">±</span> <span class="pre">b)</span> <span class="pre">mod</span> <span class="pre">m</span></code></p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">add_mod</span></code>, <code class="docutils literal notranslate"><span class="pre">sub_mod</span></code></p></td>
+<td><p>Conditional reduction, no division. Both operands must
+already be reduced (<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;</span> <span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">&lt;</span> <span class="pre">m</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Remainder</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">mod</span> <span class="pre">m</span></code></p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mod</span></code>, <code class="docutils literal notranslate"><span class="pre">%</span></code>, <code class="docutils literal notranslate"><span class="pre">div_rem</span></code></p></td>
+<td><p>Plain division. Prefer <code class="docutils literal notranslate"><span class="pre">div_rem</span></code> when you need a
+status code or the quotient.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Multiply</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">*</span> <span class="pre">b)</span> <span class="pre">mod</span> <span class="pre">m</span></code></p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mul_mod</span></code></p></td>
+<td><p>Wide multiply, then a division to reduce.</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><p><strong>Precompute</strong></p>
+<p>Many operations,
+same <code class="docutils literal notranslate"><span class="pre">m</span></code></p>
+</td>
+<td><p><strong>Reduce wide values</strong></p>
+<p>any <code class="docutils literal notranslate"><span class="pre">m</span></code></p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">setup_barrett</span></code>,
+<code class="docutils literal notranslate"><span class="pre">reduce_barrett</span></code></p></td>
+<td><p>Barrett. Trades the per-call division for multiplies,
+so it pays off once you reduce by the same <code class="docutils literal notranslate"><span class="pre">m</span></code>
+repeatedly. Takes the double-width results of
+<code class="docutils literal notranslate"><span class="pre">mul_wide</span></code> and <code class="docutils literal notranslate"><span class="pre">square</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Chain multiplications</strong></p>
+<p><strong>odd</strong> <code class="docutils literal notranslate"><span class="pre">m</span></code> only</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">to_montgomery</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mul_montgomery</span></code>,
+<code class="docutils literal notranslate"><span class="pre">reduce_montgomery</span></code>,
+<code class="docutils literal notranslate"><span class="pre">from_montgomery</span></code></p></td>
+<td><p>Montgomery. Also division-free, and the more
+multiplications you chain the further the one-time
+conversion is amortized. Convert once, stay in
+Montgomery form, convert back at the end.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Internal</strong></p>
+<p>Chosen for you</p>
+</td>
+<td><p><strong>Exponentiate</strong></p>
+<p><span class="cupqc-codesup"><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">a</span></code><sup><code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">e</span></code></sup></span> <code class="docutils literal notranslate"><span class="pre">mod</span> <span class="pre">m</span></code></p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pow_mod</span></code></p></td>
+<td><p>Picks one of the above for you: odd <code class="docutils literal notranslate"><span class="pre">m</span></code> uses
+Montgomery internally, even <code class="docutils literal notranslate"><span class="pre">m</span></code> uses <code class="docutils literal notranslate"><span class="pre">mul_mod</span></code>.</p>
+<p><strong>Not constant-time</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="error-handling">
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading">#</a></h2>
+<p>Operations that can fail at run time—division, remainder, modular reduction, and modular
+inverse—report failures through a <code class="docutils literal notranslate"><span class="pre">bigint_error</span></code> enumerator (<code class="docutils literal notranslate"><span class="pre">success</span></code>,
+<code class="docutils literal notranslate"><span class="pre">divide_by_zero</span></code>, <code class="docutils literal notranslate"><span class="pre">quotient_overflow</span></code>, <code class="docutils literal notranslate"><span class="pre">barrett_divide_by_zero</span></code>,
+<code class="docutils literal notranslate"><span class="pre">barrett_input_invariant_violated</span></code>, <code class="docutils literal notranslate"><span class="pre">inv_mod_not_invertible</span></code>,
+<code class="docutils literal notranslate"><span class="pre">inv_mod_invalid_modulus</span></code>, <code class="docutils literal notranslate"><span class="pre">inv_mod_zero_input</span></code>, <code class="docutils literal notranslate"><span class="pre">inv_mod_even_modulus</span></code>).</p>
+<p>Every failure is additionally routed through a compile-time <strong>on-error policy</strong>, selected by
+adding one of the following operator types to the descriptor:</p>
+<div class="pst-scrollable-table-container"><table class="cupqc-feature-table table">
+<colgroup>
+<col style="width: 18.0%" />
+<col style="width: 36.0%" />
+<col style="width: 46.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Policy</p></th>
+<th class="head"><p>On failure</p></th>
+<th class="head"><p>Use when</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OnErrorNone</span></code> (default)</p></td>
+<td><p>Nothing. The result is unspecified and the kernel continues.</p></td>
+<td><p>You inspect the returned <code class="docutils literal notranslate"><span class="pre">bigint_error</span></code> (from <code class="docutils literal notranslate"><span class="pre">div_rem</span></code> / <code class="docutils literal notranslate"><span class="pre">inv_mod</span></code>) yourself, or the
+inputs are already known to be valid and you want no added cost.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">OnErrorTrap</span></code></p></td>
+<td><p>Calls <code class="docutils literal notranslate"><span class="pre">__trap()</span></code> on the offending thread, halting the kernel. No message is printed.</p></td>
+<td><p>Catching errors from operations that do not themselves return a status, such as
+<code class="docutils literal notranslate"><span class="pre">operator/</span></code>, <code class="docutils literal notranslate"><span class="pre">operator%</span></code>, <code class="docutils literal notranslate"><span class="pre">mod</span></code>, <code class="docutils literal notranslate"><span class="pre">add_mod</span></code>, <code class="docutils literal notranslate"><span class="pre">sub_mod</span></code>, <code class="docutils literal notranslate"><span class="pre">mul_mod</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">pow_mod</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">OnErrorPrintTrap</span></code></p></td>
+<td><p>Prints the error together with the offending block and thread indices, then traps.</p></td>
+<td><p>You are debugging. Prefer one of the above in production, since <code class="docutils literal notranslate"><span class="pre">printf</span></code> from a kernel
+is expensive.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Only <code class="docutils literal notranslate"><span class="pre">div_rem</span></code> and <code class="docutils literal notranslate"><span class="pre">inv_mod</span></code> return a <code class="docutils literal notranslate"><span class="pre">bigint_error</span></code>, so under <code class="docutils literal notranslate"><span class="pre">OnErrorNone</span></code> they are the
+only operations whose failures a caller can detect. For the rest—<code class="docutils literal notranslate"><span class="pre">operator/</span></code>, <code class="docutils literal notranslate"><span class="pre">operator%</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mod</span></code>, <code class="docutils literal notranslate"><span class="pre">add_mod</span></code>, <code class="docutils literal notranslate"><span class="pre">sub_mod</span></code>, <code class="docutils literal notranslate"><span class="pre">mul_mod</span></code>, <code class="docutils literal notranslate"><span class="pre">pow_mod</span></code>, <code class="docutils literal notranslate"><span class="pre">to_montgomery</span></code>, <code class="docutils literal notranslate"><span class="pre">setup_barrett</span></code>
+and <code class="docutils literal notranslate"><span class="pre">reduce_barrett</span></code>—the policy is the only thing that reports a failure, and the default
+policy reports nothing. A trapping policy is what makes those failures observable.</p>
+</section>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>High Performance:</strong> GPU-optimized limb kernels exploit PTX-level carry-chain and
+multiply-add intrinsics for maximum throughput.</p></li>
+<li><p><strong>Predictable Width Support:</strong> Each <code class="docutils literal notranslate"><span class="pre">TPI</span></code> builds a specific set of widths from <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code> to
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">4096</span></code> bits; see <a class="reference internal" href="#cupqc-bigint-supported-widths-label"><span class="std std-ref">Supported Widths</span></a>.</p></li>
+<li><p><strong>Choosing an Execution Model:</strong> Single-thread ownership suits small and medium widths;
+warp-cooperative execution (<code class="docutils literal notranslate"><span class="pre">TPI</span></code>) spreads very wide integers—and their carry
+propagation—across multiple lanes.</p></li>
+<li><p><strong>Montgomery Domain Support:</strong> <code class="docutils literal notranslate"><span class="pre">to_montgomery</span></code>/<code class="docutils literal notranslate"><span class="pre">from_montgomery</span></code>/<code class="docutils literal notranslate"><span class="pre">mul_montgomery</span></code> and a
+precomputed-constant <code class="docutils literal notranslate"><span class="pre">montgomery_modulus</span></code> type make REDC-based modular multiplication
+efficient across repeated operations against the same modulus.</p></li>
+<li><p><strong>Configurable Error Handling:</strong> Choose whether arithmetic failures are silent, trap, or
+trap-with-diagnostics by adding <code class="docutils literal notranslate"><span class="pre">OnErrorTrap()</span></code> or <code class="docutils literal notranslate"><span class="pre">OnErrorPrintTrap()</span></code> to the
+descriptor.</p></li>
+<li><p><strong>Batch-Friendly Storage:</strong> Constructors and <code class="docutils literal notranslate"><span class="pre">store</span></code> accept an instance index, so an array
+of independent big integers can be loaded and stored directly by batch index.</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">cuPQC-BigInt</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cupqc_bigint_usage.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">cuPQC-BigInt Usage</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-modes">Execution Modes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bit-width-and-limb-layout">Bit Width and Limb Layout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-widths">Supported Widths</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operand-widths">Operand Widths</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-operations">Supported Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#warp-execution-coverage">Warp Execution Coverage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-modular-reduction">Choosing Modular Reduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling">Error Handling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">Key Features</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2026, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1463 @@
+/* Custom styling for cuPQC documentation */
+
+/* ========================================== */
+/* Shared feature-table theme                 */
+/* ------------------------------------------ */
+/* Dark header band, NVIDIA green rule beneath it, and hairline dividers
+   between body rows. Add `cupqc-feature-table` to a table's :class: and layer
+   any per-table tweaks (column alignment, section dividers) on top. */
+/* ========================================== */
+/* `separate` rather than `collapse`: border-radius has no effect on a
+   collapsed table, and the rounded header band needs it. The trade-off is that
+   row borders are ignored in this mode, so every rule below is set on cells. */
+/* No border on the table itself: the grey box is drawn on the body cells so
+   that the header band and its green rule run the full width, edge to edge,
+   and so the bottom corners can round into the sides. */
+.cupqc-feature-table {
+    margin: 20px auto;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    width: 100%;
+    border: none !important;
+}
+
+.cupqc-feature-table th,
+.cupqc-feature-table td {
+    border: none !important;
+    text-align: left !important;
+    vertical-align: top;
+    padding: 12px 16px;
+}
+
+/* Only the top row of the band is rounded. Rounding the first cell of every
+   header row cuts a notch out of the rows below it, showing the page through
+   the band at both ends. */
+.cupqc-feature-table thead tr:first-child th:first-child {
+    border-top-left-radius: 4px;
+}
+
+.cupqc-feature-table thead tr:first-child th:last-child {
+    border-top-right-radius: 4px;
+}
+
+.cupqc-feature-table th:first-child,
+.cupqc-feature-table td:first-child {
+    padding-left: 20px;
+}
+
+/* Header band: dark, with the green rule as its bottom edge */
+.cupqc-feature-table thead tr,
+.cupqc-feature-table thead th {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+.cupqc-feature-table thead th {
+    font-weight: bold !important;
+}
+
+/* The green rule closes the whole band, so it belongs to the last header row
+   only — a table with a grouping row above its column names would otherwise
+   draw one after each row. */
+.cupqc-feature-table thead tr:last-child th {
+    border-bottom: 3px solid #76b900 !important;
+}
+
+/* Inline literals in the header need to stay legible on the dark band */
+.cupqc-feature-table thead th code,
+.cupqc-feature-table thead th .literal {
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    color: #ffffff !important;
+}
+
+/* The :codesup: roles build their own chip with a light surface, which would
+   read as a pale box floating on the band. Outline it the same way. */
+.cupqc-feature-table thead th span.cupqc-codesup:not(.cupqc-codesup-range-el) {
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.cupqc-feature-table thead th span.cupqc-codesup:not(.cupqc-codesup-range-el),
+.cupqc-feature-table thead th span.cupqc-codesup:not(.cupqc-codesup-range-el) .cupqc-codesup-prefix,
+.cupqc-feature-table thead th span.cupqc-codesup:not(.cupqc-codesup-range-el) code,
+.cupqc-feature-table thead th span.cupqc-codesup:not(.cupqc-codesup-range-el) code .mi,
+.cupqc-feature-table thead th span.cupqc-codesup:not(.cupqc-codesup-range-el) code.highlight .mi {
+    color: #ffffff !important;
+}
+
+.cupqc-feature-table thead th a,
+.cupqc-feature-table thead th a:visited {
+    color: #ffffff !important;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.cupqc-feature-table thead th a:hover {
+    color: #b6e26a !important;
+}
+
+/* Body inherits the page surface so the table works in both color schemes */
+.cupqc-feature-table tbody tr,
+.cupqc-feature-table tbody td {
+    background-color: transparent !important;
+    color: inherit !important;
+}
+
+/* Grey box around the body only: sides on the edge cells, base on the last
+   row. It therefore starts underneath the green rule rather than running up
+   alongside the dark header.
+
+   These assume one cell per column per row. A cell that spans rows draws the
+   side for every row it covers, so a table using rowspan has to switch the
+   sides off on its continuation rows, and close the bottom on any cell that
+   spans down to the foot of the table. */
+.cupqc-feature-table tbody td:first-child {
+    border-left: 1px solid #d9d9d9 !important;
+}
+
+.cupqc-feature-table tbody td:last-child {
+    border-right: 1px solid #d9d9d9 !important;
+}
+
+.cupqc-feature-table tbody tr:last-child td {
+    border-bottom: 1px solid #d9d9d9 !important;
+}
+
+.cupqc-feature-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 4px;
+}
+
+.cupqc-feature-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 4px;
+}
+
+[data-theme="dark"] .cupqc-feature-table tbody td:first-child,
+[data-theme="dark"] .cupqc-feature-table tbody td:last-child,
+[data-theme="dark"] .cupqc-feature-table tbody tr:last-child td {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Dividers between rows sit lighter than the surrounding box */
+.cupqc-feature-table tbody tr:not(:last-child) td {
+    border-bottom: 1px solid #ebebeb !important;
+}
+
+.cupqc-feature-table tbody td a:hover {
+    color: #76b900 !important;
+}
+
+[data-theme="dark"] .cupqc-feature-table tbody tr:not(:last-child) td {
+    border-bottom-color: rgba(255, 255, 255, 0.11) !important;
+}
+
+/* #1a1a1a sits too close to the dark page background to read as a band */
+[data-theme="dark"] .cupqc-feature-table thead tr,
+[data-theme="dark"] .cupqc-feature-table thead th {
+    background-color: #2b2b2b !important;
+}
+
+/* ========================================== */
+/* PK Security Table Styling */
+/* ========================================== */
+/* Parameter sets read as a group under one family name, so the only body
+   divider is the one between ML-KEM and ML-DSA (after row 3). These selectors
+   mirror the shape of the shared rule they override, plus the extra class, so
+   they win on specificity rather than on source order. */
+.cupqc-feature-table.pk-security-table tbody tr:not(:last-child) td {
+    border-bottom: none !important;
+}
+
+.cupqc-feature-table.pk-security-table tbody tr:nth-child(3):not(:last-child) td {
+    border-bottom: 1px solid #ebebeb !important;
+}
+
+[data-theme="dark"] .cupqc-feature-table.pk-security-table tbody tr:nth-child(3):not(:last-child) td {
+    border-bottom-color: rgba(255, 255, 255, 0.11) !important;
+}
+
+/* Family name is centered against the parameter sets it spans */
+.cupqc-feature-table.pk-security-table td:first-child {
+    vertical-align: middle;
+}
+
+
+/* ========================================== */
+/* Hash Output Table Styling */
+/* ========================================== */
+/* Box, header band, body colours and row dividers all come from
+   `cupqc-feature-table`. There is now one row per family rather than one per
+   algorithm, so nothing here spans rows and only the column layout and the
+   chip treatment are left. */
+.hash-output-table td,
+.hash-output-table th {
+    text-align: left !important;
+}
+
+/* A row carrying a footnote is taller than the other cells' content, so those
+   cells are centred rather than stranded against the top of the row. */
+.hash-output-table tbody td {
+    vertical-align: middle !important;
+}
+
+/* Algorithm names read as a row of chips. The output column deliberately does
+   not get the same treatment: those values are prose ("Any length"), and
+   chipping the numbers too would make the two columns compete. */
+.hash-output-table tbody td:nth-child(2) code.highlight-cpp {
+    background-color: #ffffff !important;
+    border: 1px solid var(--pst-color-border, #d0d7de) !important;
+    border-radius: 0.25rem;
+    padding: 0.12em 0.34em;
+    box-shadow: none;
+    font-weight: normal !important;
+    /* A chip must wrap as a unit; breaking inside one splits the algorithm
+       name across two lines and reads as two different algorithms. */
+    white-space: nowrap;
+}
+
+.hash-output-table tbody td:nth-child(2) code.highlight-cpp,
+.hash-output-table tbody td:nth-child(2) code.highlight-cpp span {
+    color: #6f42c1 !important;
+}
+
+[data-theme="dark"] .hash-output-table tbody td:nth-child(2) code.highlight-cpp {
+    background-color: var(--pst-color-background, #111) !important;
+    border-color: var(--pst-color-border, #444) !important;
+}
+
+[data-theme="dark"] .hash-output-table tbody td:nth-child(2) code.highlight-cpp,
+[data-theme="dark"] .hash-output-table tbody td:nth-child(2) code.highlight-cpp span {
+    color: #c9a0ff !important;
+}
+
+/* Output sizes keep the theme's numeric tint but drop the chip box */
+.hash-output-table tbody td:nth-child(3) code.highlight-cpp {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none;
+    font-weight: normal !important;
+}
+
+/* ========================================== */
+/* Merkle Output Table Styling */
+/* ========================================== */
+/* Box, header band and row dividers come from `cupqc-feature-table`. The
+   precision cell spans the three byte-oriented families, which needs two
+   adjustments below; the dividers need none, because a spanning cell's bottom
+   border is drawn at the foot of its span, which is exactly the group
+   boundary. */
+
+/* Set the precision column off with a rule rather than a tint, matching the
+   NTT limits table. */
+.cupqc-feature-table.merkle-output-table tbody td:nth-child(3) {
+    border-left: 1px solid #ebebeb !important;
+    vertical-align: middle !important;
+}
+
+[data-theme="dark"] .cupqc-feature-table.merkle-output-table tbody td:nth-child(3) {
+    border-left-color: rgba(255, 255, 255, 0.11) !important;
+}
+
+/* On the rows the span covers, the last cell is the algorithm list rather than
+   the right edge of the box, so it must not draw that edge. */
+.cupqc-feature-table.merkle-output-table tbody tr:not(:has(> td:nth-child(3))) > td:last-child {
+    border-right: none !important;
+}
+
+.merkle-output-table td,
+.merkle-output-table th {
+    text-align: left !important;
+}
+
+/* As on the hash table above: centred so the family and its algorithms stay
+   level with each other in the taller, footnoted Poseidon2 row. */
+.merkle-output-table tbody td {
+    vertical-align: middle !important;
+}
+
+/* Algorithm chips, as on the hash table above */
+.merkle-output-table tbody td:nth-child(2) code.highlight-cpp {
+    background-color: #ffffff !important;
+    border: 1px solid var(--pst-color-border, #d0d7de) !important;
+    border-radius: 0.25rem;
+    padding: 0.12em 0.34em;
+    box-shadow: none;
+    font-weight: normal !important;
+    white-space: nowrap;
+}
+
+.merkle-output-table tbody td:nth-child(2) code.highlight-cpp,
+.merkle-output-table tbody td:nth-child(2) code.highlight-cpp span {
+    color: #6f42c1 !important;
+}
+
+[data-theme="dark"] .merkle-output-table tbody td:nth-child(2) code.highlight-cpp {
+    background-color: var(--pst-color-background, #111) !important;
+    border-color: var(--pst-color-border, #444) !important;
+}
+
+[data-theme="dark"] .merkle-output-table tbody td:nth-child(2) code.highlight-cpp,
+[data-theme="dark"] .merkle-output-table tbody td:nth-child(2) code.highlight-cpp span {
+    color: #c9a0ff !important;
+}
+
+/* ========================================== */
+/* BigInt Modular Path Table Styling */
+/* ========================================== */
+/* Rows are grouped by how much setup a path needs, so the first cell spans its
+   group. The dividers need no adjustment: a spanning cell's bottom border is
+   drawn at the foot of its span, which is exactly the group boundary. */
+
+/* The setup column reads as a band, closed on the right by a rule. Only the
+   first row of each group holds that cell, which is what the fourth-column
+   test distinguishes. */
+/* The label is centred against the rows it spans, rather than stranded at the
+   top of a group that can run several rows deep. */
+.cupqc-feature-table.bigint-modular-group-table tbody tr:has(> td:nth-child(4)) > td:first-child {
+    background-color: #f7f7f7 !important;
+    border-right: 1px solid #ebebeb !important;
+    vertical-align: middle;
+}
+
+/* On the rows the span covers, the goal cell is the first one, so it continues
+   the band's rule. It must not draw the box's left edge as the shared rule
+   would, because the spanning cell above already covers it for the whole
+   group. */
+.cupqc-feature-table.bigint-modular-group-table tbody tr:not(:has(> td:nth-child(4))) > td:first-child {
+    border-left: 1px solid #ebebeb !important;
+}
+
+[data-theme="dark"] .cupqc-feature-table.bigint-modular-group-table tbody tr:has(> td:nth-child(4)) > td:first-child {
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    border-right-color: rgba(255, 255, 255, 0.11) !important;
+}
+
+[data-theme="dark"] .cupqc-feature-table.bigint-modular-group-table tbody tr:not(:has(> td:nth-child(4))) > td:first-child {
+    border-left-color: rgba(255, 255, 255, 0.11) !important;
+}
+
+/* ========================================== */
+/* Merkle Size Table Styling */
+/* ========================================== */
+/* Supported sizes and the parameter each device function consumes, in one
+   table. Two header rows: a band of group labels over the column names, with
+   the mode cell spanning both. Column rules mark the group boundaries. */
+
+/* The first header row labels groups of columns rather than columns, so it is
+   set quieter than the column names beneath it. */
+.cupqc-feature-table.merkle-size-combined-table thead tr:first-child th {
+    font-size: 0.7em;
+    /* "Supported sizes (# of leaves)" only just clears the two columns it
+       spans, so the tracking stays tight enough to keep it on one line. */
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6) !important;
+    padding-bottom: 0 !important;
+}
+
+.cupqc-feature-table.merkle-size-combined-table thead tr:last-child th {
+    padding-top: 4px !important;
+}
+
+/* The first column heads nothing below it, so rather than a group label it is
+   a single cell spanning the whole band, centred against it, with "(block)"
+   set under "Mode" so that neither body row has to repeat the word. Spanning
+   both rows puts it outside the `tr:last-child` rule that draws the green
+   edge, so it closes its own — at the foot of the span, level with the rest. */
+.cupqc-feature-table.merkle-size-combined-table thead tr:first-child th:first-child {
+    font-size: 1em;
+    letter-spacing: normal;
+    text-transform: none;
+    color: #ffffff !important;
+    vertical-align: middle !important;
+    border-bottom: 3px solid #76b900 !important;
+}
+
+/* One rule, at the boundary between the two groups. The columns within a group
+   are separated by spacing alone, so the split reads as the only division. */
+/* The two group labels are centred over the columns they span, so each reads
+   as a heading for its panel. The mode cell is skipped: it spans one column
+   and stays aligned with the values beneath it. */
+.cupqc-feature-table.merkle-size-combined-table thead tr:first-child th:nth-child(n+2) {
+    text-align: center !important;
+}
+
+/* Rules after the mode column and between the two groups. The mode cell spans
+   the band, so the column names row starts at "Tree" and the group boundary
+   falls after its second cell rather than its third. */
+.cupqc-feature-table.merkle-size-combined-table thead tr:first-child th:first-child,
+.cupqc-feature-table.merkle-size-combined-table thead tr:first-child th:nth-child(2),
+.cupqc-feature-table.merkle-size-combined-table thead tr:last-child th:nth-child(2) {
+    border-right: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+
+.cupqc-feature-table.merkle-size-combined-table tbody td:first-child,
+.cupqc-feature-table.merkle-size-combined-table tbody td:nth-child(3) {
+    border-right: 1px solid #ebebeb !important;
+}
+
+[data-theme="dark"] .cupqc-feature-table.merkle-size-combined-table tbody td:first-child,
+[data-theme="dark"] .cupqc-feature-table.merkle-size-combined-table tbody td:nth-child(3) {
+    border-right-color: rgba(255, 255, 255, 0.11) !important;
+}
+
+/* These four columns are named after device functions, so they keep the
+   underline that marks them as links to the API pages. */
+.cupqc-feature-table.merkle-size-combined-table thead th a,
+.cupqc-feature-table.merkle-size-combined-table thead th a span {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+
+/* ``N`` / ``M`` name the parameter rather than quote code, so they are tinted
+   instead of boxed. */
+.cupqc-feature-table.merkle-size-combined-table thead th code {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #76b900 !important;
+    font-weight: normal !important;
+}
+
+.cupqc-feature-table.merkle-size-combined-table td,
+.cupqc-feature-table.merkle-size-combined-table th {
+    text-align: left !important;
+    vertical-align: middle !important;
+}
+
+/* Seven columns is a lot for the content width, so this table is given tighter
+   gutters than the others. */
+.cupqc-feature-table.merkle-size-combined-table td,
+.cupqc-feature-table.merkle-size-combined-table thead tr:last-child th {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.cupqc-feature-table.merkle-size-combined-table td:first-child {
+    white-space: nowrap;
+}
+
+/* :codesuprange: numerals keep their Pygments tint inside the body, which the
+   cell's own colour would otherwise override. */
+html[data-theme="light"] .merkle-size-combined-table tbody td span.cupqc-codesup-range code.highlight-cpp .mi,
+html[data-theme="light"] .merkle-size-combined-table tbody td span.cupqc-codesup-range sup code.highlight-cpp .mi {
+    color: #702c00 !important;
+}
+
+html[data-theme="dark"] .merkle-size-combined-table tbody td span.cupqc-codesup-range code.highlight-cpp .mi,
+html[data-theme="dark"] .merkle-size-combined-table tbody td span.cupqc-codesup-range sup code.highlight-cpp .mi {
+    color: #ffb757 !important;
+}
+
+/* ========================================== */
+/* Feature box styling - one green box for both features */
+/* ========================================== */
+section[id="sdk-features"] > blockquote,
+section[id="features-label"] > blockquote,
+#sdk-features > blockquote,
+#features-label > blockquote,
+section[id="nvidia-cupqc-sdk-documentation"] > blockquote,
+#nvidia-cupqc-sdk-documentation > blockquote,
+section[id="cupqc-pk"] > blockquote,
+#cupqc-pk > blockquote,
+section[id="cupqc-hash"] > blockquote,
+#cupqc-hash > blockquote,
+section[id="cupqc-ntt"] > blockquote,
+#cupqc-ntt > blockquote,
+section[id="cupqc-bigint"] > blockquote,
+#cupqc-bigint > blockquote {
+    background: linear-gradient(135deg, rgba(118, 185, 0, 0.08) 0%, rgba(118, 185, 0, 0.03) 100%) !important;
+    border-left: 5px solid #76b900 !important;
+    border-radius: 5px !important;
+    padding: 12px 18px !important;
+    margin: 12px 0 !important;
+}
+
+section[id="sdk-features"] > blockquote p,
+section[id="features-label"] > blockquote p,
+#sdk-features > blockquote p,
+#features-label > blockquote p,
+section[id="nvidia-cupqc-sdk-documentation"] > blockquote p,
+#nvidia-cupqc-sdk-documentation > blockquote p,
+section[id="cupqc-pk"] > blockquote p,
+#cupqc-pk > blockquote p,
+section[id="cupqc-hash"] > blockquote p,
+#cupqc-hash > blockquote p,
+section[id="cupqc-ntt"] > blockquote p,
+#cupqc-ntt > blockquote p,
+section[id="cupqc-bigint"] > blockquote p,
+#cupqc-bigint > blockquote p {
+    margin: 6px 0 !important;
+    font-size: 0.98em !important;
+}
+
+/* Library hub boxes (PK / Hash / NTT / BigInt): bold leading :doc: links (**Features**, etc.)
+   (anchor + inner span — themes often reset span.doc to normal weight) */
+section[id="cupqc-pk"] > blockquote ul.simple li p > a.reference.internal:first-child,
+section[id="cupqc-pk"] > blockquote ul.simple li p > a.reference.internal:first-child span,
+section[id="cupqc-hash"] > blockquote ul.simple li p > a.reference.internal:first-child,
+section[id="cupqc-hash"] > blockquote ul.simple li p > a.reference.internal:first-child span,
+section[id="cupqc-ntt"] > blockquote ul.simple li p > a.reference.internal:first-child,
+section[id="cupqc-ntt"] > blockquote ul.simple li p > a.reference.internal:first-child span,
+#cupqc-pk > blockquote ul.simple li p > a.reference.internal:first-child,
+#cupqc-pk > blockquote ul.simple li p > a.reference.internal:first-child span,
+#cupqc-hash > blockquote ul.simple li p > a.reference.internal:first-child,
+#cupqc-hash > blockquote ul.simple li p > a.reference.internal:first-child span,
+#cupqc-ntt > blockquote ul.simple li p > a.reference.internal:first-child,
+#cupqc-ntt > blockquote ul.simple li p > a.reference.internal:first-child span,
+section[id="cupqc-bigint"] > blockquote ul.simple li p > a.reference.internal:first-child,
+section[id="cupqc-bigint"] > blockquote ul.simple li p > a.reference.internal:first-child span,
+#cupqc-bigint > blockquote ul.simple li p > a.reference.internal:first-child,
+#cupqc-bigint > blockquote ul.simple li p > a.reference.internal:first-child span {
+    font-weight: 700 !important;
+}
+
+
+/* ========================================== */
+/* Poseidon2 Configuration Table (8 columns - compact) */
+/* ========================================== */
+.poseidon2-config-table {
+    border-bottom: 2px solid #000000 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* White background for all body cells */
+.poseidon2-config-table tbody tr {
+    background-color: #ffffff !important;
+    border: none !important;
+}
+
+.poseidon2-config-table tbody td {
+    background-color: #ffffff !important;
+    border: none !important;
+}
+
+/* Header with bottom border */
+.poseidon2-config-table thead tr {
+    border-bottom: 2px solid #000000 !important;
+}
+
+.poseidon2-config-table thead th {
+    border: none !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+/* Thin line between BabyBear and KoalaBear sections (after row 2) */
+.poseidon2-config-table tbody tr:nth-child(2) {
+    border-bottom: 1px solid #cccccc !important;
+}
+
+/* Tight padding to fit everything on one line */
+.poseidon2-config-table th,
+.poseidon2-config-table td {
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+}
+
+/* Name column - bold and left aligned, no wrapping, extra space after */
+.poseidon2-config-table tbody td:nth-child(1) {
+    font-weight: 700 !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+    padding-right: 30px !important;
+}
+
+.poseidon2-config-table th:nth-child(1) {
+    text-align: left !important;
+    padding-right: 30px !important;
+}
+
+/* Field - left aligned */
+.poseidon2-config-table td:nth-child(2),
+.poseidon2-config-table th:nth-child(2) {
+    text-align: left !important;
+}
+
+/* Width, Capacity, Full Rounds, Partial Rounds, Sbox - center aligned */
+.poseidon2-config-table td:nth-child(3),
+.poseidon2-config-table th:nth-child(3),
+.poseidon2-config-table td:nth-child(4),
+.poseidon2-config-table th:nth-child(4),
+.poseidon2-config-table td:nth-child(5),
+.poseidon2-config-table th:nth-child(5),
+.poseidon2-config-table td:nth-child(6),
+.poseidon2-config-table th:nth-child(6),
+.poseidon2-config-table td:nth-child(7),
+.poseidon2-config-table th:nth-child(7) {
+    text-align: center !important;
+}
+
+/* Alias - center aligned */
+.poseidon2-config-table td:nth-child(8),
+.poseidon2-config-table th:nth-child(8) {
+    text-align: center !important;
+}
+
+/* ========================================== */
+/* Security Category Table Styling */
+/* ========================================== */
+.security-category-table {
+    border-bottom: 2px solid #000000 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* White background for all body cells */
+.security-category-table tbody tr {
+    background-color: #ffffff !important;
+    border: none !important;
+}
+
+.security-category-table tbody td {
+    background-color: #ffffff !important;
+    border: none !important;
+}
+
+/* Header with bottom border */
+.security-category-table thead tr {
+    border-bottom: 2px solid #000000 !important;
+}
+
+.security-category-table thead th {
+    border: none !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+/* Thin lines ONLY between family sections */
+/* After SHA-2 section (row 6) */
+.security-category-table tbody tr:nth-child(6) {
+    border-bottom: 1px solid #cccccc !important;
+}
+
+/* After SHA-3 section (row 10) */
+.security-category-table tbody tr:nth-child(10) {
+    border-bottom: 1px solid #cccccc !important;
+}
+
+/* Hash Family header - center aligned, extra space after */
+.security-category-table th:nth-child(1) {
+    text-align: center !important;
+    padding-right: 70px !important;
+}
+
+/* Name header - left aligned */
+.security-category-table th:nth-child(2) {
+    text-align: left !important;
+}
+
+/* Security Category header - center aligned */
+.security-category-table th:nth-child(3) {
+    text-align: center !important;
+}
+
+/* Algorithm Enum header - left aligned */
+.security-category-table th:nth-child(4) {
+    text-align: left !important;
+}
+
+/* Alias header - left aligned */
+.security-category-table th:nth-child(5) {
+    text-align: left !important;
+}
+
+/* Hash Family cells - center aligned, bold, vertically centered, extra space after */
+/* Only rows 1, 7, 11 have Hash Family in first column */
+.security-category-table tbody tr:nth-child(1) td:nth-child(1),
+.security-category-table tbody tr:nth-child(7) td:nth-child(1),
+.security-category-table tbody tr:nth-child(11) td:nth-child(1) {
+    text-align: center !important;
+    font-weight: bold !important;
+    vertical-align: middle !important;
+    padding-right: 70px !important;
+}
+
+/* Name cells in rows with Hash Family (column 2) */
+.security-category-table tbody tr:nth-child(1) td:nth-child(2),
+.security-category-table tbody tr:nth-child(7) td:nth-child(2),
+.security-category-table tbody tr:nth-child(11) td:nth-child(2) {
+    text-align: left !important;
+    font-weight: normal !important;
+}
+
+/* Name cells in rows without Hash Family (column 1) */
+.security-category-table tbody tr:nth-child(2) td:nth-child(1),
+.security-category-table tbody tr:nth-child(3) td:nth-child(1),
+.security-category-table tbody tr:nth-child(4) td:nth-child(1),
+.security-category-table tbody tr:nth-child(5) td:nth-child(1),
+.security-category-table tbody tr:nth-child(6) td:nth-child(1),
+.security-category-table tbody tr:nth-child(8) td:nth-child(1),
+.security-category-table tbody tr:nth-child(9) td:nth-child(1),
+.security-category-table tbody tr:nth-child(10) td:nth-child(1),
+.security-category-table tbody tr:nth-child(12) td:nth-child(1) {
+    text-align: left !important;
+    font-weight: normal !important;
+}
+
+/* Security Category - center aligned (column varies based on rowspan) */
+.security-category-table tbody tr:nth-child(1) td:nth-child(3),
+.security-category-table tbody tr:nth-child(7) td:nth-child(3),
+.security-category-table tbody tr:nth-child(11) td:nth-child(3),
+.security-category-table tbody tr:nth-child(2) td:nth-child(2),
+.security-category-table tbody tr:nth-child(3) td:nth-child(2),
+.security-category-table tbody tr:nth-child(4) td:nth-child(2),
+.security-category-table tbody tr:nth-child(5) td:nth-child(2),
+.security-category-table tbody tr:nth-child(6) td:nth-child(2),
+.security-category-table tbody tr:nth-child(8) td:nth-child(2),
+.security-category-table tbody tr:nth-child(9) td:nth-child(2),
+.security-category-table tbody tr:nth-child(10) td:nth-child(2),
+.security-category-table tbody tr:nth-child(12) td:nth-child(2) {
+    text-align: center !important;
+}
+
+/* Algorithm Enum - left aligned */
+.security-category-table tbody tr:nth-child(1) td:nth-child(4),
+.security-category-table tbody tr:nth-child(7) td:nth-child(4),
+.security-category-table tbody tr:nth-child(11) td:nth-child(4),
+.security-category-table tbody tr:nth-child(2) td:nth-child(3),
+.security-category-table tbody tr:nth-child(3) td:nth-child(3),
+.security-category-table tbody tr:nth-child(4) td:nth-child(3),
+.security-category-table tbody tr:nth-child(5) td:nth-child(3),
+.security-category-table tbody tr:nth-child(6) td:nth-child(3),
+.security-category-table tbody tr:nth-child(8) td:nth-child(3),
+.security-category-table tbody tr:nth-child(9) td:nth-child(3),
+.security-category-table tbody tr:nth-child(10) td:nth-child(3),
+.security-category-table tbody tr:nth-child(12) td:nth-child(3) {
+    text-align: left !important;
+}
+
+/* Alias - left aligned */
+.security-category-table tbody tr:nth-child(1) td:nth-child(5),
+.security-category-table tbody tr:nth-child(7) td:nth-child(5),
+.security-category-table tbody tr:nth-child(11) td:nth-child(5),
+.security-category-table tbody tr:nth-child(2) td:nth-child(4),
+.security-category-table tbody tr:nth-child(3) td:nth-child(4),
+.security-category-table tbody tr:nth-child(4) td:nth-child(4),
+.security-category-table tbody tr:nth-child(5) td:nth-child(4),
+.security-category-table tbody tr:nth-child(6) td:nth-child(4),
+.security-category-table tbody tr:nth-child(8) td:nth-child(4),
+.security-category-table tbody tr:nth-child(9) td:nth-child(4),
+.security-category-table tbody tr:nth-child(10) td:nth-child(4),
+.security-category-table tbody tr:nth-child(12) td:nth-child(4) {
+    text-align: left !important;
+}
+
+/* ========================================== */
+/* PK Algorithm Table Styling */
+/* ========================================== */
+.pk-algorithm-table {
+    border-bottom: 2px solid #000000 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* White background for all body cells */
+.pk-algorithm-table tbody tr {
+    background-color: #ffffff !important;
+    border: none !important;
+}
+
+.pk-algorithm-table tbody td {
+    background-color: #ffffff !important;
+    border: none !important;
+}
+
+/* Header with bottom border */
+.pk-algorithm-table thead tr {
+    border-bottom: 2px solid #000000 !important;
+}
+
+.pk-algorithm-table thead th {
+    border: none !important;
+    border-bottom: 2px solid #000000 !important;
+}
+
+/* Thin line between ML-KEM and ML-DSA sections (after row 3) */
+.pk-algorithm-table tbody tr:nth-child(3) {
+    border-bottom: 1px solid #cccccc !important;
+}
+
+/* PK Family - left aligned, extra space after */
+.pk-algorithm-table td:nth-child(1),
+.pk-algorithm-table th:nth-child(1) {
+    text-align: left !important;
+    padding-right: 30px !important;
+}
+
+/* Name - left aligned */
+.pk-algorithm-table td:nth-child(2),
+.pk-algorithm-table th:nth-child(2) {
+    text-align: left !important;
+}
+
+/* Algorithm - left aligned */
+.pk-algorithm-table td:nth-child(3),
+.pk-algorithm-table th:nth-child(3) {
+    text-align: left !important;
+}
+
+/* Security Category - center aligned */
+.pk-algorithm-table td:nth-child(4),
+.pk-algorithm-table th:nth-child(4) {
+    text-align: center !important;
+}
+
+/* Alias - left aligned */
+.pk-algorithm-table td:nth-child(5),
+.pk-algorithm-table th:nth-child(5) {
+    text-align: left !important;
+}
+
+
+/* ========================================== */
+/* Hide dropdown arrow for SDK Features in sidebar */
+/* ========================================== */
+/* Hide the dropdown toggle/arrow for SDK Features */
+.toctree-l1 > a[href*="features"] + button,
+.toctree-l1 > a[href*="features"] + .toctree-toggle,
+a.reference.internal[href*="features"] + button,
+a.reference.internal[href*="features"] + .toctree-toggle {
+    display: none !important;
+}
+
+/* Prevent expansion styling for SDK Features */
+.toctree-l1 > a[href*="features"] {
+    padding-right: 0 !important;
+}
+
+/* ========================================== */
+/* Make cuPQC-NTT, cuPQC-Hash, and cuPQC-PK home-page reference links bold */
+/* ========================================== */
+a.reference.internal[href*="cupqc-pk-label"],
+a.reference.internal[href*="cupqc-hash-label"],
+a.reference.internal[href*="cupqc-ntt-label"] {
+    font-weight: bold !important;
+}
+
+/* ========================================== */
+/* Visual dividers for feature sections */
+/* ========================================== */
+/* Option 5: Vertical spacing between library blocks on SDK Features (combined page).
+   Do not use border-top here: the same section IDs are the first heading on standalone
+   library feature pages, which drew an unwanted green line at the top of those articles. */
+#cupqc-pk-public-key {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+#cupqc-hash-cryptographic-hash-functions {
+    margin-top: 35px;
+    padding-top: 25px;
+}
+
+#cupqc-ntt-number-theoretic-transform {
+    margin-top: 35px;
+    padding-top: 25px;
+}
+
+/* :pow2: role (NTT + Hash feature pages) — hyphenated power-of-two terms, bold + green underline */
+span.cupqc-pow2 {
+    font-weight: bold;
+    font-style: normal;
+    border-bottom: 1px solid rgba(118, 185, 0, 0.65);
+    padding-bottom: 0.04em;
+}
+
+[data-theme="dark"] span.cupqc-pow2 {
+    border-bottom-color: rgba(118, 185, 0, 0.85);
+}
+
+/* ========================================== */
+/* cuPQC-NTT summary table (feature page) */
+/* ========================================== */
+/* Box, header band and row dividers come from `cupqc-feature-table`; none of
+   the three tables uses rowspan, so only column layout is left here. */
+.ntt-feature-table td:first-child,
+.ntt-feature-table th:first-child,
+.ntt-feature-table td:nth-child(2),
+.ntt-feature-table th:nth-child(2),
+.ntt-feature-table td:nth-child(3),
+.ntt-feature-table th:nth-child(3) {
+    text-align: left !important;
+    vertical-align: top;
+    padding-left: 20px !important;
+}
+
+/* Aspect summary: :codesup:`2^62` — white chip (match limits col3 numeric bounds) */
+.ntt-feature-table.ntt-feature-table-aspect td span.cupqc-codesup:not(.cupqc-codesup-range-el) {
+    background-color: #ffffff !important;
+    border-color: var(--pst-color-border, #d0d7de) !important;
+}
+
+[data-theme="dark"] .ntt-feature-table.ntt-feature-table-aspect td span.cupqc-codesup:not(.cupqc-codesup-range-el) {
+    background-color: var(--pst-color-background, #111) !important;
+    border-color: var(--pst-color-border, #444) !important;
+}
+
+/* Aspect summary: :codesup:`2^62` — Pygments .mi (red-brown / gold), not theme inline-code */
+html[data-theme="light"] .ntt-feature-table.ntt-feature-table-aspect td span.cupqc-codesup:not(.cupqc-codesup-range-el) code.highlight .mi {
+    color: #702c00 !important;
+}
+
+html[data-theme="dark"] .ntt-feature-table.ntt-feature-table-aspect td span.cupqc-codesup:not(.cupqc-codesup-range-el) code.highlight .mi {
+    color: #ffb757 !important;
+}
+
+/* Aspect summary: standalone highlight-cpp chips (BabyBear / KoalaBear, 10, 24) — white pill + Pygments colors (td color:#000 was washing these out) */
+.ntt-feature-table.ntt-feature-table-aspect tbody td:nth-child(2) code.highlight-cpp,
+.ntt-feature-table.ntt-feature-table-aspect tbody td:nth-child(2) code.docutils.literal {
+    background-color: #ffffff !important;
+    border: 1px solid var(--pst-color-border, #d0d7de) !important;
+    border-radius: 0.25rem;
+    padding: 0.12em 0.34em;
+    box-shadow: none;
+}
+
+[data-theme="dark"] .ntt-feature-table.ntt-feature-table-aspect tbody td:nth-child(2) code.highlight-cpp,
+[data-theme="dark"] .ntt-feature-table.ntt-feature-table-aspect tbody td:nth-child(2) code.docutils.literal {
+    background-color: var(--pst-color-background, #111) !important;
+    border-color: var(--pst-color-border, #444) !important;
+}
+
+/* Keep :codesup: inner code transparent (outer span carries the chip) */
+.ntt-feature-table.ntt-feature-table-aspect tbody td:nth-child(2) span.cupqc-codesup:not(.cupqc-codesup-range-el) code,
+.ntt-feature-table.ntt-feature-table-aspect tbody td:nth-child(2) span.cupqc-codesup:not(.cupqc-codesup-range-el) code.highlight,
+html[data-theme="light"] .ntt-feature-table.ntt-feature-table-aspect tbody td:nth-child(2) span.cupqc-codesup:not(.cupqc-codesup-range-el) code.highlight,
+html[data-theme="dark"] .ntt-feature-table.ntt-feature-table-aspect tbody td:nth-child(2) span.cupqc-codesup:not(.cupqc-codesup-range-el) code.highlight {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+html[data-theme="light"] .ntt-feature-table.ntt-feature-table-aspect tbody td:nth-child(2) code.highlight-cpp .n {
+    color: #6f42c1 !important;
+}
+
+html[data-theme="dark"] .ntt-feature-table.ntt-feature-table-aspect tbody td:nth-child(2) code.highlight-cpp .n {
+    color: #c9a0ff !important;
+}
+
+html[data-theme="light"] .ntt-feature-table.ntt-feature-table-aspect tbody td:nth-child(2) code.highlight-cpp .mi {
+    color: #702c00 !important;
+}
+
+html[data-theme="dark"] .ntt-feature-table.ntt-feature-table-aspect tbody td:nth-child(2) code.highlight-cpp .mi {
+    color: #ffb757 !important;
+}
+
+/* NTT prose (Montgomery line, Key Features) + limits Prime col: BabyBear / KoalaBear — white chip + purple .n (section > p avoids matching td > p in tables) */
+#supported-parameters-and-prime-fields > p:has(code.highlight-cpp .n) code.highlight-cpp,
+#key-features li p:has(code.highlight-cpp .n) code.highlight-cpp,
+.ntt-feature-table.ntt-feature-table-limits tbody td:nth-child(1) code.highlight-cpp {
+    background-color: #ffffff !important;
+    border: 1px solid var(--pst-color-border, #d0d7de) !important;
+    border-radius: 0.25rem;
+    padding: 0.12em 0.34em;
+    box-shadow: none;
+}
+
+[data-theme="dark"] #supported-parameters-and-prime-fields > p:has(code.highlight-cpp .n) code.highlight-cpp,
+[data-theme="dark"] #key-features li p:has(code.highlight-cpp .n) code.highlight-cpp,
+[data-theme="dark"] .ntt-feature-table.ntt-feature-table-limits tbody td:nth-child(1) code.highlight-cpp {
+    background-color: var(--pst-color-background, #111) !important;
+    border-color: var(--pst-color-border, #444) !important;
+}
+
+html[data-theme="light"] #supported-parameters-and-prime-fields > p:has(code.highlight-cpp .n) code.highlight-cpp .n,
+html[data-theme="light"] #key-features li p:has(code.highlight-cpp .n) code.highlight-cpp .n,
+html[data-theme="light"] .ntt-feature-table.ntt-feature-table-limits tbody td:nth-child(1) code.highlight-cpp .n {
+    color: #6f42c1 !important;
+}
+
+html[data-theme="dark"] #supported-parameters-and-prime-fields > p:has(code.highlight-cpp .n) code.highlight-cpp .n,
+html[data-theme="dark"] #key-features li p:has(code.highlight-cpp .n) code.highlight-cpp .n,
+html[data-theme="dark"] .ntt-feature-table.ntt-feature-table-limits tbody td:nth-child(1) code.highlight-cpp .n {
+    color: #c9a0ff !important;
+}
+
+html[data-theme="light"] #supported-parameters-and-prime-fields > p:has(code.highlight-cpp .n) code.highlight-cpp .mi,
+html[data-theme="light"] #key-features li p:has(code.highlight-cpp .n) code.highlight-cpp .mi,
+html[data-theme="light"] .ntt-feature-table.ntt-feature-table-limits tbody td:nth-child(1) code.highlight-cpp .mi {
+    color: #702c00 !important;
+}
+
+html[data-theme="dark"] #supported-parameters-and-prime-fields > p:has(code.highlight-cpp .n) code.highlight-cpp .mi,
+html[data-theme="dark"] #key-features li p:has(code.highlight-cpp .n) code.highlight-cpp .mi,
+html[data-theme="dark"] .ntt-feature-table.ntt-feature-table-limits tbody td:nth-child(1) code.highlight-cpp .mi {
+    color: #ffb757 !important;
+}
+
+/* Staged NTT: SubSize<M> column — white chip + red/gold .mi (same as limits col3 numeric :codesup) */
+.ntt-feature-table.ntt-feature-table-staged tbody td:nth-child(2) code.highlight-cpp {
+    background-color: #ffffff !important;
+    border: 1px solid var(--pst-color-border, #d0d7de) !important;
+    border-radius: 0.25rem;
+    padding: 0.12em 0.34em;
+    box-shadow: none;
+    color: inherit !important;
+}
+
+[data-theme="dark"] .ntt-feature-table.ntt-feature-table-staged tbody td:nth-child(2) code.highlight-cpp {
+    background-color: var(--pst-color-background, #111) !important;
+    border-color: var(--pst-color-border, #444) !important;
+}
+
+html[data-theme="light"] .ntt-feature-table.ntt-feature-table-staged tbody td:nth-child(2) code.highlight-cpp .mi {
+    color: #702c00 !important;
+}
+
+html[data-theme="dark"] .ntt-feature-table.ntt-feature-table-staged tbody td:nth-child(2) code.highlight-cpp .mi {
+    color: #ffb757 !important;
+}
+
+/* Separator between the chips of a value list (|dot| substitution). Muted so
+   the values stay dominant; the theme swaps the colour per light/dark mode. */
+.cupqc-list-sep {
+    color: var(--pst-color-text-muted, #9a9a9a);
+    padding: 0 0.1em;
+}
+
+/* Muted inline qualifier, e.g. the (XOF) after SHAKE's output length. */
+.cupqc-muted {
+    color: var(--pst-color-text-muted, #9a9a9a);
+}
+
+/* A cell's first paragraph is its value; anything after it is a footnote to
+   that value, so it is set smaller and muted rather than competing with it.
+   The theme's paragraph margin is meant for body copy and leaves the two too
+   far apart to read as a pair, hence the reset. */
+.cupqc-feature-table tbody td > p {
+    margin-bottom: 0;
+}
+
+.cupqc-feature-table tbody td > p + p {
+    margin-top: 0.3em;
+    font-size: 0.86em;
+    line-height: 1.35;
+    color: var(--pst-color-text-muted, #9a9a9a);
+}
+
+/* Inline literals in a footnote take its colour rather than standing out as
+   chips, which would pull the eye away from the value above. */
+.cupqc-feature-table tbody td > p + p code {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: inherit !important;
+}
+
+/* Same reasoning for a :codesup: exponent on that line: the pill it normally
+   draws would be the only boxed thing among plain text, so only the raised
+   exponent is kept. */
+.cupqc-feature-table tbody td > p + p span.cupqc-codesup:not(.cupqc-codesup-range-el) {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    font-size: inherit !important;
+    color: inherit !important;
+}
+
+/* Standard NTT limits: the prime spans every precision row, so it is centred
+   against them and set off by a column rule instead of by row dividers. The
+   row dividers stop at that rule, and because the cell reaches the foot of the
+   table it draws the base of the box and the bottom-left corner itself. */
+.cupqc-feature-table.ntt-feature-table-limits tbody tr:has(> td:nth-child(3)) > td:first-child {
+    vertical-align: middle !important;
+    border-right: 1px solid #ebebeb !important;
+    border-bottom: 1px solid #d9d9d9 !important;
+    border-bottom-left-radius: 4px;
+}
+
+[data-theme="dark"] .cupqc-feature-table.ntt-feature-table-limits tbody tr:has(> td:nth-child(3)) > td:first-child {
+    border-right-color: rgba(255, 255, 255, 0.11) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Continuation rows begin at the precision column, not at the table edge */
+.cupqc-feature-table.ntt-feature-table-limits tbody tr:not(:has(> td:nth-child(3))) > td:first-child {
+    border-left: none !important;
+}
+
+.cupqc-feature-table.ntt-feature-table-limits tbody tr:last-child > td:first-child {
+    border-bottom-left-radius: 0;
+}
+
+.ntt-feature-table.ntt-feature-table-limits thead th:nth-child(3) sup {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.ntt-feature-table.ntt-feature-table-limits thead th:nth-child(3) code,
+.ntt-feature-table.ntt-feature-table-limits thead th:nth-child(3) .literal {
+    font-weight: normal !important;
+}
+
+.ntt-feature-table.ntt-feature-table-limits thead th:nth-child(3) span.cupqc-codesup {
+    font-weight: normal !important;
+}
+
+.ntt-feature-table.ntt-feature-table-staged thead th code,
+.ntt-feature-table.ntt-feature-table-staged thead th .literal,
+.ntt-feature-table.ntt-feature-table-staged thead th span.cupqc-codesup {
+    font-weight: normal !important;
+}
+
+.ntt-feature-table.ntt-feature-table-staged thead th:nth-child(1) sup {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.ntt-feature-table.ntt-feature-table-staged td:nth-child(1),
+.ntt-feature-table.ntt-feature-table-staged th:nth-child(1) {
+    text-align: left !important;
+    vertical-align: top;
+    padding-left: 20px !important;
+    padding-right: 12px !important;
+}
+
+.ntt-feature-table.ntt-feature-table-staged td:nth-child(2),
+.ntt-feature-table.ntt-feature-table-staged th:nth-child(2) {
+    text-align: left !important;
+    vertical-align: top;
+    padding-left: 20px !important;
+    padding-right: 12px !important;
+}
+
+/* :codesuprange:`a^b,c^d` — same box/colors; typography matches adjacent body text (e.g. 2\\ :sup:`2`) */
+span.cupqc-codesup-range {
+    display: inline-flex;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    gap: 0.08em 0.15em;
+    box-sizing: border-box;
+    background-color: var(--pst-color-background, #fff);
+    border: 1px solid var(--pst-color-border, #d0d7de);
+    border-radius: 0.25rem;
+    padding: 0.05em 0.32em 0.07em;
+    vertical-align: baseline;
+    line-height: inherit;
+    max-width: 100%;
+    overflow: visible;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+span.cupqc-codesup-range span.cupqc-codesup-range-dash {
+    font-weight: inherit;
+    opacity: 0.75;
+    padding: 0 0.04em;
+    flex-shrink: 0;
+    align-self: baseline;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* One visible box only: Pygments sets .highlight background on each inner code */
+span.cupqc-codesup-range code,
+span.cupqc-codesup-range code.highlight,
+html[data-theme="light"] span.cupqc-codesup-range code.highlight,
+html[data-theme="dark"] span.cupqc-codesup-range code.highlight {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+}
+
+span.cupqc-codesup-range span.cupqc-codesup-range-el.cupqc-codesup {
+    background: none;
+    flex-shrink: 0;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: baseline;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* :codesup:`base^exp` — one pill around base + exponent (inner code backgrounds cleared) */
+span.cupqc-codesup .cupqc-codesup-prefix {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: normal;
+}
+
+span.cupqc-codesup:not(.cupqc-codesup-range-el) {
+    display: inline-flex;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+    background-color: var(--pst-color-surface, #f7f7f7);
+    border: 1px solid var(--pst-color-border, #d0d7de);
+    border-radius: 0.25rem;
+    padding: 0.24em 0.34em 0.16em;
+    vertical-align: baseline;
+    white-space: nowrap;
+    color: var(--pst-color-inline-code) !important;
+    font-weight: normal !important;
+    font-family: var(--pst-font-family-monospace, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+    font-size: 0.875em;
+}
+
+span.cupqc-codesup:not(.cupqc-codesup-range-el) .cupqc-codesup-prefix,
+span.cupqc-codesup:not(.cupqc-codesup-range-el) code,
+span.cupqc-codesup:not(.cupqc-codesup-range-el) code .mi,
+html[data-theme="light"] span.cupqc-codesup:not(.cupqc-codesup-range-el) code.highlight .mi,
+html[data-theme="dark"] span.cupqc-codesup:not(.cupqc-codesup-range-el) code.highlight .mi {
+    color: var(--pst-color-inline-code) !important;
+    font-weight: normal !important;
+}
+
+span.cupqc-codesup:not(.cupqc-codesup-range-el) code,
+span.cupqc-codesup:not(.cupqc-codesup-range-el) code.highlight,
+html[data-theme="light"] span.cupqc-codesup:not(.cupqc-codesup-range-el) code.highlight,
+html[data-theme="dark"] span.cupqc-codesup:not(.cupqc-codesup-range-el) code.highlight {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+/* :codesupeq: — visible space between “=” and base (trailing space in prefix is lost in inline-flex) */
+span.cupqc-codesup-eq:not(.cupqc-codesup-range-el) > .cupqc-codesup-prefix + code {
+    margin-left: 0.28em;
+}
+
+/* :codesupeq: — default subtle green chip (overridden in limits/staged header + .cupqc-ntt-standard-eq-prose) */
+span.cupqc-codesup.cupqc-codesup-eq:not(.cupqc-codesup-range-el) {
+    background-color: rgba(118, 185, 0, 0.12);
+    border-color: rgba(118, 185, 0, 0.42);
+}
+
+[data-theme="dark"] span.cupqc-codesup.cupqc-codesup-eq:not(.cupqc-codesup-range-el) {
+    background-color: rgba(118, 185, 0, 0.16);
+    border-color: rgba(118, 185, 0, 0.55);
+}
+
+/* Prose/admonition :codesupeq: — grey chip; default span.cupqc-codesup 0.875em.
+   The two table headers that also use this role are on the dark band, where
+   `cupqc-feature-table` outlines the chip instead. */
+.cupqc-ntt-standard-eq-prose span.cupqc-codesup.cupqc-codesup-eq:not(.cupqc-codesup-range-el) {
+    background-color: var(--pst-color-surface, #f7f7f7) !important;
+    border: 1px solid var(--pst-color-border, #d0d7de) !important;
+    box-shadow: none;
+    color: var(--pst-color-inline-code) !important;
+}
+
+.ntt-feature-table.ntt-feature-table-limits thead th:nth-child(3) span.cupqc-codesup.cupqc-codesup-eq:not(.cupqc-codesup-range-el) sup,
+.ntt-feature-table.ntt-feature-table-staged thead th:nth-child(1) span.cupqc-codesup.cupqc-codesup-eq:not(.cupqc-codesup-range-el) sup,
+.cupqc-ntt-standard-eq-prose span.cupqc-codesup.cupqc-codesup-eq:not(.cupqc-codesup-range-el) sup {
+    font-size: smaller;
+}
+
+[data-theme="dark"] .cupqc-ntt-standard-eq-prose span.cupqc-codesup.cupqc-codesup-eq:not(.cupqc-codesup-range-el) {
+    background-color: var(--pst-color-surface, #1e1e1e) !important;
+    border-color: var(--pst-color-border, #444) !important;
+}
+
+/* Limits col 3 + staged col 1 body: :codesup: chip size */
+.cupqc-ntt-standard-eq-prose span.cupqc-codesup-eq .cupqc-codesup-prefix,
+.cupqc-ntt-standard-eq-prose span.cupqc-codesup-eq:not(.cupqc-codesup-range-el) code,
+html[data-theme="light"] .cupqc-ntt-standard-eq-prose span.cupqc-codesup-eq:not(.cupqc-codesup-range-el) code.highlight .mi,
+html[data-theme="dark"] .cupqc-ntt-standard-eq-prose span.cupqc-codesup-eq:not(.cupqc-codesup-range-el) code.highlight .mi {
+    color: var(--pst-color-inline-code) !important;
+}
+
+span.cupqc-codesup sup {
+    /* Chip is 0.875em; use ~0.95em here so exponent ≈ :codesuprange: “smaller” on body (0.83em) */
+    font-size: 0.95em;
+    line-height: 0;
+    vertical-align: super;
+}
+
+/* Superscript size like default :sup: / <sup> next to body text */
+span.cupqc-codesup-range .cupqc-codesup sup {
+    line-height: 0;
+    font-size: smaller;
+    vertical-align: super;
+}
+
+span.cupqc-codesup-range .cupqc-codesup sup code,
+span.cupqc-codesup-range .cupqc-codesup sup code.highlight,
+html[data-theme="light"] span.cupqc-codesup-range .cupqc-codesup sup code.highlight,
+html[data-theme="dark"] span.cupqc-codesup-range .cupqc-codesup sup code.highlight,
+span.cupqc-codesup:not(.cupqc-codesup-range-el) sup code,
+span.cupqc-codesup:not(.cupqc-codesup-range-el) sup code.highlight,
+html[data-theme="light"] span.cupqc-codesup:not(.cupqc-codesup-range-el) sup code.highlight,
+html[data-theme="dark"] span.cupqc-codesup:not(.cupqc-codesup-range-el) sup code.highlight {
+    font-size: inherit !important;
+}
+
+span.cupqc-codesup sup code .mi {
+    font-style: normal;
+}
+
+/* ========================================== */
+/* Dark Mode Support for Tables */
+/* ========================================== */
+[data-theme="dark"] .security-category-table tbody tr,
+[data-theme="dark"] .security-category-table tbody td {
+    background-color: transparent !important;
+    color: inherit !important;
+}
+
+[data-theme="dark"] .pk-algorithm-table tbody tr,
+[data-theme="dark"] .pk-algorithm-table tbody td {
+    background-color: transparent !important;
+    color: inherit !important;
+}
+
+[data-theme="dark"] .poseidon2-config-table tbody tr,
+[data-theme="dark"] .poseidon2-config-table tbody td {
+    background-color: transparent !important;
+    color: inherit !important;
+}
+
+/* ========================================== */
+/* cuPQC-BigInt operations table (feature page) */
+/* ========================================== */
+/* The shared theme carries the box, header band, dividers and top alignment.
+   Rows are grouped by the device page's own section structure, which leaves the
+   two label columns holding one of three shapes, and every rule below is keyed
+   to whichever of them it means:
+
+     - a group's first row has four cells, so the section label is -4 and the
+       subsection label -3;
+     - the rows that group covers have three, the subsection label falling to
+       -3 and to :first-child;
+     - a section with no subsections merges the two into one cell, which is
+       three cells again but carries colspan="2".
+
+   Counting from the right is therefore the only stable way to name a column,
+   and the last two shapes are told apart by that colspan rather than by cell
+   count, which they share. */
+
+/* basic.css gives .line-block 1em vertical margins, which would push a cell
+   using one out of line with its neighbours. */
+.bigint-feature-table .line-block {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Per-function notes are siblings rather than a value and its footnote, so they
+   are set as a line block: paragraphs would be muted by the shared theme's
+   `p + p` rule, which is meant for a footnote under a value. They need a little
+   more air than a stacked list, being sentences rather than single terms. */
+.bigint-feature-table tbody td:nth-last-child(1) .line-block .line + .line {
+    margin-top: 0.45em;
+}
+
+/* Both labels are links, which cannot carry ** in the source, so the weight
+   that every other themed table gets from its markup comes from CSS here. Each
+   is centred against the rows it covers rather than stranded at the top of a
+   group that can run three rows deep. */
+.bigint-feature-table tbody td:nth-last-child(4),
+.bigint-feature-table tbody td:nth-last-child(3) {
+    vertical-align: middle !important;
+}
+
+.bigint-feature-table tbody td:nth-last-child(4) a,
+.bigint-feature-table tbody td:nth-last-child(3) a {
+    font-weight: bold;
+}
+
+/* The Section column reads as a band, closed on the right by a rule, matching
+   the modular path table below. No row-divider adjustment is needed: a spanning
+   cell's bottom border is drawn at the foot of its span, which is exactly the
+   group boundary. */
+.bigint-feature-table tbody td:nth-last-child(4),
+.bigint-feature-table tbody td[colspan="2"] {
+    background-color: #f7f7f7 !important;
+}
+
+.bigint-feature-table tbody td:nth-last-child(4) {
+    border-right: 1px solid #ebebeb !important;
+}
+
+/* On the rows the span covers, the subsection label is the first cell, so it
+   continues that rule. It must not also draw the box's left edge, which the
+   spanning cell above already covers for the whole group. A merged label has
+   the same cell count but starts at that edge and does draw it, hence the
+   colspan test. */
+.bigint-feature-table tbody tr:not(:has(> td:nth-child(4))):not(:has(> td[colspan])) > td:first-child {
+    border-left: 1px solid #ebebeb !important;
+}
+
+[data-theme="dark"] .bigint-feature-table tbody td:nth-last-child(4),
+[data-theme="dark"] .bigint-feature-table tbody td[colspan="2"] {
+    background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+[data-theme="dark"] .bigint-feature-table tbody td:nth-last-child(4) {
+    border-right-color: rgba(255, 255, 255, 0.11) !important;
+}
+
+[data-theme="dark"] .bigint-feature-table tbody tr:not(:has(> td:nth-child(4))):not(:has(> td[colspan])) > td:first-child {
+    border-left-color: rgba(255, 255, 255, 0.11) !important;
+}
+
+/* One function per line, so the column need only be as wide as the longest
+   single name and the space saved goes to Notes. The chip treatment is the same
+   as on the hash tables above. */
+.bigint-feature-table tbody td:nth-last-child(2) .line-block .line + .line {
+    margin-top: 0.3em;
+}
+
+.bigint-feature-table tbody td:nth-last-child(2) code.xref {
+    background-color: #ffffff !important;
+    border: 1px solid var(--pst-color-border, #d0d7de) !important;
+    border-radius: 0.25rem;
+    padding: 0.12em 0.34em;
+    box-shadow: none;
+    font-weight: normal !important;
+    /* A chip must wrap as a unit; breaking inside one splits an operator such
+       as `>>=` across two lines and stops reading as a single name. */
+    white-space: nowrap;
+}
+
+[data-theme="dark"] .bigint-feature-table tbody td:nth-last-child(2) code.xref {
+    background-color: var(--pst-color-background, #111) !important;
+    border-color: var(--pst-color-border, #444) !important;
+}
+
+/* ========================================== */
+/* Anchor targets                             */
+/* ========================================== */
+/* The theme paints --pst-color-target (#f3cf95 light, #675c04 dark) behind the
+   heading of the section the URL fragment points at, so every click in the
+   page contents leaves a tan block behind until the next navigation. The
+   fragment still scrolls the heading into view without it. Kept scoped to
+   headings so definition-list targets (API signatures) still highlight. */
+.bd-main .bd-content .bd-article-container .bd-article :target > :is(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6),
+.bd-main .bd-content .bd-article-container .bd-article :is(h1, h2, h3, h4, h5, h6):target {
+    background-color: transparent !important;
+}
+
+
+/* ========================================== */
+/* Page contents: functions on demand         */
+/* ========================================== */
+/* show_toc_level 2 is set so subsection headings ("Addition and Subtraction")
+   appear in the page contents without a click. That same level also holds the
+   per-function entries, which would otherwise bury the headings under dozens of
+   same-named C++ overloads (five bigint(), three div_rem()).
+
+   So fold the function entries away while their section is idle. The theme puts
+   .active on the whole ancestor chain of the entry being read, so dropping this
+   rule for an active section is enough to reveal its functions; the deeper
+   subsection levels are already handled by the theme's own `.active > ul`. */
+#pst-page-toc-nav li:not(.active) > ul > li.toc-entry:has(> a[href^="#_CPPv4"]) {
+    display: none;
+}

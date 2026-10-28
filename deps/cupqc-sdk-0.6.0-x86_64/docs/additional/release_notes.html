@@ -1,0 +1,651 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Release Notes &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/cupqc_override.css?v=ee9d665e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+
+
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'additional/release_notes';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="../_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Security Notes" href="security_notes.html" />
+    <link rel="prev" title="Host Functions" href="../libraries/cupqc_pk/api/host.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Libraries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../libraries/cupqc_bigint/index.html">cuPQC-BigInt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_bigint/cupqc_bigint_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_bigint/cupqc_bigint_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../libraries/cupqc_bigint/cupqc_bigint_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_bigint/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_bigint/api/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_bigint/api/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../libraries/cupqc_ntt/index.html">cuPQC-NTT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_ntt/cupqc_ntt_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_ntt/cupqc_ntt_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../libraries/cupqc_ntt/cupqc_ntt_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_ntt/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_ntt/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_ntt/api/host.html">Host Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_ntt/api/prime_fields.html">Prime Field Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_ntt/api/types.html">Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../libraries/cupqc_hash/index.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_hash/cupqc_hash_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_hash/cupqc_hash_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../libraries/cupqc_hash/cupqc_hash_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../libraries/cupqc_hash/api/hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../libraries/cupqc_hash/api/hash/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../libraries/cupqc_hash/api/hash/traits.html">Traits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../libraries/cupqc_hash/api/hash/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../libraries/cupqc_hash/api/merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../libraries/cupqc_hash/api/merkle/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../libraries/cupqc_hash/api/merkle/objects.html">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../libraries/cupqc_hash/api/merkle/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../libraries/cupqc_pk/index.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_pk/cupqc_pk_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_pk/cupqc_pk_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../libraries/cupqc_pk/cupqc_pk_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_pk/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_pk/api/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_pk/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_pk/api/host.html">Host Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Release Notes</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="release-notes">
+<span id="release-notes-label"></span><h1>Release Notes<a class="headerlink" href="#release-notes" title="Link to this heading">#</a></h1>
+<p>This section includes significant changes, new features, performance improvements, and various issues. Unless noted, listed issues
+should not impact functionality. When functionality is impacted, we offer a work-around to avoid the issue (if available).</p>
+<section id="id1">
+<h2>0.6.0<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>This release includes the following updates:</p>
+<ul class="simple">
+<li><p><strong>New Libraries</strong></p>
+<ul>
+<li><p><strong>cuPQC-BigInt</strong> (Multi-Precision Integer Arithmetic): a new device-side library for
+fixed-width <strong>unsigned</strong> multi-precision integer arithmetic, callable directly from CUDA
+kernels. Single-thread and warp-cooperative (<code class="docutils literal notranslate"><span class="pre">TPI</span></code>) execution for widths from 32 to 4096
+bits, modular arithmetic and modular inverse, Barrett and Montgomery reduction,
+double-width products, and configurable error-handling policies.</p></li>
+<li><p><strong>cuPQC-NTT</strong> (Number Theoretic Transform): a new device-side library for forward and
+inverse NTT, callable directly from CUDA kernels. Support for any custom prime field,
+transform lengths 2<sup>2</sup> through 2<sup>24</sup>, built-in BabyBear and KoalaBear primes
+with pre-computed primitive roots for 2<sup>10</sup> through 2<sup>24</sup>, and a staged
+two-pass mode (<code class="docutils literal notranslate"><span class="pre">SubSize&lt;M&gt;</span></code>) for transforms whose working set exceeds a single block’s
+shared memory.</p></li>
+</ul>
+</li>
+<li><p><strong>Documentation</strong></p>
+<ul>
+<li><p>The documentation now covers all four libraries, each with Features, Usage Guide, and API
+Reference sections.</p></li>
+</ul>
+</li>
+<li><p><strong>Known Limitations</strong></p>
+<ul>
+<li><p>cuPQC-BigInt builds a specific set of bit widths for each <code class="docutils literal notranslate"><span class="pre">TPI</span></code>. A width outside that set
+compiles but fails to link; see
+<a class="reference internal" href="../libraries/cupqc_bigint/cupqc_bigint_feature.html#cupqc-bigint-supported-widths-label"><span class="std std-ref">Supported Widths</span></a>.</p></li>
+<li><p>Several cuPQC-BigInt operations are built for thread execution only, including division and
+remainder, the scalar conversions, and the trapping error policies; see
+<a class="reference internal" href="../libraries/cupqc_bigint/cupqc_bigint_feature.html#cupqc-bigint-warp-coverage-label"><span class="std std-ref">Warp Execution Coverage</span></a>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id2">
+<h2>0.5.0<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>There was no separate 0.5.0 release. The changes developed under this version are
+included in 0.6.0.</p>
+</section>
+<section id="id3">
+<h2>0.4.1<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>This release includes the following updates:</p>
+<ul class="simple">
+<li><p><strong>Library Naming Changes</strong></p>
+<ul>
+<li><p>The cuPQC SDK now encompasses all sub-libraries.</p></li>
+<li><p>The former cuPQC library (ML-KEM and ML-DSA) is now named <strong>cuPQC-PK</strong> (Public Key).</p></li>
+<li><p>The former cuHash library is now named <strong>cuPQC-Hash</strong> (Cryptographic Hash Functions).</p></li>
+</ul>
+</li>
+<li><p><strong>New Features</strong></p>
+<ul>
+<li><p><strong>cuPQC-Hash: Hash Functions</strong></p>
+<ul>
+<li><p>Poseidon2-KoalaBear: The Poseidon2 hash function now supports the KoalaBear field (2<sup>31</sup> - 2<sup>24</sup> + 1), in addition to the BabyBear field (2<sup>31</sup> - 2<sup>27</sup> + 1).</p></li>
+</ul>
+</li>
+<li><p><strong>cuPQC-Hash: Merkle Tree</strong></p>
+<ul>
+<li><p>Multi-block Merkle Tree generation: The Merkle Tree API now supports generating subtrees that can be combined to form larger trees, allowing very large Merkle trees to be computed across multiple CUDA blocks for improved performance and lower latency.</p></li>
+<li><p>Merkle Tree Support for N = 2<sup>22</sup>: The Merkle Tree API now supports generating trees with 2<sup>22</sup> leaves. Note that this can only be computed using the multi-block Merkle Tree generation feature.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Performance Improvements</strong></p>
+<ul>
+<li><p>Performance improvements for Merkle Tree generation.</p></li>
+<li><p>Performance improvements for Poseidon2 hash function.</p></li>
+</ul>
+</li>
+<li><p><strong>Bug Fixes</strong></p>
+<ul>
+<li><p>Bumped CUDA Toolkit version to 12.8 for better compatibility. This fixes a compilation error when linking with the cuPQC SDK on ARM64 CPUs.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id4">
+<h2>0.4.0<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>This release adds the Poseidon2 hash function to cuHash, as well as a Merkle Tree API that uses any of the hash functions in cuHash.</p>
+</section>
+<section id="id5">
+<h2>0.3.0<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>This release introduces the cuPQC Software Development Kit. The cuPQC SDK is now a single package download that contains libraries for cryptographic processes. The two libraries that are contained in the cuPQC SDK for the 0.3.0 release are: the cuPQC library, as well as a new library, cuHash. The cuHash library contains GPU accelerated SHA-2, SHA-3, SHAKE hashing algorithms.</p>
+<p>Additionally, some performance improvements have been made to cuPQC’s ML-KEM and ML-DSA algorithms.</p>
+<section id="known-issues">
+<h3>Known Issues<a class="headerlink" href="#known-issues" title="Link to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../libraries/cupqc_pk/api/host.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Host Functions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="security_notes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Security Notes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">0.6.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">0.5.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">0.4.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">0.4.0</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">0.3.0</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#known-issues">Known Issues</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2026, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

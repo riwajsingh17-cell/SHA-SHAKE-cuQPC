@@ -1,0 +1,162 @@
+
+===== SHAKE256-128s CUSPX (no cuPQC) | Tue Oct 27 00:55:36 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): 862c26917804abe7
+kernel_ms (CUDA events, GPU only): 0.631 4.142 2.626
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.661 4.203 2.695
+
+===== SHAKE256-128f CUSPX (no cuPQC) | Tue Ols -la ~/.sshct 27 00:55:40 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): fde2f0cf38d0522c
+kernel_ms (CUDA events, GPU only): 0.254 0.843 5.787
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.284 0.905 5.862
+
+===== SHAKE256-192s CUSPX (no cuPQC) | Tue Oct 27 00:55:43 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): 7499a185d9c60839
+kernel_ms (CUDA events, GPU only): 0.819 8.079 3.113
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.849 8.145 3.188
+
+===== SHAKE256-192f CUSPX (no cuPQC) | Tue Oct 27 00:55:49 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): 66bc13cd8e59c908
+kernel_ms (CUDA events, GPU only): 0.303 1.438 7.264
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.333 1.507 7.345
+
+===== SHAKE256-256s CUSPX (no cuPQC) | Tue Oct 27 00:55:53 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): 467a9be3fe3cd5e5
+kernel_ms (CUDA events, GPU only): 0.753 9.564 4.193
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.783 9.635 4.272
+
+===== SHAKE256-256f CUSPX (no cuPQC) | Tue Oct 27 00:55:59 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): bcf36f432effaca3
+kernel_ms (CUDA events, GPU only): 0.388 2.233 7.450
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.418 2.309 7.535
+
+===== SHAKE256-128s CUSPX (no cuPQC) | Tue Oct 27 02:00:48 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): 862c26917804abe7
+kernel_ms (CUDA events, GPU only): 0.619 4.140 2.627
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.648 4.200 2.697
+
+===== SHAKE256-128f CUSPX (no cuPQC) | Tue Oct 27 02:00:52 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): fde2f0cf38d0522c
+kernel_ms (CUDA events, GPU only): 0.254 0.843 5.790
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.283 0.905 5.866
+
+===== SHAKE256-192s CUSPX (no cuPQC) | Tue Oct 27 02:00:55 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): 7499a185d9c60839
+kernel_ms (CUDA events, GPU only): 0.819 8.102 3.114
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.848 8.167 3.188
+
+===== SHAKE256-192f CUSPX (no cuPQC) | Tue Oct 27 02:01:01 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): 66bc13cd8e59c908
+kernel_ms (CUDA events, GPU only): 0.303 1.437 7.269
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.332 1.506 7.350
+
+===== SHAKE256-256s CUSPX (no cuPQC) | Tue Oct 27 02:01:05 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): 467a9be3fe3cd5e5
+kernel_ms (CUDA events, GPU only): 0.754 9.570 4.194
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.783 9.643 4.273
+
+===== SHAKE256-256f CUSPX (no cuPQC) | Tue Oct 27 02:01:11 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): bcf36f432effaca3
+kernel_ms (CUDA events, GPU only): 0.388 2.233 7.455
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.418 2.308 7.539
+
+===== SHAKE256-128s CUSPX (no cuPQC) | Tue Oct 27 02:50:44 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): 862c26917804abe7
+kernel_ms (CUDA events, GPU only): 0.615 4.134 2.623
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.642 4.185 2.684
+
+===== SHAKE256-128f CUSPX (no cuPQC) | Tue Oct 27 02:50:48 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): fde2f0cf38d0522c
+kernel_ms (CUDA events, GPU only): 0.253 0.846 5.779
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.279 0.895 5.842
+
+===== SHAKE256-192s CUSPX (no cuPQC) | Tue Oct 27 02:50:52 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): 7499a185d9c60839
+kernel_ms (CUDA events, GPU only): 0.817 8.104 3.111
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.844 8.156 3.173
+
+===== SHAKE256-192f CUSPX (no cuPQC) | Tue Oct 27 02:50:57 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): 66bc13cd8e59c908
+kernel_ms (CUDA events, GPU only): 0.300 1.440 7.255
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.326 1.490 7.316
+
+===== SHAKE256-256s CUSPX (no cuPQC) | Tue Oct 27 02:51:01 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): 467a9be3fe3cd5e5
+kernel_ms (CUDA events, GPU only): 0.749 9.586 4.187
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.776 9.639 4.250
+
+===== SHAKE256-256f CUSPX (no cuPQC) | Tue Oct 27 02:51:07 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cuspx
+fingerprint(pk||sm): bcf36f432effaca3
+kernel_ms (CUDA events, GPU only): 0.386 2.223 7.443
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.412 2.274 7.506

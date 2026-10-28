@@ -1,0 +1,658 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Poseidon2-BabyBear Constants &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/cupqc_override.css?v=ee9d665e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+
+
+    <script src="../../../../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'libraries/cupqc_hash/api/hash/poseidon2_constants/babybear';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="../../../../../_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../../_static/searchtools.js"></script>
+    <script src="../../../../../_static/language_data.js"></script>
+    <script src="../../../../../searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../../../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../../../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../introduction/requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Libraries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../cupqc_bigint/index.html">cuPQC-BigInt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cupqc_bigint/cupqc_bigint_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cupqc_bigint/cupqc_bigint_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../cupqc_bigint/cupqc_bigint_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_bigint/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_bigint/api/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_bigint/api/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../cupqc_ntt/index.html">cuPQC-NTT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cupqc_ntt/cupqc_ntt_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cupqc_ntt/cupqc_ntt_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../cupqc_ntt/cupqc_ntt_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_ntt/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_ntt/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_ntt/api/host.html">Host Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_ntt/api/prime_fields.html">Prime Field Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_ntt/api/types.html">Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../index.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../cupqc_hash_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cupqc_hash_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../cupqc_hash_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../traits.html">Traits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../device.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../merkle/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../merkle/objects.html">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../merkle/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../cupqc_pk/index.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cupqc_pk/cupqc_pk_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cupqc_pk/cupqc_pk_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../cupqc_pk/cupqc_pk_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_pk/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_pk/api/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_pk/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_pk/api/host.html">Host Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../additional/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../additional/security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../additional/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Poseidon2-BabyBear Constants</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="poseidon2-babybear-constants">
+<span id="poseidon2-constants-label"></span><h1>Poseidon2-BabyBear Constants<a class="headerlink" href="#poseidon2-babybear-constants" title="Link to this heading">#</a></h1>
+<p>This document provides the round constant arrays and Maximum Distance Separable (MDS) matrix used in the Poseidon2-BabyBear algorithm.</p>
+<section id="mds-matrix">
+<h2>MDS Matrix<a class="headerlink" href="#mds-matrix" title="Link to this heading">#</a></h2>
+<p>The Maximum Distance Separable (MDS) matrix used in the algorithm is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+5 &amp; 7 &amp; 1 &amp; 3 \\
+4 &amp; 6 &amp; 1 &amp; 1 \\
+1 &amp; 3 &amp; 5 &amp; 7 \\
+1 &amp; 1 &amp; 4 &amp; 6 \\
+\end{bmatrix}\end{split}\]</div>
+</section>
+<section id="width-16">
+<h2>Width 16<a class="headerlink" href="#width-16" title="Link to this heading">#</a></h2>
+<section id="external-round-constants">
+<h3>External Round Constants<a class="headerlink" href="#external-round-constants" title="Link to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// clang-format off</span>
+<span class="n">__constant__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">external_rc_array_16</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1774958255</span><span class="p">,</span><span class="w"> </span><span class="mi">1185780729</span><span class="p">,</span><span class="w"> </span><span class="mi">1621102414</span><span class="p">,</span><span class="w"> </span><span class="mi">1796380621</span><span class="p">,</span><span class="w"> </span><span class="mi">588815102</span><span class="p">,</span><span class="w"> </span><span class="mi">1932426223</span><span class="p">,</span><span class="w"> </span><span class="mi">1925334750</span><span class="p">,</span><span class="w"> </span><span class="mi">747903232</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">89648862</span><span class="p">,</span><span class="w"> </span><span class="mi">360728943</span><span class="p">,</span><span class="w"> </span><span class="mi">977184635</span><span class="p">,</span><span class="w"> </span><span class="mi">1425273457</span><span class="p">,</span><span class="w"> </span><span class="mi">256487465</span><span class="p">,</span><span class="w"> </span><span class="mi">1200041953</span><span class="p">,</span><span class="w"> </span><span class="mi">572403254</span><span class="p">,</span><span class="w"> </span><span class="mi">448208942</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1215789478</span><span class="p">,</span><span class="w"> </span><span class="mi">944884184</span><span class="p">,</span><span class="w"> </span><span class="mi">953948096</span><span class="p">,</span><span class="w"> </span><span class="mi">547326025</span><span class="p">,</span><span class="w"> </span><span class="mi">646827752</span><span class="p">,</span><span class="w"> </span><span class="mi">889997530</span><span class="p">,</span><span class="w"> </span><span class="mi">1536873262</span><span class="p">,</span><span class="w"> </span><span class="mi">86189867</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1065944411</span><span class="p">,</span><span class="w"> </span><span class="mi">32019634</span><span class="p">,</span><span class="w"> </span><span class="mi">333311454</span><span class="p">,</span><span class="w"> </span><span class="mi">456061748</span><span class="p">,</span><span class="w"> </span><span class="mi">1963448500</span><span class="p">,</span><span class="w"> </span><span class="mi">1827584334</span><span class="p">,</span><span class="w"> </span><span class="mi">1391160226</span><span class="p">,</span><span class="w"> </span><span class="mi">1348741381</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">88424255</span><span class="p">,</span><span class="w"> </span><span class="mi">104111868</span><span class="p">,</span><span class="w"> </span><span class="mi">1763866748</span><span class="p">,</span><span class="w"> </span><span class="mi">79691676</span><span class="p">,</span><span class="w"> </span><span class="mi">1988915530</span><span class="p">,</span><span class="w"> </span><span class="mi">1050669594</span><span class="p">,</span><span class="w"> </span><span class="mi">359890076</span><span class="p">,</span><span class="w"> </span><span class="mi">573163527</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">222820492</span><span class="p">,</span><span class="w"> </span><span class="mi">159256268</span><span class="p">,</span><span class="w"> </span><span class="mi">669703072</span><span class="p">,</span><span class="w"> </span><span class="mi">763177444</span><span class="p">,</span><span class="w"> </span><span class="mi">889367200</span><span class="p">,</span><span class="w"> </span><span class="mi">256335831</span><span class="p">,</span><span class="w"> </span><span class="mi">704371273</span><span class="p">,</span><span class="w"> </span><span class="mi">25886717</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">51754520</span><span class="p">,</span><span class="w"> </span><span class="mi">1833211857</span><span class="p">,</span><span class="w"> </span><span class="mi">454499742</span><span class="p">,</span><span class="w"> </span><span class="mi">1384520381</span><span class="p">,</span><span class="w"> </span><span class="mi">777848065</span><span class="p">,</span><span class="w"> </span><span class="mi">1053320300</span><span class="p">,</span><span class="w"> </span><span class="mi">1851729162</span><span class="p">,</span><span class="w"> </span><span class="mi">344647910</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">401996362</span><span class="p">,</span><span class="w"> </span><span class="mi">1046925956</span><span class="p">,</span><span class="w"> </span><span class="mi">5351995</span><span class="p">,</span><span class="w"> </span><span class="mi">1212119315</span><span class="p">,</span><span class="w"> </span><span class="mi">754867989</span><span class="p">,</span><span class="w"> </span><span class="mi">36972490</span><span class="p">,</span><span class="w"> </span><span class="mi">751272725</span><span class="p">,</span><span class="w"> </span><span class="mi">506915399</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1922082829</span><span class="p">,</span><span class="w"> </span><span class="mi">1870549801</span><span class="p">,</span><span class="w"> </span><span class="mi">1502529704</span><span class="p">,</span><span class="w"> </span><span class="mi">1990744480</span><span class="p">,</span><span class="w"> </span><span class="mi">1700391016</span><span class="p">,</span><span class="w"> </span><span class="mi">1702593455</span><span class="p">,</span><span class="w"> </span><span class="mi">321330495</span><span class="p">,</span><span class="w"> </span><span class="mi">528965731</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">183414327</span><span class="p">,</span><span class="w"> </span><span class="mi">1886297254</span><span class="p">,</span><span class="w"> </span><span class="mi">1178602734</span><span class="p">,</span><span class="w"> </span><span class="mi">1923111974</span><span class="p">,</span><span class="w"> </span><span class="mi">744004766</span><span class="p">,</span><span class="w"> </span><span class="mi">549271463</span><span class="p">,</span><span class="w"> </span><span class="mi">1781349648</span><span class="p">,</span><span class="w"> </span><span class="mi">542259047</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1536158148</span><span class="p">,</span><span class="w"> </span><span class="mi">715456982</span><span class="p">,</span><span class="w"> </span><span class="mi">503426110</span><span class="p">,</span><span class="w"> </span><span class="mi">340311124</span><span class="p">,</span><span class="w"> </span><span class="mi">1558555932</span><span class="p">,</span><span class="w"> </span><span class="mi">1226350925</span><span class="p">,</span><span class="w"> </span><span class="mi">742828095</span><span class="p">,</span><span class="w"> </span><span class="mi">1338992758</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1641600456</span><span class="p">,</span><span class="w"> </span><span class="mi">1843351545</span><span class="p">,</span><span class="w"> </span><span class="mi">301835475</span><span class="p">,</span><span class="w"> </span><span class="mi">43203215</span><span class="p">,</span><span class="w"> </span><span class="mi">386838401</span><span class="p">,</span><span class="w"> </span><span class="mi">1520185679</span><span class="p">,</span><span class="w"> </span><span class="mi">1235297680</span><span class="p">,</span><span class="w"> </span><span class="mi">904680097</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1491801617</span><span class="p">,</span><span class="w"> </span><span class="mi">1581784677</span><span class="p">,</span><span class="w"> </span><span class="mi">913384905</span><span class="p">,</span><span class="w"> </span><span class="mi">247083962</span><span class="p">,</span><span class="w"> </span><span class="mi">532844013</span><span class="p">,</span><span class="w"> </span><span class="mi">107190701</span><span class="p">,</span><span class="w"> </span><span class="mi">213827818</span><span class="p">,</span><span class="w"> </span><span class="mi">1979521776</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1358282574</span><span class="p">,</span><span class="w"> </span><span class="mi">1681743681</span><span class="p">,</span><span class="w"> </span><span class="mi">1867507480</span><span class="p">,</span><span class="w"> </span><span class="mi">1530706910</span><span class="p">,</span><span class="w"> </span><span class="mi">507181886</span><span class="p">,</span><span class="w"> </span><span class="mi">695185447</span><span class="p">,</span><span class="w"> </span><span class="mi">1172395131</span><span class="p">,</span><span class="w"> </span><span class="mi">1250800299</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1503161625</span><span class="p">,</span><span class="w"> </span><span class="mi">817684387</span><span class="p">,</span><span class="w"> </span><span class="mi">498481458</span><span class="p">,</span><span class="w"> </span><span class="mi">494676004</span><span class="p">,</span><span class="w"> </span><span class="mi">1404253825</span><span class="p">,</span><span class="w"> </span><span class="mi">108246855</span><span class="p">,</span><span class="w"> </span><span class="mi">59414691</span><span class="p">,</span><span class="w"> </span><span class="mi">744214112</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">890862029</span><span class="p">,</span><span class="w"> </span><span class="mi">1342765939</span><span class="p">,</span><span class="w"> </span><span class="mi">1417398904</span><span class="p">,</span><span class="w"> </span><span class="mi">1897591937</span><span class="p">,</span><span class="w"> </span><span class="mi">1066647396</span><span class="p">,</span><span class="w"> </span><span class="mi">1682806907</span><span class="p">,</span><span class="w"> </span><span class="mi">1015795079</span><span class="p">,</span><span class="w"> </span><span class="mi">1619482808</span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="internal-round-constants">
+<h3>Internal Round Constants<a class="headerlink" href="#internal-round-constants" title="Link to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__constant__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">internal_rc_array_16</span><span class="p">[</span><span class="mi">13</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="mi">1518359488</span><span class="p">,</span><span class="w"> </span><span class="mi">1765533241</span><span class="p">,</span><span class="w"> </span><span class="mi">945325693</span><span class="p">,</span><span class="w"> </span><span class="mi">422793067</span><span class="p">,</span><span class="w"> </span><span class="mi">311365592</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1311448267</span><span class="p">,</span><span class="w"> </span><span class="mi">1629555936</span><span class="p">,</span><span class="w"> </span><span class="mi">1009879353</span><span class="p">,</span><span class="w"> </span><span class="mi">190525218</span><span class="p">,</span><span class="w"> </span><span class="mi">786108885</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">557776863</span><span class="p">,</span><span class="w">  </span><span class="mi">212616710</span><span class="p">,</span><span class="w">  </span><span class="mi">605745517</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="internal-diagonal-constants">
+<h3>Internal Diagonal Constants<a class="headerlink" href="#internal-diagonal-constants" title="Link to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__constant__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">internal_diag_array_16</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="mi">174271892</span><span class="p">,</span><span class="w">  </span><span class="mi">1840666551</span><span class="p">,</span><span class="w"> </span><span class="mi">1459346590</span><span class="p">,</span><span class="w"> </span><span class="mi">86719882</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">863261185</span><span class="p">,</span><span class="w">  </span><span class="mi">1543704716</span><span class="p">,</span><span class="w"> </span><span class="mi">199992187</span><span class="p">,</span><span class="w">  </span><span class="mi">629943947</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">302161721</span><span class="p">,</span><span class="w">  </span><span class="mi">1766394318</span><span class="p">,</span><span class="w"> </span><span class="mi">1831016228</span><span class="p">,</span><span class="w"> </span><span class="mi">566473250</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1007223973</span><span class="p">,</span><span class="w"> </span><span class="mi">30846170</span><span class="p">,</span><span class="w">  </span><span class="mi">661675139</span><span class="p">,</span><span class="w">  </span><span class="mi">1378994178</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="width-24">
+<h2>Width 24<a class="headerlink" href="#width-24" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>External Round Constants<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__constant__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">external_rc_array_24</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">24</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">262278199</span><span class="p">,</span><span class="w">  </span><span class="mi">127253399</span><span class="p">,</span><span class="w">  </span><span class="mi">314968988</span><span class="p">,</span><span class="w">  </span><span class="mi">246143118</span><span class="p">,</span><span class="w">  </span><span class="mi">157582794</span><span class="p">,</span><span class="w">  </span><span class="mi">118043943</span><span class="p">,</span><span class="w">  </span><span class="mi">454905424</span><span class="p">,</span><span class="w">  </span><span class="mi">815798990</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1004040026</span><span class="p">,</span><span class="w"> </span><span class="mi">1773108264</span><span class="p">,</span><span class="w"> </span><span class="mi">1066694495</span><span class="p">,</span><span class="w"> </span><span class="mi">1930780904</span><span class="p">,</span><span class="w"> </span><span class="mi">1180307149</span><span class="p">,</span><span class="w"> </span><span class="mi">1464793095</span><span class="p">,</span><span class="w"> </span><span class="mi">1660766320</span><span class="p">,</span><span class="w"> </span><span class="mi">1389166148</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">343354132</span><span class="p">,</span><span class="w">  </span><span class="mi">1307439985</span><span class="p">,</span><span class="w"> </span><span class="mi">638242172</span><span class="p">,</span><span class="w">  </span><span class="mi">525458520</span><span class="p">,</span><span class="w">  </span><span class="mi">1964135730</span><span class="p">,</span><span class="w"> </span><span class="mi">1751797115</span><span class="p">,</span><span class="w"> </span><span class="mi">1421525369</span><span class="p">,</span><span class="w"> </span><span class="mi">831813382</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">695835963</span><span class="p">,</span><span class="w">  </span><span class="mi">1845603984</span><span class="p">,</span><span class="w"> </span><span class="mi">540703332</span><span class="p">,</span><span class="w">  </span><span class="mi">1333667262</span><span class="p">,</span><span class="w"> </span><span class="mi">1917861751</span><span class="p">,</span><span class="w"> </span><span class="mi">1170029417</span><span class="p">,</span><span class="w"> </span><span class="mi">1989924532</span><span class="p">,</span><span class="w"> </span><span class="mi">1518763784</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1339793538</span><span class="p">,</span><span class="w"> </span><span class="mi">622609176</span><span class="p">,</span><span class="w">  </span><span class="mi">686842369</span><span class="p">,</span><span class="w">  </span><span class="mi">1737016378</span><span class="p">,</span><span class="w"> </span><span class="mi">1282239129</span><span class="p">,</span><span class="w"> </span><span class="mi">897025192</span><span class="p">,</span><span class="w">  </span><span class="mi">716894289</span><span class="p">,</span><span class="w">  </span><span class="mi">1997503974</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">395622276</span><span class="p">,</span><span class="w">  </span><span class="mi">1201063290</span><span class="p">,</span><span class="w"> </span><span class="mi">1917549072</span><span class="p">,</span><span class="w"> </span><span class="mi">1150912935</span><span class="p">,</span><span class="w"> </span><span class="mi">1687379185</span><span class="p">,</span><span class="w"> </span><span class="mi">1507936940</span><span class="p">,</span><span class="w"> </span><span class="mi">241306552</span><span class="p">,</span><span class="w">  </span><span class="mi">989176635</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1147522062</span><span class="p">,</span><span class="w"> </span><span class="mi">27129487</span><span class="p">,</span><span class="w">   </span><span class="mi">1257820264</span><span class="p">,</span><span class="w"> </span><span class="mi">142102402</span><span class="p">,</span><span class="w">  </span><span class="mi">217046702</span><span class="p">,</span><span class="w">  </span><span class="mi">1664590951</span><span class="p">,</span><span class="w"> </span><span class="mi">855276054</span><span class="p">,</span><span class="w"> </span><span class="mi">1215259350</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">946500736</span><span class="p">,</span><span class="w">  </span><span class="mi">552696906</span><span class="p">,</span><span class="w">  </span><span class="mi">1424297384</span><span class="p">,</span><span class="w"> </span><span class="mi">538103555</span><span class="p">,</span><span class="w">  </span><span class="mi">1608853840</span><span class="p">,</span><span class="w"> </span><span class="mi">162510541</span><span class="p">,</span><span class="w">  </span><span class="mi">623051854</span><span class="p">,</span><span class="w"> </span><span class="mi">1549062383</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1908416316</span><span class="p">,</span><span class="w"> </span><span class="mi">1622328571</span><span class="p">,</span><span class="w"> </span><span class="mi">1079030649</span><span class="p">,</span><span class="w"> </span><span class="mi">1584033957</span><span class="p">,</span><span class="w"> </span><span class="mi">1099252725</span><span class="p">,</span><span class="w"> </span><span class="mi">1910423126</span><span class="p">,</span><span class="w"> </span><span class="mi">447555988</span><span class="p">,</span><span class="w"> </span><span class="mi">862495875</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">128479034</span><span class="p">,</span><span class="w"> </span><span class="mi">1587822577</span><span class="p">,</span><span class="w"> </span><span class="mi">608401422</span><span class="p">,</span><span class="w">  </span><span class="mi">1290028279</span><span class="p">,</span><span class="w"> </span><span class="mi">342857858</span><span class="p">,</span><span class="w">  </span><span class="mi">825405577</span><span class="p">,</span><span class="w">  </span><span class="mi">427731030</span><span class="p">,</span><span class="w">  </span><span class="mi">1718628547</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">588764636</span><span class="p">,</span><span class="w"> </span><span class="mi">204228775</span><span class="p">,</span><span class="w">  </span><span class="mi">1454563174</span><span class="p">,</span><span class="w"> </span><span class="mi">1740472809</span><span class="p">,</span><span class="w"> </span><span class="mi">1338899225</span><span class="p">,</span><span class="w"> </span><span class="mi">1269493554</span><span class="p">,</span><span class="w"> </span><span class="mi">53007114</span><span class="p">,</span><span class="w">   </span><span class="mi">1647670797</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">306391314</span><span class="p">,</span><span class="w"> </span><span class="mi">172614232</span><span class="p">,</span><span class="w">  </span><span class="mi">51256176</span><span class="p">,</span><span class="w">   </span><span class="mi">1221257987</span><span class="p">,</span><span class="w"> </span><span class="mi">1239734761</span><span class="p">,</span><span class="w"> </span><span class="mi">273790406</span><span class="p">,</span><span class="w">  </span><span class="mi">1781980094</span><span class="p">,</span><span class="w"> </span><span class="mi">1291790245</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">53041581</span><span class="p">,</span><span class="w">   </span><span class="mi">723038058</span><span class="p">,</span><span class="w">  </span><span class="mi">1439947916</span><span class="p">,</span><span class="w"> </span><span class="mi">1136469704</span><span class="p">,</span><span class="w"> </span><span class="mi">205609311</span><span class="p">,</span><span class="w">  </span><span class="mi">1883820770</span><span class="p">,</span><span class="w"> </span><span class="mi">14387587</span><span class="p">,</span><span class="w">   </span><span class="mi">720724951</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1854174607</span><span class="p">,</span><span class="w"> </span><span class="mi">1629316321</span><span class="p">,</span><span class="w"> </span><span class="mi">530151394</span><span class="p">,</span><span class="w">  </span><span class="mi">1679178250</span><span class="p">,</span><span class="w"> </span><span class="mi">1549779579</span><span class="p">,</span><span class="w"> </span><span class="mi">48375137</span><span class="p">,</span><span class="w">   </span><span class="mi">976057819</span><span class="p">,</span><span class="w">  </span><span class="mi">463976218</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">875839332</span><span class="p">,</span><span class="w">  </span><span class="mi">1946596189</span><span class="p">,</span><span class="w"> </span><span class="mi">434078361</span><span class="p">,</span><span class="w">  </span><span class="mi">1878280202</span><span class="p">,</span><span class="w"> </span><span class="mi">1363837384</span><span class="p">,</span><span class="w"> </span><span class="mi">1470845646</span><span class="p">,</span><span class="w"> </span><span class="mi">1792450386</span><span class="p">,</span><span class="w"> </span><span class="mi">1040977421</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1209164052</span><span class="p">,</span><span class="w"> </span><span class="mi">714957516</span><span class="p">,</span><span class="w"> </span><span class="mi">390340387</span><span class="p">,</span><span class="w">  </span><span class="mi">1213686459</span><span class="p">,</span><span class="w"> </span><span class="mi">790726260</span><span class="p">,</span><span class="w">  </span><span class="mi">117294666</span><span class="p">,</span><span class="w">  </span><span class="mi">140621810</span><span class="p">,</span><span class="w">  </span><span class="mi">993455846</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1889603648</span><span class="p">,</span><span class="w"> </span><span class="mi">78845751</span><span class="p">,</span><span class="w">  </span><span class="mi">925018226</span><span class="p">,</span><span class="w">  </span><span class="mi">708123747</span><span class="p">,</span><span class="w">  </span><span class="mi">1647665372</span><span class="p">,</span><span class="w"> </span><span class="mi">1649953458</span><span class="p">,</span><span class="w"> </span><span class="mi">942439428</span><span class="p">,</span><span class="w">  </span><span class="mi">1006235079</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">238616145</span><span class="p">,</span><span class="w">  </span><span class="mi">930036496</span><span class="p">,</span><span class="w"> </span><span class="mi">1401020792</span><span class="p">,</span><span class="w"> </span><span class="mi">989618631</span><span class="p">,</span><span class="w">  </span><span class="mi">1545325389</span><span class="p">,</span><span class="w"> </span><span class="mi">1715719711</span><span class="p">,</span><span class="w"> </span><span class="mi">755691969</span><span class="p">,</span><span class="w">  </span><span class="mi">150307788</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1567618575</span><span class="p">,</span><span class="w"> </span><span class="mi">1663353317</span><span class="p">,</span><span class="w"> </span><span class="mi">1950429111</span><span class="p">,</span><span class="w"> </span><span class="mi">1891637550</span><span class="p">,</span><span class="w"> </span><span class="mi">192082241</span><span class="p">,</span><span class="w">  </span><span class="mi">1080533265</span><span class="p">,</span><span class="w"> </span><span class="mi">1463323727</span><span class="p">,</span><span class="w"> </span><span class="mi">890243564</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">158646617</span><span class="p">,</span><span class="w">  </span><span class="mi">1402624179</span><span class="p">,</span><span class="w"> </span><span class="mi">59510015</span><span class="p">,</span><span class="w">   </span><span class="mi">1198261138</span><span class="p">,</span><span class="w"> </span><span class="mi">1065075039</span><span class="p">,</span><span class="w"> </span><span class="mi">1150410028</span><span class="p">,</span><span class="w"> </span><span class="mi">1293938517</span><span class="p">,</span><span class="w"> </span><span class="mi">76770019</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1478577620</span><span class="p">,</span><span class="w"> </span><span class="mi">1748789933</span><span class="p">,</span><span class="w"> </span><span class="mi">457372011</span><span class="p">,</span><span class="w">  </span><span class="mi">1841795381</span><span class="p">,</span><span class="w"> </span><span class="mi">760115692</span><span class="p">,</span><span class="w">  </span><span class="mi">1042892522</span><span class="p">,</span><span class="w"> </span><span class="mi">1507649755</span><span class="p">,</span><span class="w"> </span><span class="mi">1827572010</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1206940496</span><span class="p">,</span><span class="w"> </span><span class="mi">1896271507</span><span class="p">,</span><span class="w"> </span><span class="mi">1003792297</span><span class="p">,</span><span class="w"> </span><span class="mi">738091882</span><span class="p">,</span><span class="w"> </span><span class="mi">1124078057</span><span class="p">,</span><span class="w"> </span><span class="mi">1889898</span><span class="p">,</span><span class="w">     </span><span class="mi">813674331</span><span class="p">,</span><span class="w">  </span><span class="mi">228520958</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1832911930</span><span class="p">,</span><span class="w"> </span><span class="mi">781141772</span><span class="p">,</span><span class="w">  </span><span class="mi">459826664</span><span class="p">,</span><span class="w">  </span><span class="mi">202271745</span><span class="p">,</span><span class="w"> </span><span class="mi">1296144415</span><span class="p">,</span><span class="w"> </span><span class="mi">1111203133</span><span class="p">,</span><span class="w"> </span><span class="mi">1090783436</span><span class="p">,</span><span class="w">  </span><span class="mi">641665156</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1393671120</span><span class="p">,</span><span class="w"> </span><span class="mi">1303271640</span><span class="p">,</span><span class="w"> </span><span class="mi">809508074</span><span class="p">,</span><span class="w">  </span><span class="mi">162506101</span><span class="p">,</span><span class="w"> </span><span class="mi">1262312258</span><span class="p">,</span><span class="w"> </span><span class="mi">1672219447</span><span class="p">,</span><span class="w"> </span><span class="mi">1608891156</span><span class="p">,</span><span class="w">  </span><span class="mi">1380248020</span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Internal Round Constants<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__constant__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">internal_rc_array_24</span><span class="p">[</span><span class="mi">21</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="mi">497520322</span><span class="p">,</span><span class="w">  </span><span class="mi">1930103076</span><span class="p">,</span><span class="w"> </span><span class="mi">1052077299</span><span class="p">,</span><span class="w"> </span><span class="mi">1540960371</span><span class="p">,</span><span class="w"> </span><span class="mi">924863639</span><span class="p">,</span><span class="w">  </span><span class="mi">1365519753</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1726563304</span><span class="p">,</span><span class="w"> </span><span class="mi">440300254</span><span class="p">,</span><span class="w">  </span><span class="mi">1891545577</span><span class="p">,</span><span class="w"> </span><span class="mi">822033215</span><span class="p">,</span><span class="w">  </span><span class="mi">1111544260</span><span class="p">,</span><span class="w"> </span><span class="mi">308575117</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1708681573</span><span class="p">,</span><span class="w"> </span><span class="mi">1240419708</span><span class="p">,</span><span class="w"> </span><span class="mi">1199068823</span><span class="p">,</span><span class="w"> </span><span class="mi">1186174623</span><span class="p">,</span><span class="w"> </span><span class="mi">1551596046</span><span class="p">,</span><span class="w"> </span><span class="mi">1886977120</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1327682690</span><span class="p">,</span><span class="w"> </span><span class="mi">1210751726</span><span class="p">,</span><span class="w"> </span><span class="mi">1810596765</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Internal Diagonal Constants<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__constant__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">internal_diag_array_24</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="mi">1083257840</span><span class="p">,</span><span class="w"> </span><span class="mi">375892129</span><span class="p">,</span><span class="w">  </span><span class="mi">111593398</span><span class="p">,</span><span class="w">  </span><span class="mi">1867716110</span><span class="p">,</span><span class="w"> </span><span class="mi">658182609</span><span class="p">,</span><span class="w">  </span><span class="mi">51866717</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1928969209</span><span class="p">,</span><span class="w"> </span><span class="mi">1942928017</span><span class="p">,</span><span class="w"> </span><span class="mi">1558116381</span><span class="p">,</span><span class="w"> </span><span class="mi">20525701</span><span class="p">,</span><span class="w">   </span><span class="mi">1188752902</span><span class="p">,</span><span class="w"> </span><span class="mi">106789798</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1389833583</span><span class="p">,</span><span class="w"> </span><span class="mi">98371040</span><span class="p">,</span><span class="w">   </span><span class="mi">1001081699</span><span class="p">,</span><span class="w"> </span><span class="mi">1792686146</span><span class="p">,</span><span class="w"> </span><span class="mi">801504236</span><span class="p">,</span><span class="w">  </span><span class="mi">1997365680</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1461037801</span><span class="p">,</span><span class="w"> </span><span class="mi">65998480</span><span class="p">,</span><span class="w">   </span><span class="mi">1974912880</span><span class="p">,</span><span class="w"> </span><span class="mi">606789471</span><span class="p">,</span><span class="w">  </span><span class="mi">13683276</span><span class="p">,</span><span class="w">   </span><span class="mi">918610824</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mds-matrix">MDS Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#width-16">Width 16</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#external-round-constants">External Round Constants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-round-constants">Internal Round Constants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-diagonal-constants">Internal Diagonal Constants</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#width-24">Width 24</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">External Round Constants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Internal Round Constants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Internal Diagonal Constants</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../../../../../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../../../../../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2026, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

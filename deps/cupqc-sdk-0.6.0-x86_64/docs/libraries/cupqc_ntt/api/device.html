@@ -1,0 +1,1223 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Device Functions &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/cupqc_override.css?v=ee9d665e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+
+
+    <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'libraries/cupqc_ntt/api/device';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="../../../_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Host Functions" href="host.html" />
+    <link rel="prev" title="Operators" href="operators.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Libraries</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cupqc_bigint/index.html">cuPQC-BigInt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_bigint/cupqc_bigint_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_bigint/cupqc_bigint_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../cupqc_bigint/cupqc_bigint_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_bigint/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_bigint/api/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_bigint/api/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">cuPQC-NTT</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_ntt_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_ntt_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../cupqc_ntt_api.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="operators.html">Operators</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="host.html">Host Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prime_fields.html">Prime Field Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html">Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cupqc_hash/index.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_hash/cupqc_hash_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_hash/cupqc_hash_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../cupqc_hash/cupqc_hash_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../cupqc_hash/api/hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/hash/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/hash/traits.html">Traits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/hash/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../cupqc_hash/api/merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/merkle/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/merkle/objects.html">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/merkle/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cupqc_pk/index.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_pk/cupqc_pk_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_pk/cupqc_pk_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../cupqc_pk/cupqc_pk_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_pk/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_pk/api/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_pk/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_pk/api/host.html">Host Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../additional/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../additional/security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../additional/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">cuPQC-NTT</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../cupqc_ntt_api.html" class="nav-link">cuPQC-NTT API Reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Device Functions</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="device-functions">
+<span id="cupqc-ntt-device-functions-label"></span><h1>Device Functions<a class="headerlink" href="#device-functions" title="Link to this heading">#</a></h1>
+<p>Device functions can be accessed from instances of a descriptor <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">NTT</span></code>.</p>
+<section id="standard-ntt">
+<h2>Standard NTT<a class="headerlink" href="#standard-ntt" title="Link to this heading">#</a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9Precision">
+<span id="_CPPv3N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9Precision"></span><span id="_CPPv2N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9Precision"></span><span id="cupqc::NTT::execute__PrecisionP.PrecisionCP.PrecisionC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">execute</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">twiddles</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9Precision" title="Link to this definition">#</a><br /></dt>
+<dd><p>Performs an in-place forward NTT on <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Shared-memory buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>, populated by <a class="reference internal" href="#_CPPv4N5cupqc3NTT4loadEP9PrecisionPK9Precision" title="cupqc::NTT::load"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::load()</span></code></a> or
+<a class="reference internal" href="#_CPPv4N5cupqc3NTT12load_to_montEP9PrecisionPK9PrecisionK8nttConstI9PrecisionE" title="cupqc::NTT::load_to_mont"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::load_to_mont()</span></code></a>; must already be in Montgomery form. Used in place as both
+input and output. Must not be a global memory pointer. The forward NTT overwrites <code class="docutils literal notranslate"><span class="pre">data</span></code>
+with the result, in Montgomery form.</p></li>
+<li><p><strong>twiddles</strong> – Precomputed forward twiddle table of length <code class="docutils literal notranslate"><span class="pre">N</span></code>, in Montgomery form.</p></li>
+<li><p><strong>p</strong> – Prime field modulus.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9PrecisionK9Precision">
+<span id="_CPPv3N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9PrecisionK9Precision"></span><span id="_CPPv2N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9PrecisionK9Precision"></span><span id="cupqc::NTT::execute__PrecisionP.PrecisionCP.PrecisionC.PrecisionC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">execute</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">inv_twiddles</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">N_inv</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9PrecisionK9Precision" title="Link to this definition">#</a><br /></dt>
+<dd><p>Performs an in-place inverse NTT on <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Shared-memory buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>, populated by <a class="reference internal" href="#_CPPv4N5cupqc3NTT4loadEP9PrecisionPK9Precision" title="cupqc::NTT::load"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::load()</span></code></a> or
+<a class="reference internal" href="#_CPPv4N5cupqc3NTT12load_to_montEP9PrecisionPK9PrecisionK8nttConstI9PrecisionE" title="cupqc::NTT::load_to_mont"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::load_to_mont()</span></code></a>; must already be in Montgomery form. Used in place as both
+input and output. Must not be a global memory pointer. The inverse NTT overwrites <code class="docutils literal notranslate"><span class="pre">data</span></code>
+with the result, in Montgomery form.</p></li>
+<li><p><strong>inv_twiddles</strong> – Precomputed inverse twiddle table of length <code class="docutils literal notranslate"><span class="pre">N</span></code>, in Montgomery form.</p></li>
+<li><p><strong>p</strong> – Prime field modulus.</p></li>
+<li><p><strong>N_inv</strong> – Multiplicative inverse of <code class="docutils literal notranslate"><span class="pre">N</span></code> modulo <code class="docutils literal notranslate"><span class="pre">p</span></code> (<code class="docutils literal notranslate"><span class="pre">N</span></code><sup>-1</sup> mod <code class="docutils literal notranslate"><span class="pre">p</span></code>), applied as the normalisation factor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT13make_twiddlesEP9PrecisionK9PrecisionK9Precision">
+<span id="_CPPv3N5cupqc3NTT13make_twiddlesEP9PrecisionK9PrecisionK9Precision"></span><span id="_CPPv2N5cupqc3NTT13make_twiddlesEP9PrecisionK9PrecisionK9Precision"></span><span id="cupqc::NTT::make_twiddles__PrecisionP.PrecisionC.PrecisionC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">make_twiddles</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">twiddles</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">g</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT13make_twiddlesEP9PrecisionK9PrecisionK9Precision" title="Link to this definition">#</a><br /></dt>
+<dd><p>Writes <code class="docutils literal notranslate"><span class="pre">N</span></code> forward twiddle factors to the output buffer <code class="docutils literal notranslate"><span class="pre">twiddles</span></code> for prime <code class="docutils literal notranslate"><span class="pre">p</span></code> and primitive root <code class="docutils literal notranslate"><span class="pre">g</span></code>.
+Call inside a single-thread kernel (<code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;1,</span> <span class="pre">1&gt;&gt;&gt;</span></code>). The twiddle factors are produced in
+standard (non-Montgomery) form; call <a class="reference internal" href="#_CPPv4N5cupqc3NTT26transform_twiddles_to_montEP9PrecisionK9Precision" title="cupqc::NTT::transform_twiddles_to_mont"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::transform_twiddles_to_mont()</span></code></a> afterwards
+to convert them to Montgomery form before use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>twiddles</strong> – Output buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>; on return it holds the forward twiddle table in standard form.</p></li>
+<li><p><strong>p</strong> – Prime field modulus.</p></li>
+<li><p><strong>g</strong> – Primitive root modulo <code class="docutils literal notranslate"><span class="pre">p</span></code> used to generate twiddles.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT26transform_twiddles_to_montEP9PrecisionK9Precision">
+<span id="_CPPv3N5cupqc3NTT26transform_twiddles_to_montEP9PrecisionK9Precision"></span><span id="_CPPv2N5cupqc3NTT26transform_twiddles_to_montEP9PrecisionK9Precision"></span><span id="cupqc::NTT::transform_twiddles_to_mont__PrecisionP.PrecisionC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">transform_twiddles_to_mont</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">twiddles</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT26transform_twiddles_to_montEP9PrecisionK9Precision" title="Link to this definition">#</a><br /></dt>
+<dd><p>Converts a twiddle table from standard form to Montgomery form in place. Unlike
+<a class="reference internal" href="#_CPPv4N5cupqc3NTT13make_twiddlesEP9PrecisionK9PrecisionK9Precision" title="cupqc::NTT::make_twiddles"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::make_twiddles()</span></code></a>, this is a blockwise function — call it from a kernel launched
+with a full block of <code class="docutils literal notranslate"><span class="pre">NTT::BlockDim</span></code> threads (not <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;1,</span> <span class="pre">1&gt;&gt;&gt;</span></code>), with all threads in the
+block calling it collectively. Call this after <a class="reference internal" href="#_CPPv4N5cupqc3NTT13make_twiddlesEP9PrecisionK9PrecisionK9Precision" title="cupqc::NTT::make_twiddles"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::make_twiddles()</span></code></a> before passing
+the twiddle table to any execute function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>twiddles</strong> – Twiddle table of length <code class="docutils literal notranslate"><span class="pre">N</span></code> to be converted in place; on return holds the twiddle table in Montgomery form.</p></li>
+<li><p><strong>p</strong> – Prime field modulus.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="data-transfer">
+<h2>Data Transfer<a class="headerlink" href="#data-transfer" title="Link to this heading">#</a></h2>
+<p>These functions move polynomial data between global memory and the shared-memory workspace used
+by <a class="reference internal" href="#_CPPv4N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9Precision" title="cupqc::NTT::execute"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::execute()</span></code></a>. <code class="docutils literal notranslate"><span class="pre">load</span></code> and <code class="docutils literal notranslate"><span class="pre">store</span></code> copy raw values without any domain
+conversion — use <code class="docutils literal notranslate"><span class="pre">load</span></code> when the source data is already in Montgomery form, and <code class="docutils literal notranslate"><span class="pre">store</span></code>
+when the result should remain in Montgomery form in global memory. Use <code class="docutils literal notranslate"><span class="pre">load_to_mont</span></code> /
+<code class="docutils literal notranslate"><span class="pre">store_from_mont</span></code> to convert explicitly at the boundary.</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT4loadEP9PrecisionPK9Precision">
+<span id="_CPPv3N5cupqc3NTT4loadEP9PrecisionPK9Precision"></span><span id="_CPPv2N5cupqc3NTT4loadEP9PrecisionPK9Precision"></span><span id="cupqc::NTT::load__PrecisionP.PrecisionCP"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">load</span></span></span><span class="sig-paren">(</span><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sdata</span></span></em>, <em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT4loadEP9PrecisionPK9Precision" title="Link to this definition">#</a><br /></dt>
+<dd><p>Loads <code class="docutils literal notranslate"><span class="pre">N</span></code> elements from global memory <code class="docutils literal notranslate"><span class="pre">data</span></code> into the shared-memory workspace <code class="docutils literal notranslate"><span class="pre">sdata</span></code>
+without domain conversion. Use when <code class="docutils literal notranslate"><span class="pre">data</span></code> is already in Montgomery form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sdata</strong> – Shared-memory destination buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+<li><p><strong>data</strong> – Global-memory source buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT12load_to_montEP9PrecisionPK9PrecisionK8nttConstI9PrecisionE">
+<span id="_CPPv3N5cupqc3NTT12load_to_montEP9PrecisionPK9PrecisionK8nttConstI9PrecisionE"></span><span id="_CPPv2N5cupqc3NTT12load_to_montEP9PrecisionPK9PrecisionK8nttConstI9PrecisionE"></span><span id="cupqc::NTT::load_to_mont__PrecisionP.PrecisionCP.nttConst:Precision:C"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">load_to_mont</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sdata</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><span class="n"><span class="pre">nttConst</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ntt_const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><span class="n"><span class="pre">nttConst</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT12load_to_montEP9PrecisionPK9PrecisionK8nttConstI9PrecisionE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Loads <code class="docutils literal notranslate"><span class="pre">N</span></code> elements from global memory <code class="docutils literal notranslate"><span class="pre">data</span></code> into the shared-memory workspace <code class="docutils literal notranslate"><span class="pre">sdata</span></code>,
+converting from standard to Montgomery form using <code class="docutils literal notranslate"><span class="pre">ntt_const</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sdata</strong> – Shared-memory destination buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+<li><p><strong>data</strong> – Global-memory source buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code> in standard (non-Montgomery) form.</p></li>
+<li><p><strong>ntt_const</strong> – Montgomery constants for the prime. Construct with <code class="docutils literal notranslate"><span class="pre">nttConst&lt;Precision&gt;(p)</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT5storeEP9PrecisionP9Precision">
+<span id="_CPPv3N5cupqc3NTT5storeEP9PrecisionP9Precision"></span><span id="_CPPv2N5cupqc3NTT5storeEP9PrecisionP9Precision"></span><span id="cupqc::NTT::store__PrecisionP.PrecisionP"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">store</span></span></span><span class="sig-paren">(</span><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sdata</span></span></em>, <em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT5storeEP9PrecisionP9Precision" title="Link to this definition">#</a><br /></dt>
+<dd><p>Stores <code class="docutils literal notranslate"><span class="pre">N</span></code> elements from the shared-memory workspace <code class="docutils literal notranslate"><span class="pre">sdata</span></code> to global memory <code class="docutils literal notranslate"><span class="pre">data</span></code>
+without domain conversion. Use when the result should remain in Montgomery form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sdata</strong> – Shared-memory source buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+<li><p><strong>data</strong> – Global-memory destination buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT15store_from_montEP9PrecisionP9PrecisionK8nttConstI9PrecisionE">
+<span id="_CPPv3N5cupqc3NTT15store_from_montEP9PrecisionP9PrecisionK8nttConstI9PrecisionE"></span><span id="_CPPv2N5cupqc3NTT15store_from_montEP9PrecisionP9PrecisionK8nttConstI9PrecisionE"></span><span id="cupqc::NTT::store_from_mont__PrecisionP.PrecisionP.nttConst:Precision:C"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">store_from_mont</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sdata</span></span></em>,</dd>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><span class="n"><span class="pre">nttConst</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ntt_const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><span class="n"><span class="pre">nttConst</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT15store_from_montEP9PrecisionP9PrecisionK8nttConstI9PrecisionE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Stores <code class="docutils literal notranslate"><span class="pre">N</span></code> elements from the shared-memory workspace <code class="docutils literal notranslate"><span class="pre">sdata</span></code> to global memory <code class="docutils literal notranslate"><span class="pre">data</span></code>,
+converting from Montgomery to standard form using <code class="docutils literal notranslate"><span class="pre">ntt_const</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sdata</strong> – Shared-memory source buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+<li><p><strong>data</strong> – Global-memory destination buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+<li><p><strong>ntt_const</strong> – Montgomery constants for the prime. Construct with <code class="docutils literal notranslate"><span class="pre">nttConst&lt;Precision&gt;(p)</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="threadwise-montgomery-conversion">
+<h2>Threadwise Montgomery Conversion<a class="headerlink" href="#threadwise-montgomery-conversion" title="Link to this heading">#</a></h2>
+<p>These functions convert a <strong>single element</strong> between standard and Montgomery form.
+Unlike <a class="reference internal" href="#_CPPv4N5cupqc3NTT12load_to_montEP9PrecisionPK9PrecisionK8nttConstI9PrecisionE" title="cupqc::NTT::load_to_mont"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::load_to_mont()</span></code></a> and <a class="reference internal" href="#_CPPv4N5cupqc3NTT15store_from_montEP9PrecisionP9PrecisionK8nttConstI9PrecisionE" title="cupqc::NTT::store_from_mont"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::store_from_mont()</span></code></a>, which
+cooperate across all threads in the block to convert the full <code class="docutils literal notranslate"><span class="pre">N</span></code>-element array,
+these functions operate on one value per calling thread and can be called
+independently without synchronisation. Use them for pointwise conversions where
+only individual elements need to change domain.</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT7to_montE9PrecisionK8nttConstI9PrecisionE">
+<span id="_CPPv3N5cupqc3NTT7to_montE9PrecisionK8nttConstI9PrecisionE"></span><span id="_CPPv2N5cupqc3NTT7to_montE9PrecisionK8nttConstI9PrecisionE"></span><span id="cupqc::NTT::to_mont__Precision.nttConst:Precision:C"></span><span class="pre">__device__</span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">to_mont</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">x</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><span class="n"><span class="pre">nttConst</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ntt_const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><span class="n"><span class="pre">nttConst</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT7to_montE9PrecisionK8nttConstI9PrecisionE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Converts a single element <code class="docutils literal notranslate"><span class="pre">x</span></code> from standard form to Montgomery form.
+Each calling thread converts its own element independently.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Element in standard (non-Montgomery) form.</p></li>
+<li><p><strong>ntt_const</strong> – Montgomery constants for the prime. Construct with <code class="docutils literal notranslate"><span class="pre">nttConst&lt;Precision&gt;(p)</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">x</span></code> in Montgomery form.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT9from_montE9PrecisionK8nttConstI9PrecisionE">
+<span id="_CPPv3N5cupqc3NTT9from_montE9PrecisionK8nttConstI9PrecisionE"></span><span id="_CPPv2N5cupqc3NTT9from_montE9PrecisionK8nttConstI9PrecisionE"></span><span id="cupqc::NTT::from_mont__Precision.nttConst:Precision:C"></span><span class="pre">__device__</span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">from_mont</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">x</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><span class="n"><span class="pre">nttConst</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ntt_const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><span class="n"><span class="pre">nttConst</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT9from_montE9PrecisionK8nttConstI9PrecisionE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Converts a single element <code class="docutils literal notranslate"><span class="pre">x</span></code> from Montgomery form to standard form.
+Each calling thread converts its own element independently.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Element in Montgomery form.</p></li>
+<li><p><strong>ntt_const</strong> – Montgomery constants for the prime. Construct with <code class="docutils literal notranslate"><span class="pre">nttConst&lt;Precision&gt;(p)</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">x</span></code> in standard (non-Montgomery) form.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="transformed-domain-arithmetic">
+<h2>Transformed-Domain Arithmetic<a class="headerlink" href="#transformed-domain-arithmetic" title="Link to this heading">#</a></h2>
+<p>Element-wise modular arithmetic on two NTT-transformed polynomials held in shared memory.
+Both operands are assumed to be in Montgomery form, as produced by <a class="reference internal" href="#_CPPv4N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9Precision" title="cupqc::NTT::execute"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::execute()</span></code></a>
+after a Montgomery-domain load. <code class="docutils literal notranslate"><span class="pre">data1</span></code> is updated in place; <code class="docutils literal notranslate"><span class="pre">data2</span></code> is read-only.</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT3addEP9PrecisionPK9PrecisionK9Precision">
+<span id="_CPPv3N5cupqc3NTT3addEP9PrecisionPK9PrecisionK9Precision"></span><span id="_CPPv2N5cupqc3NTT3addEP9PrecisionPK9PrecisionK9Precision"></span><span id="cupqc::NTT::add__PrecisionP.PrecisionCP.PrecisionC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">add</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data1</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data2</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT3addEP9PrecisionPK9PrecisionK9Precision" title="Link to this definition">#</a><br /></dt>
+<dd><p>Computes <code class="docutils literal notranslate"><span class="pre">data1[i]</span> <span class="pre">=</span> <span class="pre">(data1[i]</span> <span class="pre">+</span> <span class="pre">data2[i])</span> <span class="pre">mod</span> <span class="pre">p</span></code> for all <code class="docutils literal notranslate"><span class="pre">i</span></code> in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">N)</span></code>.
+Both buffers must be in Montgomery form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data1</strong> – In/out shared-memory buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code> in Montgomery form; updated in place.</p></li>
+<li><p><strong>data2</strong> – Read-only shared-memory buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code> in Montgomery form.</p></li>
+<li><p><strong>p</strong> – Prime field modulus.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT3mulEP9PrecisionPK9PrecisionK9Precision">
+<span id="_CPPv3N5cupqc3NTT3mulEP9PrecisionPK9PrecisionK9Precision"></span><span id="_CPPv2N5cupqc3NTT3mulEP9PrecisionPK9PrecisionK9Precision"></span><span id="cupqc::NTT::mul__PrecisionP.PrecisionCP.PrecisionC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">mul</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data1</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data2</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT3mulEP9PrecisionPK9PrecisionK9Precision" title="Link to this definition">#</a><br /></dt>
+<dd><p>Computes <code class="docutils literal notranslate"><span class="pre">data1[i]</span> <span class="pre">=</span> <span class="pre">(data1[i]</span> <span class="pre">*</span> <span class="pre">data2[i])</span> <span class="pre">mod</span> <span class="pre">p</span></code> for all <code class="docutils literal notranslate"><span class="pre">i</span></code> in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">N)</span></code>.
+Both buffers must be in Montgomery form; the result is also in Montgomery form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data1</strong> – In/out shared-memory buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code> in Montgomery form; updated in place.</p></li>
+<li><p><strong>data2</strong> – Read-only shared-memory buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code> in Montgomery form.</p></li>
+<li><p><strong>p</strong> – Prime field modulus.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT3subEP9PrecisionPK9PrecisionK9Precision">
+<span id="_CPPv3N5cupqc3NTT3subEP9PrecisionPK9PrecisionK9Precision"></span><span id="_CPPv2N5cupqc3NTT3subEP9PrecisionPK9PrecisionK9Precision"></span><span id="cupqc::NTT::sub__PrecisionP.PrecisionCP.PrecisionC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sub</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data1</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data2</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT3subEP9PrecisionPK9PrecisionK9Precision" title="Link to this definition">#</a><br /></dt>
+<dd><p>Computes <code class="docutils literal notranslate"><span class="pre">data1[i]</span> <span class="pre">=</span> <span class="pre">(data1[i]</span> <span class="pre">-</span> <span class="pre">data2[i])</span> <span class="pre">mod</span> <span class="pre">p</span></code> for all <code class="docutils literal notranslate"><span class="pre">i</span></code> in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">N)</span></code>.
+Both buffers must be in Montgomery form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data1</strong> – In/out shared-memory buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code> in Montgomery form; updated in place.</p></li>
+<li><p><strong>data2</strong> – Read-only shared-memory buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code> in Montgomery form.</p></li>
+<li><p><strong>p</strong> – Prime field modulus.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="staged-ntt">
+<h2>Staged NTT<a class="headerlink" href="#staged-ntt" title="Link to this heading">#</a></h2>
+<p><em>(Requires</em> <code class="docutils literal notranslate"><span class="pre">SubSize&lt;M&gt;()</span></code> <em>in the descriptor.)</em></p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT15stage_1_executeEP9PrecisionPK9PrecisionK9Precision">
+<span id="_CPPv3N5cupqc3NTT15stage_1_executeEP9PrecisionPK9PrecisionK9Precision"></span><span id="_CPPv2N5cupqc3NTT15stage_1_executeEP9PrecisionPK9PrecisionK9Precision"></span><span id="cupqc::NTT::stage_1_execute__PrecisionP.PrecisionCP.PrecisionC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">stage_1_execute</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">twiddles</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT15stage_1_executeEP9PrecisionPK9PrecisionK9Precision" title="Link to this definition">#</a><br /></dt>
+<dd><p>First pass of a two-stage forward NTT. Launch with <code class="docutils literal notranslate"><span class="pre">M</span></code> blocks; each block processes <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">N/M</span></code>
+consecutive elements. Requires shared memory of
+<code class="docutils literal notranslate"><span class="pre">fwd_stage_1_ntt_shared_workspace_size&lt;N,</span> <span class="pre">M,</span> <span class="pre">Precision&gt;()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Shared-memory buffer of size <code class="docutils literal notranslate"><span class="pre">K</span></code> (<code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">N/M</span></code>), populated by
+<a class="reference internal" href="#_CPPv4N5cupqc3NTT12stage_1_loadEP9PrecisionPK9PrecisionKi" title="cupqc::NTT::stage_1_load"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::stage_1_load()</span></code></a> or <a class="reference internal" href="#_CPPv4N5cupqc3NTT20stage_1_load_to_montEP9PrecisionPK9PrecisionKiK8nttConstI9PrecisionE" title="cupqc::NTT::stage_1_load_to_mont"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::stage_1_load_to_mont()</span></code></a>; must already be in
+Montgomery form. Used in place as input and output. Must not be a global memory pointer.</p></li>
+<li><p><strong>twiddles</strong> – Precomputed forward twiddle table for this pass, in Montgomery form.</p></li>
+<li><p><strong>p</strong> – Prime field modulus.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT15stage_2_executeEP9PrecisionPK9PrecisionK9Precision">
+<span id="_CPPv3N5cupqc3NTT15stage_2_executeEP9PrecisionPK9PrecisionK9Precision"></span><span id="_CPPv2N5cupqc3NTT15stage_2_executeEP9PrecisionPK9PrecisionK9Precision"></span><span id="cupqc::NTT::stage_2_execute__PrecisionP.PrecisionCP.PrecisionC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">stage_2_execute</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">twiddles</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT15stage_2_executeEP9PrecisionPK9PrecisionK9Precision" title="Link to this definition">#</a><br /></dt>
+<dd><p>Second pass of a two-stage forward NTT. Launch with <code class="docutils literal notranslate"><span class="pre">K</span></code> blocks; each block processes <code class="docutils literal notranslate"><span class="pre">M</span></code>
+strided elements. Requires <code class="docutils literal notranslate"><span class="pre">fwd_stage_2_ntt_shared_workspace_size&lt;N,</span> <span class="pre">M,</span> <span class="pre">Precision&gt;()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Shared-memory buffer of size <code class="docutils literal notranslate"><span class="pre">M</span></code>, populated by <a class="reference internal" href="#_CPPv4N5cupqc3NTT12stage_2_loadEP9PrecisionPK9PrecisionKi" title="cupqc::NTT::stage_2_load"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::stage_2_load()</span></code></a>
+from the stage 1 output, which is always in Montgomery form. Used in place as input and
+output. Must not be a global memory pointer.</p></li>
+<li><p><strong>twiddles</strong> – Precomputed forward twiddle table for this pass, in Montgomery form.</p></li>
+<li><p><strong>p</strong> – Prime field modulus.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">stage_1_execute</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">inv_twiddles</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><br /></dt>
+<dd><p>First pass of a two-stage inverse NTT. Launch with <code class="docutils literal notranslate"><span class="pre">K</span></code> blocks; each block processes <code class="docutils literal notranslate"><span class="pre">M</span></code>
+strided elements. Requires <code class="docutils literal notranslate"><span class="pre">inv_stage_1_ntt_shared_workspace_size&lt;N,</span> <span class="pre">M,</span> <span class="pre">Precision&gt;()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Shared-memory buffer of size <code class="docutils literal notranslate"><span class="pre">M</span></code>, populated by <a class="reference internal" href="#_CPPv4N5cupqc3NTT12stage_1_loadEP9PrecisionPK9PrecisionKi" title="cupqc::NTT::stage_1_load"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::stage_1_load()</span></code></a> or
+<a class="reference internal" href="#_CPPv4N5cupqc3NTT20stage_1_load_to_montEP9PrecisionPK9PrecisionKiK8nttConstI9PrecisionE" title="cupqc::NTT::stage_1_load_to_mont"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::stage_1_load_to_mont()</span></code></a>; must already be in Montgomery form. Used in place as
+input and output. Must not be a global memory pointer.</p></li>
+<li><p><strong>inv_twiddles</strong> – Precomputed inverse twiddle table for this pass, in Montgomery form.</p></li>
+<li><p><strong>p</strong> – Prime field modulus.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT15stage_2_executeEP9PrecisionPK9PrecisionK9PrecisionK9Precision">
+<span id="_CPPv3N5cupqc3NTT15stage_2_executeEP9PrecisionPK9PrecisionK9PrecisionK9Precision"></span><span id="_CPPv2N5cupqc3NTT15stage_2_executeEP9PrecisionPK9PrecisionK9PrecisionK9Precision"></span><span id="cupqc::NTT::stage_2_execute__PrecisionP.PrecisionCP.PrecisionC.PrecisionC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">stage_2_execute</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">inv_twiddles</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">N_inv</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT15stage_2_executeEP9PrecisionPK9PrecisionK9PrecisionK9Precision" title="Link to this definition">#</a><br /></dt>
+<dd><p>Second pass of a two-stage inverse NTT; applies the 1/N normalisation. Launch with <code class="docutils literal notranslate"><span class="pre">M</span></code>
+blocks; each block processes <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">N/M</span></code> consecutive elements. Requires
+<code class="docutils literal notranslate"><span class="pre">inv_stage_2_ntt_shared_workspace_size&lt;N,</span> <span class="pre">M,</span> <span class="pre">Precision&gt;()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Shared-memory buffer of size <code class="docutils literal notranslate"><span class="pre">K</span></code> (<code class="docutils literal notranslate"><span class="pre">=</span> <span class="pre">N/M</span></code>), populated by
+<a class="reference internal" href="#_CPPv4N5cupqc3NTT12stage_2_loadEP9PrecisionPK9PrecisionKi" title="cupqc::NTT::stage_2_load"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::stage_2_load()</span></code></a> from the stage 1 output, which is always in Montgomery form.
+Used in place as input and output. Must not be a global memory pointer.</p></li>
+<li><p><strong>inv_twiddles</strong> – Precomputed inverse twiddle table for this pass, in Montgomery form.</p></li>
+<li><p><strong>p</strong> – Prime field modulus.</p></li>
+<li><p><strong>N_inv</strong> – Multiplicative inverse of <code class="docutils literal notranslate"><span class="pre">N</span></code> modulo <code class="docutils literal notranslate"><span class="pre">p</span></code> (<code class="docutils literal notranslate"><span class="pre">N</span></code><sup>-1</sup> mod <code class="docutils literal notranslate"><span class="pre">p</span></code>), applied as the normalisation factor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="staged-data-transfer">
+<h2>Staged Data Transfer<a class="headerlink" href="#staged-data-transfer" title="Link to this heading">#</a></h2>
+<p><em>(Requires</em> <code class="docutils literal notranslate"><span class="pre">SubSize&lt;M&gt;()</span></code> <em>in the descriptor.)</em></p>
+<p>These functions move polynomial data between global memory and the per-stage shared-memory
+workspace. Direction is inferred from the descriptor: forward and inverse stages use different
+access patterns (strided vs. contiguous) so the correct layout is selected automatically.
+The <code class="docutils literal notranslate"><span class="pre">id</span></code> argument is the current block index (pass <code class="docutils literal notranslate"><span class="pre">blockIdx.x</span></code>).</p>
+<p>Only the boundary transfers have domain-converting variants: <code class="docutils literal notranslate"><span class="pre">stage_1_load_to_mont</span></code> converts
+standard-form input to Montgomery form on the way in, and <code class="docutils literal notranslate"><span class="pre">stage_2_store_from_mont</span></code> converts
+back to standard form on the way out. <code class="docutils literal notranslate"><span class="pre">stage_1_store</span></code> and <code class="docutils literal notranslate"><span class="pre">stage_2_load</span></code> handle the
+intermediate global-memory buffer between stage 1 and stage 2, which always stays in Montgomery
+form, so there is no <code class="docutils literal notranslate"><span class="pre">stage_1_store_from_mont</span></code> or <code class="docutils literal notranslate"><span class="pre">stage_2_load_to_mont</span></code> — <code class="docutils literal notranslate"><span class="pre">stage_2_load</span></code>
+always assumes its source is already in Montgomery form. <code class="docutils literal notranslate"><span class="pre">stage_1_load</span></code> and <code class="docutils literal notranslate"><span class="pre">stage_2_store</span></code>
+likewise copy data without domain conversion — use them when data is already in or should remain
+in Montgomery form.</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT12stage_1_loadEP9PrecisionPK9PrecisionKi">
+<span id="_CPPv3N5cupqc3NTT12stage_1_loadEP9PrecisionPK9PrecisionKi"></span><span id="_CPPv2N5cupqc3NTT12stage_1_loadEP9PrecisionPK9PrecisionKi"></span><span id="cupqc::NTT::stage_1_load__PrecisionP.PrecisionCP.iC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">stage_1_load</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sdata</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT12stage_1_loadEP9PrecisionPK9PrecisionKi" title="Link to this definition">#</a><br /></dt>
+<dd><p>Loads the sub-array for stage 1 from global memory <code class="docutils literal notranslate"><span class="pre">data</span></code> into <code class="docutils literal notranslate"><span class="pre">sdata</span></code> without domain
+conversion. Use when <code class="docutils literal notranslate"><span class="pre">data</span></code> is already in Montgomery form.</p>
+<ul class="simple">
+<li><p><strong>Forward</strong> (<code class="docutils literal notranslate"><span class="pre">M</span></code> blocks, <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">N/M</span></code> elements each): reads <code class="docutils literal notranslate"><span class="pre">K</span></code> strided elements
+<code class="docutils literal notranslate"><span class="pre">data[id</span> <span class="pre">+</span> <span class="pre">i*M]</span></code>.</p></li>
+<li><p><strong>Inverse</strong> (<code class="docutils literal notranslate"><span class="pre">K</span></code> blocks, <code class="docutils literal notranslate"><span class="pre">M</span></code> elements each): reads <code class="docutils literal notranslate"><span class="pre">M</span></code> contiguous elements
+<code class="docutils literal notranslate"><span class="pre">data[id*M</span> <span class="pre">+</span> <span class="pre">i]</span></code>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sdata</strong> – Shared-memory destination buffer.</p></li>
+<li><p><strong>data</strong> – Global-memory source buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+<li><p><strong>id</strong> – Block index (<code class="docutils literal notranslate"><span class="pre">blockIdx.x</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT20stage_1_load_to_montEP9PrecisionPK9PrecisionKiK8nttConstI9PrecisionE">
+<span id="_CPPv3N5cupqc3NTT20stage_1_load_to_montEP9PrecisionPK9PrecisionKiK8nttConstI9PrecisionE"></span><span id="_CPPv2N5cupqc3NTT20stage_1_load_to_montEP9PrecisionPK9PrecisionKiK8nttConstI9PrecisionE"></span><span id="cupqc::NTT::stage_1_load_to_mont__PrecisionP.PrecisionCP.iC.nttConst:Precision:C"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">stage_1_load_to_mont</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sdata</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><span class="n"><span class="pre">nttConst</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ntt_const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><span class="n"><span class="pre">nttConst</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT20stage_1_load_to_montEP9PrecisionPK9PrecisionKiK8nttConstI9PrecisionE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Like <a class="reference internal" href="#_CPPv4N5cupqc3NTT12stage_1_loadEP9PrecisionPK9PrecisionKi" title="cupqc::NTT::stage_1_load"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::stage_1_load()</span></code></a> but converts from standard to Montgomery form on load
+using <code class="docutils literal notranslate"><span class="pre">ntt_const</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sdata</strong> – Shared-memory destination buffer.</p></li>
+<li><p><strong>data</strong> – Global-memory source buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code> in standard (non-Montgomery) form.</p></li>
+<li><p><strong>id</strong> – Block index (<code class="docutils literal notranslate"><span class="pre">blockIdx.x</span></code>).</p></li>
+<li><p><strong>ntt_const</strong> – Montgomery constants for the prime. Construct with <code class="docutils literal notranslate"><span class="pre">nttConst&lt;Precision&gt;(p)</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT13stage_1_storeEP9PrecisionP9PrecisionKi">
+<span id="_CPPv3N5cupqc3NTT13stage_1_storeEP9PrecisionP9PrecisionKi"></span><span id="_CPPv2N5cupqc3NTT13stage_1_storeEP9PrecisionP9PrecisionKi"></span><span id="cupqc::NTT::stage_1_store__PrecisionP.PrecisionP.iC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">stage_1_store</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sdata</span></span></em>,</dd>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT13stage_1_storeEP9PrecisionP9PrecisionKi" title="Link to this definition">#</a><br /></dt>
+<dd><p>Stores the sub-array computed by stage 1 from <code class="docutils literal notranslate"><span class="pre">sdata</span></code> to global memory <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Forward</strong>: writes strided elements back to <code class="docutils literal notranslate"><span class="pre">data[id</span> <span class="pre">+</span> <span class="pre">i*M]</span></code>.</p></li>
+<li><p><strong>Inverse</strong>: writes contiguous elements back to <code class="docutils literal notranslate"><span class="pre">data[id*M</span> <span class="pre">+</span> <span class="pre">i]</span></code>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sdata</strong> – Shared-memory source buffer.</p></li>
+<li><p><strong>data</strong> – Global-memory destination buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+<li><p><strong>id</strong> – Block index (<code class="docutils literal notranslate"><span class="pre">blockIdx.x</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT12stage_2_loadEP9PrecisionPK9PrecisionKi">
+<span id="_CPPv3N5cupqc3NTT12stage_2_loadEP9PrecisionPK9PrecisionKi"></span><span id="_CPPv2N5cupqc3NTT12stage_2_loadEP9PrecisionPK9PrecisionKi"></span><span id="cupqc::NTT::stage_2_load__PrecisionP.PrecisionCP.iC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">stage_2_load</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sdata</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT12stage_2_loadEP9PrecisionPK9PrecisionKi" title="Link to this definition">#</a><br /></dt>
+<dd><p>Loads the sub-array for stage 2 from global memory <code class="docutils literal notranslate"><span class="pre">data</span></code> into <code class="docutils literal notranslate"><span class="pre">sdata</span></code> without domain
+conversion. <code class="docutils literal notranslate"><span class="pre">data</span></code> is assumed to already be in Montgomery form — the intermediate buffer
+written by <code class="docutils literal notranslate"><span class="pre">stage_1_store</span></code> after stage 1 is always in Montgomery form, so there is no
+<code class="docutils literal notranslate"><span class="pre">stage_2_load_to_mont</span></code> variant.</p>
+<ul class="simple">
+<li><p><strong>Forward</strong> (<code class="docutils literal notranslate"><span class="pre">K</span></code> blocks, <code class="docutils literal notranslate"><span class="pre">M</span></code> elements each): reads <code class="docutils literal notranslate"><span class="pre">M</span></code> contiguous elements
+<code class="docutils literal notranslate"><span class="pre">data[id*M</span> <span class="pre">+</span> <span class="pre">i]</span></code>.</p></li>
+<li><p><strong>Inverse</strong> (<code class="docutils literal notranslate"><span class="pre">M</span></code> blocks, <code class="docutils literal notranslate"><span class="pre">K</span></code> elements each): reads <code class="docutils literal notranslate"><span class="pre">K</span></code> strided elements
+<code class="docutils literal notranslate"><span class="pre">data[id</span> <span class="pre">+</span> <span class="pre">i*M]</span></code>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sdata</strong> – Shared-memory destination buffer.</p></li>
+<li><p><strong>data</strong> – Global-memory source buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+<li><p><strong>id</strong> – Block index (<code class="docutils literal notranslate"><span class="pre">blockIdx.x</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT13stage_2_storeEP9PrecisionP9PrecisionKi">
+<span id="_CPPv3N5cupqc3NTT13stage_2_storeEP9PrecisionP9PrecisionKi"></span><span id="_CPPv2N5cupqc3NTT13stage_2_storeEP9PrecisionP9PrecisionKi"></span><span id="cupqc::NTT::stage_2_store__PrecisionP.PrecisionP.iC"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">stage_2_store</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sdata</span></span></em>,</dd>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT13stage_2_storeEP9PrecisionP9PrecisionKi" title="Link to this definition">#</a><br /></dt>
+<dd><p>Stores the sub-array computed by stage 2 from <code class="docutils literal notranslate"><span class="pre">sdata</span></code> to global memory <code class="docutils literal notranslate"><span class="pre">data</span></code> without
+domain conversion. Use when the result should remain in Montgomery form.</p>
+<ul class="simple">
+<li><p><strong>Forward</strong>: writes contiguous elements back to <code class="docutils literal notranslate"><span class="pre">data[id*M</span> <span class="pre">+</span> <span class="pre">i]</span></code>.</p></li>
+<li><p><strong>Inverse</strong>: writes strided elements back to <code class="docutils literal notranslate"><span class="pre">data[id</span> <span class="pre">+</span> <span class="pre">i*M]</span></code>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sdata</strong> – Shared-memory source buffer.</p></li>
+<li><p><strong>data</strong> – Global-memory destination buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+<li><p><strong>id</strong> – Block index (<code class="docutils literal notranslate"><span class="pre">blockIdx.x</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT23stage_2_store_from_montEP9PrecisionP9PrecisionKiK8nttConstI9PrecisionE">
+<span id="_CPPv3N5cupqc3NTT23stage_2_store_from_montEP9PrecisionP9PrecisionKiK8nttConstI9PrecisionE"></span><span id="_CPPv2N5cupqc3NTT23stage_2_store_from_montEP9PrecisionP9PrecisionKiK8nttConstI9PrecisionE"></span><span id="cupqc::NTT::stage_2_store_from_mont__PrecisionP.PrecisionP.iC.nttConst:Precision:C"></span><span class="pre">__device__</span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">stage_2_store_from_mont</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sdata</span></span></em>,</dd>
+<dd><em class="sig-param"><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span></em>,</dd>
+<dd><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><span class="n"><span class="pre">nttConst</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ntt_const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><span class="n"><span class="pre">nttConst</span></span></a><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="operators.html#_CPPv4I0EN5cupqc9PrecisionEv" title="cupqc::Precision"><span class="n"><span class="pre">Precision</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span></em>,</dd>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc3NTT23stage_2_store_from_montEP9PrecisionP9PrecisionKiK8nttConstI9PrecisionE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Like <a class="reference internal" href="#_CPPv4N5cupqc3NTT13stage_2_storeEP9PrecisionP9PrecisionKi" title="cupqc::NTT::stage_2_store"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">NTT::stage_2_store()</span></code></a> but converts from Montgomery to standard form on store
+using <code class="docutils literal notranslate"><span class="pre">ntt_const</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sdata</strong> – Shared-memory source buffer.</p></li>
+<li><p><strong>data</strong> – Global-memory destination buffer of length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p></li>
+<li><p><strong>id</strong> – Block index (<code class="docutils literal notranslate"><span class="pre">blockIdx.x</span></code>).</p></li>
+<li><p><strong>ntt_const</strong> – Montgomery constants for the prime. Construct with <code class="docutils literal notranslate"><span class="pre">nttConst&lt;Precision&gt;(p)</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="operators.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Operators</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="host.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Host Functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-ntt">Standard NTT</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9Precision"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT7executeEP9PrecisionPK9PrecisionK9PrecisionK9Precision"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT13make_twiddlesEP9PrecisionK9PrecisionK9Precision"><code class="docutils literal notranslate"><span class="pre">make_twiddles()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT26transform_twiddles_to_montEP9PrecisionK9Precision"><code class="docutils literal notranslate"><span class="pre">transform_twiddles_to_mont()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer">Data Transfer</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT4loadEP9PrecisionPK9Precision"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT12load_to_montEP9PrecisionPK9PrecisionK8nttConstI9PrecisionE"><code class="docutils literal notranslate"><span class="pre">load_to_mont()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT5storeEP9PrecisionP9Precision"><code class="docutils literal notranslate"><span class="pre">store()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT15store_from_montEP9PrecisionP9PrecisionK8nttConstI9PrecisionE"><code class="docutils literal notranslate"><span class="pre">store_from_mont()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threadwise-montgomery-conversion">Threadwise Montgomery Conversion</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT7to_montE9PrecisionK8nttConstI9PrecisionE"><code class="docutils literal notranslate"><span class="pre">to_mont()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT9from_montE9PrecisionK8nttConstI9PrecisionE"><code class="docutils literal notranslate"><span class="pre">from_mont()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformed-domain-arithmetic">Transformed-Domain Arithmetic</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT3addEP9PrecisionPK9PrecisionK9Precision"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT3mulEP9PrecisionPK9PrecisionK9Precision"><code class="docutils literal notranslate"><span class="pre">mul()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT3subEP9PrecisionPK9PrecisionK9Precision"><code class="docutils literal notranslate"><span class="pre">sub()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#staged-ntt">Staged NTT</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT15stage_1_executeEP9PrecisionPK9PrecisionK9Precision"><code class="docutils literal notranslate"><span class="pre">stage_1_execute()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT15stage_2_executeEP9PrecisionPK9PrecisionK9Precision"><code class="docutils literal notranslate"><span class="pre">stage_2_execute()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT15stage_2_executeEP9PrecisionPK9PrecisionK9PrecisionK9Precision"><code class="docutils literal notranslate"><span class="pre">stage_2_execute()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#staged-data-transfer">Staged Data Transfer</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT12stage_1_loadEP9PrecisionPK9PrecisionKi"><code class="docutils literal notranslate"><span class="pre">stage_1_load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT20stage_1_load_to_montEP9PrecisionPK9PrecisionKiK8nttConstI9PrecisionE"><code class="docutils literal notranslate"><span class="pre">stage_1_load_to_mont()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT13stage_1_storeEP9PrecisionP9PrecisionKi"><code class="docutils literal notranslate"><span class="pre">stage_1_store()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT12stage_2_loadEP9PrecisionPK9PrecisionKi"><code class="docutils literal notranslate"><span class="pre">stage_2_load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT13stage_2_storeEP9PrecisionP9PrecisionKi"><code class="docutils literal notranslate"><span class="pre">stage_2_store()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT23stage_2_store_from_montEP9PrecisionP9PrecisionKiK8nttConstI9PrecisionE"><code class="docutils literal notranslate"><span class="pre">stage_2_store_from_mont()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../../../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../../../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2026, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

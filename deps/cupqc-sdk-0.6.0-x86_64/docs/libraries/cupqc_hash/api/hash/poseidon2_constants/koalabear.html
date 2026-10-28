@@ -1,0 +1,672 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Poseidon2-KoalaBear Constants &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/cupqc_override.css?v=ee9d665e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+
+
+    <script src="../../../../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'libraries/cupqc_hash/api/hash/poseidon2_constants/koalabear';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="../../../../../_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../../../_static/searchtools.js"></script>
+    <script src="../../../../../_static/language_data.js"></script>
+    <script src="../../../../../searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../../../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../../../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../introduction/requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Libraries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../cupqc_bigint/index.html">cuPQC-BigInt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cupqc_bigint/cupqc_bigint_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cupqc_bigint/cupqc_bigint_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../cupqc_bigint/cupqc_bigint_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_bigint/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_bigint/api/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_bigint/api/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../cupqc_ntt/index.html">cuPQC-NTT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cupqc_ntt/cupqc_ntt_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cupqc_ntt/cupqc_ntt_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../cupqc_ntt/cupqc_ntt_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_ntt/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_ntt/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_ntt/api/host.html">Host Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_ntt/api/prime_fields.html">Prime Field Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_ntt/api/types.html">Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../index.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../cupqc_hash_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../cupqc_hash_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../cupqc_hash_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../traits.html">Traits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../device.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../merkle/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../merkle/objects.html">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../merkle/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../cupqc_pk/index.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cupqc_pk/cupqc_pk_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../cupqc_pk/cupqc_pk_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../cupqc_pk/cupqc_pk_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_pk/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_pk/api/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_pk/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../cupqc_pk/api/host.html">Host Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../../additional/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../additional/security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../additional/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Poseidon2-KoalaBear Constants</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="poseidon2-koalabear-constants">
+<span id="poseidon2-koalabear-constants-label"></span><h1>Poseidon2-KoalaBear Constants<a class="headerlink" href="#poseidon2-koalabear-constants" title="Link to this heading">#</a></h1>
+<p>This document provides the round constant arrays and Maximum Distance Separable (MDS) matrix used in the Poseidon2-KoalaBear algorithm.</p>
+<section id="mds-matrix">
+<h2>MDS Matrix<a class="headerlink" href="#mds-matrix" title="Link to this heading">#</a></h2>
+<p>The Maximum Distance Separable (MDS) matrix used in the algorithm is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+2 &amp; 3 &amp; 1 &amp; 1 \\
+1 &amp; 2 &amp; 3 &amp; 1 \\
+1 &amp; 1 &amp; 2 &amp; 3 \\
+3 &amp; 1 &amp; 1 &amp; 2 \\
+\end{bmatrix}\end{split}\]</div>
+</section>
+<section id="width-16">
+<h2>Width 16<a class="headerlink" href="#width-16" title="Link to this heading">#</a></h2>
+<section id="external-round-constants">
+<h3>External Round Constants<a class="headerlink" href="#external-round-constants" title="Link to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// clang-format off</span>
+<span class="n">__constant__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">kbp_external_rc_array_16</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">2128964168</span><span class="p">,</span><span class="w"> </span><span class="mi">288780357</span><span class="p">,</span><span class="w"> </span><span class="mi">316938561</span><span class="p">,</span><span class="w"> </span><span class="mi">2126233899</span><span class="p">,</span><span class="w"> </span><span class="mi">426817493</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1714118888</span><span class="p">,</span><span class="w"> </span><span class="mi">1045008582</span><span class="p">,</span><span class="w"> </span><span class="mi">1738510837</span><span class="p">,</span><span class="w"> </span><span class="mi">889721787</span><span class="p">,</span><span class="w"> </span><span class="mi">8866516</span><span class="p">,</span><span class="w"> </span><span class="mi">681576474</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">419059826</span><span class="p">,</span><span class="w"> </span><span class="mi">1596305521</span><span class="p">,</span><span class="w"> </span><span class="mi">1583176088</span><span class="p">,</span><span class="w"> </span><span class="mi">1584387047</span><span class="p">,</span><span class="w"> </span><span class="mi">1529751136</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1863858111</span><span class="p">,</span><span class="w"> </span><span class="mi">1072044075</span><span class="p">,</span><span class="w"> </span><span class="mi">517831365</span><span class="p">,</span><span class="w"> </span><span class="mi">1464274176</span><span class="p">,</span><span class="w"> </span><span class="mi">1138001621</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">428001039</span><span class="p">,</span><span class="w"> </span><span class="mi">245709561</span><span class="p">,</span><span class="w"> </span><span class="mi">1641420379</span><span class="p">,</span><span class="w"> </span><span class="mi">1365482496</span><span class="p">,</span><span class="w"> </span><span class="mi">770454828</span><span class="p">,</span><span class="w"> </span><span class="mi">693167409</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">757905735</span><span class="p">,</span><span class="w"> </span><span class="mi">136670447</span><span class="p">,</span><span class="w"> </span><span class="mi">436275702</span><span class="p">,</span><span class="w"> </span><span class="mi">525466355</span><span class="p">,</span><span class="w"> </span><span class="mi">1559174242</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1030087950</span><span class="p">,</span><span class="w"> </span><span class="mi">869864998</span><span class="p">,</span><span class="w"> </span><span class="mi">322787870</span><span class="p">,</span><span class="w"> </span><span class="mi">267688717</span><span class="p">,</span><span class="w"> </span><span class="mi">948964561</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">740478015</span><span class="p">,</span><span class="w"> </span><span class="mi">679816114</span><span class="p">,</span><span class="w"> </span><span class="mi">113662466</span><span class="p">,</span><span class="w"> </span><span class="mi">2066544572</span><span class="p">,</span><span class="w"> </span><span class="mi">1744924186</span><span class="p">,</span><span class="w"> </span><span class="mi">367094720</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1380455578</span><span class="p">,</span><span class="w"> </span><span class="mi">1842483872</span><span class="p">,</span><span class="w"> </span><span class="mi">416711434</span><span class="p">,</span><span class="w"> </span><span class="mi">1342291586</span><span class="p">,</span><span class="w"> </span><span class="mi">1692058446</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1493348999</span><span class="p">,</span><span class="w"> </span><span class="mi">1113949088</span><span class="p">,</span><span class="w"> </span><span class="mi">210900530</span><span class="p">,</span><span class="w"> </span><span class="mi">1071655077</span><span class="p">,</span><span class="w"> </span><span class="mi">610242121</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1136339326</span><span class="p">,</span><span class="w"> </span><span class="mi">2020858841</span><span class="p">,</span><span class="w"> </span><span class="mi">1019840479</span><span class="p">,</span><span class="w"> </span><span class="mi">678147278</span><span class="p">,</span><span class="w"> </span><span class="mi">1678413261</span><span class="p">,</span><span class="w"> </span><span class="mi">1361743414</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">61132629</span><span class="p">,</span><span class="w"> </span><span class="mi">1209546658</span><span class="p">,</span><span class="w"> </span><span class="mi">64412292</span><span class="p">,</span><span class="w"> </span><span class="mi">1936878279</span><span class="p">,</span><span class="w"> </span><span class="mi">1980661727</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1423960925</span><span class="p">,</span><span class="w"> </span><span class="mi">2101391318</span><span class="p">,</span><span class="w"> </span><span class="mi">1915532054</span><span class="p">,</span><span class="w"> </span><span class="mi">275400051</span><span class="p">,</span><span class="w"> </span><span class="mi">1168624859</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1141248885</span><span class="p">,</span><span class="w"> </span><span class="mi">356546469</span><span class="p">,</span><span class="w"> </span><span class="mi">1165250474</span><span class="p">,</span><span class="w"> </span><span class="mi">1320543726</span><span class="p">,</span><span class="w"> </span><span class="mi">932505663</span><span class="p">,</span><span class="w"> </span><span class="mi">1204226364</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1452576828</span><span class="p">,</span><span class="w"> </span><span class="mi">1774936729</span><span class="p">,</span><span class="w"> </span><span class="mi">926808140</span><span class="p">,</span><span class="w"> </span><span class="mi">1184948056</span><span class="p">,</span><span class="w"> </span><span class="mi">1186493834</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">843181003</span><span class="p">,</span><span class="w"> </span><span class="mi">185193011</span><span class="p">,</span><span class="w"> </span><span class="mi">452207447</span><span class="p">,</span><span class="w"> </span><span class="mi">510054082</span><span class="p">,</span><span class="w"> </span><span class="mi">1139268644</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">630873441</span><span class="p">,</span><span class="w"> </span><span class="mi">669538875</span><span class="p">,</span><span class="w"> </span><span class="mi">462500858</span><span class="p">,</span><span class="w"> </span><span class="mi">876500520</span><span class="p">,</span><span class="w"> </span><span class="mi">1214043330</span><span class="p">,</span><span class="w"> </span><span class="mi">383937013</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">375087302</span><span class="p">,</span><span class="w"> </span><span class="mi">636912601</span><span class="p">,</span><span class="w"> </span><span class="mi">307200505</span><span class="p">,</span><span class="w"> </span><span class="mi">390279673</span><span class="p">,</span><span class="w"> </span><span class="mi">1999916485</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1518476730</span><span class="p">,</span><span class="w"> </span><span class="mi">1606686591</span><span class="p">,</span><span class="w"> </span><span class="mi">1410677749</span><span class="p">,</span><span class="w"> </span><span class="mi">1581191572</span><span class="p">,</span><span class="w"> </span><span class="mi">1004269969</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">143426723</span><span class="p">,</span><span class="w"> </span><span class="mi">1747283099</span><span class="p">,</span><span class="w"> </span><span class="mi">1016118214</span><span class="p">,</span><span class="w"> </span><span class="mi">1749423722</span><span class="p">,</span><span class="w"> </span><span class="mi">66331533</span><span class="p">,</span><span class="w"> </span><span class="mi">1177761275</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1581069649</span><span class="p">,</span><span class="w"> </span><span class="mi">1851371119</span><span class="p">,</span><span class="w"> </span><span class="mi">852520128</span><span class="p">,</span><span class="w"> </span><span class="mi">1499632627</span><span class="p">,</span><span class="w"> </span><span class="mi">1820847538</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">150757557</span><span class="p">,</span><span class="w"> </span><span class="mi">884787840</span><span class="p">,</span><span class="w"> </span><span class="mi">619710451</span><span class="p">,</span><span class="w"> </span><span class="mi">1651711087</span><span class="p">,</span><span class="w"> </span><span class="mi">505263814</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">212076987</span><span class="p">,</span><span class="w"> </span><span class="mi">1482432120</span><span class="p">,</span><span class="w"> </span><span class="mi">1458130652</span><span class="p">,</span><span class="w"> </span><span class="mi">382871348</span><span class="p">,</span><span class="w"> </span><span class="mi">417404007</span><span class="p">,</span><span class="w"> </span><span class="mi">2066495280</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1996518884</span><span class="p">,</span><span class="w"> </span><span class="mi">902934924</span><span class="p">,</span><span class="w"> </span><span class="mi">582892981</span><span class="p">,</span><span class="w"> </span><span class="mi">1337064375</span><span class="p">,</span><span class="w"> </span><span class="mi">1199354861</span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="internal-round-constants">
+<h3>Internal Round Constants<a class="headerlink" href="#internal-round-constants" title="Link to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__constant__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">kbp_internal_rc_array_16</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="mi">2102596038</span><span class="p">,</span><span class="w"> </span><span class="mi">1533193853</span><span class="p">,</span><span class="w"> </span><span class="mi">1436311464</span><span class="p">,</span><span class="w"> </span><span class="mi">2012303432</span><span class="p">,</span><span class="w"> </span><span class="mi">839997195</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1225781098</span><span class="p">,</span><span class="w"> </span><span class="mi">2011967775</span><span class="p">,</span><span class="w"> </span><span class="mi">575084315</span><span class="p">,</span><span class="w"> </span><span class="mi">1309329169</span><span class="p">,</span><span class="w"> </span><span class="mi">786393545</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">995788880</span><span class="p">,</span><span class="w"> </span><span class="mi">1702925345</span><span class="p">,</span><span class="w"> </span><span class="mi">1444525226</span><span class="p">,</span><span class="w"> </span><span class="mi">908073383</span><span class="p">,</span><span class="w"> </span><span class="mi">1811535085</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1531002367</span><span class="p">,</span><span class="w"> </span><span class="mi">1635653662</span><span class="p">,</span><span class="w"> </span><span class="mi">1585100155</span><span class="p">,</span><span class="w"> </span><span class="mi">867006515</span><span class="p">,</span><span class="w"> </span><span class="mi">879151050</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="internal-diagonal-constants">
+<h3>Internal Diagonal Constants<a class="headerlink" href="#internal-diagonal-constants" title="Link to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__constant__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">kbp_internal_diag_array_16</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="mi">2130706431</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1065353217</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1065353216</span><span class="p">,</span><span class="w"> </span><span class="mi">2130706430</span><span class="p">,</span><span class="w"> </span><span class="mi">2130706429</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">2122383361</span><span class="p">,</span><span class="w"> </span><span class="mi">1864368129</span><span class="p">,</span><span class="w"> </span><span class="mi">2130706306</span><span class="p">,</span><span class="w"> </span><span class="mi">8323072</span><span class="p">,</span><span class="w"> </span><span class="mi">266338304</span><span class="p">,</span><span class="w"> </span><span class="mi">133169152</span><span class="p">,</span><span class="w"> </span><span class="mi">127</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="width-24">
+<h2>Width 24<a class="headerlink" href="#width-24" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>External Round Constants<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__constant__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">kbp_external_rc_array_24</span><span class="p">[</span><span class="mi">8</span><span class="p">][</span><span class="mi">24</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">487143900</span><span class="p">,</span><span class="w"> </span><span class="mi">1829048205</span><span class="p">,</span><span class="w"> </span><span class="mi">1652578477</span><span class="p">,</span><span class="w"> </span><span class="mi">646002781</span><span class="p">,</span><span class="w"> </span><span class="mi">1044144830</span><span class="p">,</span><span class="w"> </span><span class="mi">53279448</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1519499836</span><span class="p">,</span><span class="w"> </span><span class="mi">22697702</span><span class="p">,</span><span class="w"> </span><span class="mi">1768655004</span><span class="p">,</span><span class="w"> </span><span class="mi">230479744</span><span class="p">,</span><span class="w"> </span><span class="mi">1484895689</span><span class="p">,</span><span class="w"> </span><span class="mi">705130286</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1429811285</span><span class="p">,</span><span class="w"> </span><span class="mi">1695785093</span><span class="p">,</span><span class="w"> </span><span class="mi">1417332623</span><span class="p">,</span><span class="w"> </span><span class="mi">1115801016</span><span class="p">,</span><span class="w"> </span><span class="mi">1048199020</span><span class="p">,</span><span class="w"> </span><span class="mi">878062617</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">738518649</span><span class="p">,</span><span class="w"> </span><span class="mi">249004596</span><span class="p">,</span><span class="w"> </span><span class="mi">1601837737</span><span class="p">,</span><span class="w"> </span><span class="mi">24601614</span><span class="p">,</span><span class="w"> </span><span class="mi">245692625</span><span class="p">,</span><span class="w"> </span><span class="mi">364803730</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1857019234</span><span class="p">,</span><span class="w"> </span><span class="mi">1906668230</span><span class="p">,</span><span class="w"> </span><span class="mi">1916890890</span><span class="p">,</span><span class="w"> </span><span class="mi">835590867</span><span class="p">,</span><span class="w"> </span><span class="mi">557228239</span><span class="p">,</span><span class="w"> </span><span class="mi">352829675</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">515301498</span><span class="p">,</span><span class="w"> </span><span class="mi">973918075</span><span class="p">,</span><span class="w"> </span><span class="mi">954515249</span><span class="p">,</span><span class="w"> </span><span class="mi">1142063750</span><span class="p">,</span><span class="w"> </span><span class="mi">1795549558</span><span class="p">,</span><span class="w"> </span><span class="mi">608869266</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1850421928</span><span class="p">,</span><span class="w"> </span><span class="mi">2028872854</span><span class="p">,</span><span class="w"> </span><span class="mi">1197543771</span><span class="p">,</span><span class="w"> </span><span class="mi">1027240055</span><span class="p">,</span><span class="w"> </span><span class="mi">1976813168</span><span class="p">,</span><span class="w"> </span><span class="mi">963257461</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">652017844</span><span class="p">,</span><span class="w"> </span><span class="mi">2113212249</span><span class="p">,</span><span class="w"> </span><span class="mi">213459679</span><span class="p">,</span><span class="w"> </span><span class="mi">90747280</span><span class="p">,</span><span class="w"> </span><span class="mi">1540619478</span><span class="p">,</span><span class="w"> </span><span class="mi">324138382</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">1377377119</span><span class="p">,</span><span class="w"> </span><span class="mi">294744504</span><span class="p">,</span><span class="w"> </span><span class="mi">512472871</span><span class="p">,</span><span class="w"> </span><span class="mi">668081958</span><span class="p">,</span><span class="w"> </span><span class="mi">907306515</span><span class="p">,</span><span class="w"> </span><span class="mi">518526882</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1907091534</span><span class="p">,</span><span class="w"> </span><span class="mi">1152942192</span><span class="p">,</span><span class="w"> </span><span class="mi">1572881424</span><span class="p">,</span><span class="w"> </span><span class="mi">720020214</span><span class="p">,</span><span class="w"> </span><span class="mi">729527057</span><span class="p">,</span><span class="w"> </span><span class="mi">1762035789</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">86171731</span><span class="p">,</span><span class="w"> </span><span class="mi">205890068</span><span class="p">,</span><span class="w"> </span><span class="mi">453077400</span><span class="p">,</span><span class="w"> </span><span class="mi">1201344594</span><span class="p">,</span><span class="w"> </span><span class="mi">986483134</span><span class="p">,</span><span class="w"> </span><span class="mi">125174298</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">2050269685</span><span class="p">,</span><span class="w"> </span><span class="mi">1895332113</span><span class="p">,</span><span class="w"> </span><span class="mi">749706654</span><span class="p">,</span><span class="w"> </span><span class="mi">40566555</span><span class="p">,</span><span class="w"> </span><span class="mi">742540942</span><span class="p">,</span><span class="w"> </span><span class="mi">1735551813</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">162985276</span><span class="p">,</span><span class="w"> </span><span class="mi">1943496073</span><span class="p">,</span><span class="w"> </span><span class="mi">1469312688</span><span class="p">,</span><span class="w"> </span><span class="mi">703013107</span><span class="p">,</span><span class="w"> </span><span class="mi">1979485151</span><span class="p">,</span><span class="w"> </span><span class="mi">1278193166</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">548674995</span><span class="p">,</span><span class="w"> </span><span class="mi">2118718736</span><span class="p">,</span><span class="w"> </span><span class="mi">749596440</span><span class="p">,</span><span class="w"> </span><span class="mi">1476142294</span><span class="p">,</span><span class="w"> </span><span class="mi">1293606474</span><span class="p">,</span><span class="w"> </span><span class="mi">918523452</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">890353212</span><span class="p">,</span><span class="w"> </span><span class="mi">1691895663</span><span class="p">,</span><span class="w"> </span><span class="mi">1932240646</span><span class="p">,</span><span class="w"> </span><span class="mi">1180911992</span><span class="p">,</span><span class="w"> </span><span class="mi">86098300</span><span class="p">,</span><span class="w"> </span><span class="mi">1592168978</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">895077289</span><span class="p">,</span><span class="w"> </span><span class="mi">724819849</span><span class="p">,</span><span class="w"> </span><span class="mi">1697986774</span><span class="p">,</span><span class="w"> </span><span class="mi">1608418116</span><span class="p">,</span><span class="w"> </span><span class="mi">1083269213</span><span class="p">,</span><span class="w"> </span><span class="mi">691256798</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">328586442</span><span class="p">,</span><span class="w"> </span><span class="mi">1572520009</span><span class="p">,</span><span class="w"> </span><span class="mi">1375479591</span><span class="p">,</span><span class="w"> </span><span class="mi">322991001</span><span class="p">,</span><span class="w"> </span><span class="mi">967600467</span><span class="p">,</span><span class="w"> </span><span class="mi">1172861548</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1973891356</span><span class="p">,</span><span class="w"> </span><span class="mi">1503625929</span><span class="p">,</span><span class="w"> </span><span class="mi">1881993531</span><span class="p">,</span><span class="w"> </span><span class="mi">40601941</span><span class="p">,</span><span class="w"> </span><span class="mi">1155570620</span><span class="p">,</span><span class="w"> </span><span class="mi">571547775</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1361622243</span><span class="p">,</span><span class="w"> </span><span class="mi">1495024047</span><span class="p">,</span><span class="w"> </span><span class="mi">1733254248</span><span class="p">,</span><span class="w"> </span><span class="mi">964808915</span><span class="p">,</span><span class="w"> </span><span class="mi">763558040</span><span class="p">,</span><span class="w"> </span><span class="mi">1887228519</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">994888261</span><span class="p">,</span><span class="w"> </span><span class="mi">718330940</span><span class="p">,</span><span class="w"> </span><span class="mi">213359415</span><span class="p">,</span><span class="w"> </span><span class="mi">603124968</span><span class="p">,</span><span class="w"> </span><span class="mi">1038411577</span><span class="p">,</span><span class="w"> </span><span class="mi">2099454809</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">949846777</span><span class="p">,</span><span class="w"> </span><span class="mi">630926956</span><span class="p">,</span><span class="w"> </span><span class="mi">1168723439</span><span class="p">,</span><span class="w"> </span><span class="mi">222917504</span><span class="p">,</span><span class="w"> </span><span class="mi">1527025973</span><span class="p">,</span><span class="w"> </span><span class="mi">1009157017</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">2029957881</span><span class="p">,</span><span class="w"> </span><span class="mi">805977836</span><span class="p">,</span><span class="w"> </span><span class="mi">1347511739</span><span class="p">,</span><span class="w"> </span><span class="mi">540019059</span><span class="p">,</span><span class="w"> </span><span class="mi">589807745</span><span class="p">,</span><span class="w"> </span><span class="mi">440771316</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1530063406</span><span class="p">,</span><span class="w"> </span><span class="mi">761076336</span><span class="p">,</span><span class="w"> </span><span class="mi">87974206</span><span class="p">,</span><span class="w"> </span><span class="mi">1412686751</span><span class="p">,</span><span class="w"> </span><span class="mi">1230318064</span><span class="p">,</span><span class="w"> </span><span class="mi">514464425</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1469011754</span><span class="p">,</span><span class="w"> </span><span class="mi">1770970737</span><span class="p">,</span><span class="w"> </span><span class="mi">1510972858</span><span class="p">,</span><span class="w"> </span><span class="mi">965357206</span><span class="p">,</span><span class="w"> </span><span class="mi">209398053</span><span class="p">,</span><span class="w"> </span><span class="mi">778802532</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">40567006</span><span class="p">,</span><span class="w"> </span><span class="mi">1984217577</span><span class="p">,</span><span class="w"> </span><span class="mi">1545851069</span><span class="p">,</span><span class="w"> </span><span class="mi">879801839</span><span class="p">,</span><span class="w"> </span><span class="mi">1611910970</span><span class="p">,</span><span class="w"> </span><span class="mi">1215591048</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">330802499</span><span class="p">,</span><span class="w"> </span><span class="mi">1051639108</span><span class="p">,</span><span class="w"> </span><span class="mi">321036</span><span class="p">,</span><span class="w"> </span><span class="mi">511927202</span><span class="p">,</span><span class="w"> </span><span class="mi">591603098</span><span class="p">,</span><span class="w"> </span><span class="mi">1775897642</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">115598532</span><span class="p">,</span><span class="w"> </span><span class="mi">278200718</span><span class="p">,</span><span class="w"> </span><span class="mi">233743176</span><span class="p">,</span><span class="w"> </span><span class="mi">525096211</span><span class="p">,</span><span class="w"> </span><span class="mi">1335507608</span><span class="p">,</span><span class="w"> </span><span class="mi">830017835</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1380629279</span><span class="p">,</span><span class="w"> </span><span class="mi">560028578</span><span class="p">,</span><span class="w"> </span><span class="mi">598425701</span><span class="p">,</span><span class="w"> </span><span class="mi">302162385</span><span class="p">,</span><span class="w"> </span><span class="mi">567434115</span><span class="p">,</span><span class="w"> </span><span class="mi">1859222575</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="mi">958294793</span><span class="p">,</span><span class="w"> </span><span class="mi">1582225556</span><span class="p">,</span><span class="w"> </span><span class="mi">1781487858</span><span class="p">,</span><span class="w"> </span><span class="mi">1570246000</span><span class="p">,</span><span class="w"> </span><span class="mi">1067748446</span><span class="p">,</span><span class="w"> </span><span class="mi">526608119</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">1666453343</span><span class="p">,</span><span class="w"> </span><span class="mi">1786918381</span><span class="p">,</span><span class="w"> </span><span class="mi">348203640</span><span class="p">,</span><span class="w"> </span><span class="mi">1860035017</span><span class="p">,</span><span class="w"> </span><span class="mi">1489902626</span><span class="p">,</span><span class="w"> </span><span class="mi">1904576699</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">860033965</span><span class="p">,</span><span class="w"> </span><span class="mi">1954077639</span><span class="p">,</span><span class="w"> </span><span class="mi">1685771567</span><span class="p">,</span><span class="w"> </span><span class="mi">971513929</span><span class="p">,</span><span class="w"> </span><span class="mi">1877873770</span><span class="p">,</span><span class="w"> </span><span class="mi">137113380</span><span class="p">,</span>
+<span class="w">     </span><span class="mi">520695829</span><span class="p">,</span><span class="w"> </span><span class="mi">806829080</span><span class="p">,</span><span class="w"> </span><span class="mi">1408699405</span><span class="p">,</span><span class="w"> </span><span class="mi">1613277964</span><span class="p">,</span><span class="w"> </span><span class="mi">793223662</span><span class="p">,</span><span class="w"> </span><span class="mi">648443918</span><span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Internal Round Constants<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__constant__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">kbp_internal_rc_array_24</span><span class="p">[</span><span class="mi">23</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="mi">893435011</span><span class="p">,</span><span class="w"> </span><span class="mi">403879071</span><span class="p">,</span><span class="w"> </span><span class="mi">1363789863</span><span class="p">,</span><span class="w"> </span><span class="mi">1662900517</span><span class="p">,</span><span class="w"> </span><span class="mi">2043370</span><span class="p">,</span><span class="w"> </span><span class="mi">2109755796</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">931751726</span><span class="p">,</span><span class="w"> </span><span class="mi">2091644718</span><span class="p">,</span><span class="w"> </span><span class="mi">606977583</span><span class="p">,</span><span class="w"> </span><span class="mi">185050397</span><span class="p">,</span><span class="w"> </span><span class="mi">946157136</span><span class="p">,</span><span class="w"> </span><span class="mi">1350065230</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1625860064</span><span class="p">,</span><span class="w"> </span><span class="mi">122045240</span><span class="p">,</span><span class="w"> </span><span class="mi">880989921</span><span class="p">,</span><span class="w"> </span><span class="mi">145137438</span><span class="p">,</span><span class="w"> </span><span class="mi">1059782436</span><span class="p">,</span><span class="w"> </span><span class="mi">1477755661</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">335465138</span><span class="p">,</span><span class="w"> </span><span class="mi">1640704282</span><span class="p">,</span><span class="w"> </span><span class="mi">1757946479</span><span class="p">,</span><span class="w"> </span><span class="mi">1551204074</span><span class="p">,</span><span class="w"> </span><span class="mi">681266718</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Internal Diagonal Constants<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__constant__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">kbp_internal_diag_array_24</span><span class="p">[</span><span class="mi">24</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="mi">2130706431</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1065353217</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1065353216</span><span class="p">,</span><span class="w"> </span><span class="mi">2130706430</span><span class="p">,</span><span class="w"> </span><span class="mi">2130706429</span><span class="p">,</span><span class="w"> </span><span class="mi">2122383361</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">1598029825</span><span class="p">,</span><span class="w"> </span><span class="mi">1864368129</span><span class="p">,</span><span class="w"> </span><span class="mi">1997537281</span><span class="p">,</span><span class="w"> </span><span class="mi">2064121857</span><span class="p">,</span><span class="w"> </span><span class="mi">2097414145</span><span class="p">,</span><span class="w"> </span><span class="mi">2130706306</span><span class="p">,</span><span class="w"> </span><span class="mi">8323072</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">266338304</span><span class="p">,</span><span class="w"> </span><span class="mi">133169152</span><span class="p">,</span><span class="w"> </span><span class="mi">66584576</span><span class="p">,</span><span class="w"> </span><span class="mi">33292288</span><span class="p">,</span><span class="w"> </span><span class="mi">16646144</span><span class="p">,</span><span class="w"> </span><span class="mi">4161536</span><span class="p">,</span><span class="w"> </span><span class="mi">127</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mds-matrix">MDS Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#width-16">Width 16</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#external-round-constants">External Round Constants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-round-constants">Internal Round Constants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-diagonal-constants">Internal Diagonal Constants</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#width-24">Width 24</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">External Round Constants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Internal Round Constants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Internal Diagonal Constants</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../../../../../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../../../../../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2026, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

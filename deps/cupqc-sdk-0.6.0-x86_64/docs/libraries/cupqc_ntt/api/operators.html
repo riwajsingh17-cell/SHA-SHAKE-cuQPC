@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Operators &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/cupqc_override.css?v=ee9d665e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+
+
+    <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'libraries/cupqc_ntt/api/operators';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="../../../_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Device Functions" href="device.html" />
+    <link rel="prev" title="cuPQC-NTT API Reference" href="../cupqc_ntt_api.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Libraries</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cupqc_bigint/index.html">cuPQC-BigInt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_bigint/cupqc_bigint_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_bigint/cupqc_bigint_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../cupqc_bigint/cupqc_bigint_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_bigint/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_bigint/api/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_bigint/api/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">cuPQC-NTT</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_ntt_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_ntt_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../cupqc_ntt_api.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="host.html">Host Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prime_fields.html">Prime Field Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html">Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cupqc_hash/index.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_hash/cupqc_hash_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_hash/cupqc_hash_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../cupqc_hash/cupqc_hash_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../cupqc_hash/api/hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/hash/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/hash/traits.html">Traits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/hash/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../cupqc_hash/api/merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/merkle/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/merkle/objects.html">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/merkle/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cupqc_pk/index.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_pk/cupqc_pk_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_pk/cupqc_pk_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../cupqc_pk/cupqc_pk_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_pk/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_pk/api/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_pk/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_pk/api/host.html">Host Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../additional/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../additional/security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../additional/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">cuPQC-NTT</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../cupqc_ntt_api.html" class="nav-link">cuPQC-NTT API Reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Operators</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="operators">
+<span id="cupqc-ntt-operators-label"></span><h1>Operators<a class="headerlink" href="#operators" title="Link to this heading">#</a></h1>
+<p>cuPQC-NTT operators are used to describe the transform to be performed and configure execution.
+They are combined via addition (<code class="code highlight cpp docutils literal highlight-cpp"><span class="o">+</span></code>) to form a cuPQC-NTT <em>descriptor</em>.</p>
+<section id="description-operators">
+<h2>Description Operators<a class="headerlink" href="#description-operators" title="Link to this heading">#</a></h2>
+<section id="algorithm">
+<span id="cupqc-ntt-algorithm-operator-label"></span><h3>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">#</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_9algorithmEN5cupqc9AlgorithmEv">
+<span id="_CPPv3I_9algorithmEN5cupqc9AlgorithmEv"></span><span id="_CPPv2I_9algorithmEN5cupqc9AlgorithmEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N5cupqc9algorithmE" title="cupqc::algorithm"><span class="n"><span class="pre">algorithm</span></span></a><span class="w"> </span><span class="sig-name descname sig-name-template"><span class="n"><span class="pre">Alg</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="sig-name descname"><span class="n"><span class="pre">Algorithm</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_9algorithmEN5cupqc9AlgorithmEv" title="Link to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p>Sets the algorithm <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">Alg</span></code> to use. Valid values are:</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc9algorithmE">
+<span id="_CPPv3N5cupqc9algorithmE"></span><span id="_CPPv2N5cupqc9algorithmE"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">algorithm</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc9algorithmE" title="Link to this definition">#</a><br /></dt>
+<dd><dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc9algorithm3NTTE">
+<span id="_CPPv3N5cupqc9algorithm3NTTE"></span><span id="_CPPv2N5cupqc9algorithm3NTTE"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NTT</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc9algorithm3NTTE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Number Theoretic Transform.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>There is no default value.</p>
+</section>
+<section id="direction">
+<span id="cupqc-ntt-direction-operator-label"></span><h3>Direction<a class="headerlink" href="#direction" title="Link to this heading">#</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_12nttDirectionEN5cupqc9DirectionEv">
+<span id="_CPPv3I_12nttDirectionEN5cupqc9DirectionEv"></span><span id="_CPPv2I_12nttDirectionEN5cupqc9DirectionEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N5cupqc12nttDirectionE" title="cupqc::nttDirection"><span class="n"><span class="pre">nttDirection</span></span></a><span class="w"> </span><span class="sig-name descname sig-name-template"><span class="n"><span class="pre">Dir</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="sig-name descname"><span class="n"><span class="pre">Direction</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_12nttDirectionEN5cupqc9DirectionEv" title="Link to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p>Selects the transform direction. Valid values are:</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12nttDirectionE">
+<span id="_CPPv3N5cupqc12nttDirectionE"></span><span id="_CPPv2N5cupqc12nttDirectionE"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nttDirection</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12nttDirectionE" title="Link to this definition">#</a><br /></dt>
+<dd><dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12nttDirection7FORWARDE">
+<span id="_CPPv3N5cupqc12nttDirection7FORWARDE"></span><span id="_CPPv2N5cupqc12nttDirection7FORWARDE"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FORWARD</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12nttDirection7FORWARDE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Maps the length-<code class="docutils literal notranslate"><span class="pre">N</span></code> coefficient sequence to evaluation form.</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12nttDirection7INVERSEE">
+<span id="_CPPv3N5cupqc12nttDirection7INVERSEE"></span><span id="_CPPv2N5cupqc12nttDirection7INVERSEE"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">INVERSE</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12nttDirection7INVERSEE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Maps evaluation form back to coefficient form.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">Direction&lt;nttDirection::FORWARD&gt;</span></code>.</p>
+</section>
+<section id="precision">
+<span id="cupqc-ntt-precision-operator-label"></span><h3>Precision<a class="headerlink" href="#precision" title="Link to this heading">#</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I0EN5cupqc9PrecisionEv">
+<span id="_CPPv3I0EN5cupqc9PrecisionEv"></span><span id="_CPPv2I0EN5cupqc9PrecisionEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="k"><span class="pre">typename</span></span><span class="w"> </span><span class="sig-name descname sig-name-template"><span class="n"><span class="pre">T</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="sig-name descname"><span class="n"><span class="pre">Precision</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN5cupqc9PrecisionEv" title="Link to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p>Sets the element type <code class="docutils literal notranslate"><span class="pre">T</span></code> for coefficients and the prime modulus.
+The type parameter <code class="docutils literal notranslate"><span class="pre">T</span></code> must be one of the following standard fixed-width unsigned integer types (<code class="docutils literal notranslate"><span class="pre">&lt;cstdint&gt;</span></code>):</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqcSt8uint16_tE">
+<span id="_CPPv3N5cupqcSt8uint16_tE"></span><span id="_CPPv2N5cupqcSt8uint16_tE"></span><span id="cupqc::std::uint16_t"></span><span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">uint16_t</span></span></span><a class="headerlink" href="#_CPPv4N5cupqcSt8uint16_tE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Fixed-width unsigned 16-bit integer element type.</p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqcSt8uint32_tE">
+<span id="_CPPv3N5cupqcSt8uint32_tE"></span><span id="_CPPv2N5cupqcSt8uint32_tE"></span><span id="cupqc::std::uint32_t"></span><span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">uint32_t</span></span></span><a class="headerlink" href="#_CPPv4N5cupqcSt8uint32_tE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Fixed-width unsigned 32-bit integer element type.</p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqcSt8uint64_tE">
+<span id="_CPPv3N5cupqcSt8uint64_tE"></span><span id="_CPPv2N5cupqcSt8uint64_tE"></span><span id="cupqc::std::uint64_t"></span><span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">uint64_t</span></span></span><a class="headerlink" href="#_CPPv4N5cupqcSt8uint64_tE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Fixed-width unsigned 64-bit integer element type.</p>
+</dd></dl>
+
+<p>There is no default; a precision type must be specified explicitly.
+See <a class="reference internal" href="../cupqc_ntt_feature.html"><span class="doc">cuPQC-NTT: Number Theoretic Transform</span></a> for supported transform lengths per type.</p>
+</section>
+<section id="size">
+<span id="cupqc-ntt-size-operator-label"></span><h3>Size<a class="headerlink" href="#size" title="Link to this heading">#</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_jEN5cupqc4SizeEv">
+<span id="_CPPv3I_jEN5cupqc4SizeEv"></span><span id="_CPPv2I_jEN5cupqc4SizeEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname sig-name-template"><span class="n"><span class="pre">N</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="sig-name descname"><span class="n"><span class="pre">Size</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_jEN5cupqc4SizeEv" title="Link to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p>Sets the transform length <code class="docutils literal notranslate"><span class="pre">N</span></code>.</p>
+<p>See <a class="reference internal" href="../cupqc_ntt_feature.html"><span class="doc">cuPQC-NTT: Number Theoretic Transform</span></a> for supported transform lengths, staging, and precision limits.</p>
+<p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">Size&lt;2048&gt;</span></code>.</p>
+</section>
+<section id="subsize">
+<span id="cupqc-ntt-subsize-operator-label"></span><h3>SubSize<a class="headerlink" href="#subsize" title="Link to this heading">#</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_jEN5cupqc7SubSizeEv">
+<span id="_CPPv3I_jEN5cupqc7SubSizeEv"></span><span id="_CPPv2I_jEN5cupqc7SubSizeEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname sig-name-template"><span class="n"><span class="pre">M</span></span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="sig-name descname"><span class="n"><span class="pre">SubSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_jEN5cupqc7SubSizeEv" title="Link to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p><strong>Optional.</strong> Selects staged execution when present in the descriptor. Decomposes an <code class="docutils literal notranslate"><span class="pre">N</span></code>-point NTT into two passes: the first stage uses <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">N/M</span></code> consecutive elements per block, and the second stage uses <code class="docutils literal notranslate"><span class="pre">M</span></code> strided elements per block. Omit for single-stage execution.</p>
+<p>See <a class="reference internal" href="../cupqc_ntt_feature.html"><span class="doc">cuPQC-NTT: Number Theoretic Transform</span></a> for supported <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">SubSize&lt;M&gt;)</span></code> combinations (Staged NTT limits).</p>
+</section>
+</section>
+<section id="execution-operators">
+<h2>Execution Operators<a class="headerlink" href="#execution-operators" title="Link to this heading">#</a></h2>
+<section id="block">
+<span id="cupqc-ntt-block-operator-label"></span><h3>Block<a class="headerlink" href="#block" title="Link to this heading">#</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc5BlockEv">
+<span id="_CPPv3N5cupqc5BlockEv"></span><span id="_CPPv2N5cupqc5BlockEv"></span><span id="cupqc::Block"></span><span class="sig-name descname"><span class="n"><span class="pre">Block</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc5BlockEv" title="Link to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p>Specifies block-level execution: one CUDA block runs one length-<code class="docutils literal notranslate"><span class="pre">N</span></code> transform.</p>
+<p>Requires the <code class="docutils literal notranslate"><span class="pre">BlockDim</span></code> operator.</p>
+</section>
+<section id="blockdim">
+<span id="cupqc-ntt-blockdim-operator-label"></span><h3>BlockDim<a class="headerlink" href="#blockdim" title="Link to this heading">#</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4I_j_j_jEN5cupqc8BlockDimEv">
+<span id="_CPPv3I_j_j_jEN5cupqc8BlockDimEv"></span><span id="_CPPv2I_j_j_jEN5cupqc8BlockDimEv"></span><span class="k"><span class="pre">template</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname sig-name-template"><span class="n"><span class="pre">X</span></span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname sig-name-template"><span class="n"><span class="pre">Y</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname sig-name-template"><span class="n"><span class="pre">Z</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">&gt;</span></span><br /><span class="sig-name descname"><span class="n"><span class="pre">BlockDim</span></span></span><span class="sig-paren">(</span>
+
+<dl>
+</dl>
+
+<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I_j_j_jEN5cupqc8BlockDimEv" title="Link to this definition">#</a><br /></dt>
+<dd></dd></dl>
+
+<p>Number of threads per block.</p>
+<p><strong>Default:</strong> <code class="docutils literal notranslate"><span class="pre">BlockDim&lt;128&gt;</span></code>.</p>
+</section>
+</section>
+<section id="descriptor-static-members">
+<span id="cupqc-ntt-descriptor-static-members-label"></span><h2>Descriptor static members<a class="headerlink" href="#descriptor-static-members" title="Link to this heading">#</a></h2>
+<p>These <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">constexpr</span></code> members are on the instantiated NTT descriptor type. In the declarations below, <code class="docutils literal notranslate"><span class="pre">NTT</span></code> is a placeholder for that type.</p>
+<dl class="cpp member">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT4SizeE">
+<span id="_CPPv3N5cupqc3NTT4SizeE"></span><span id="_CPPv2N5cupqc3NTT4SizeE"></span><span id="cupqc::NTT::Size__auto"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Size</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc3NTT4SizeE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The transform length <code class="docutils literal notranslate"><span class="pre">N</span></code>, from the <a class="reference internal" href="#cupqc-ntt-size-operator-label"><span class="std std-ref">Size</span></a> operator.</p>
+</dd></dl>
+
+<dl class="cpp member">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc3NTT8BlockDimE">
+<span id="_CPPv3N5cupqc3NTT8BlockDimE"></span><span id="_CPPv2N5cupqc3NTT8BlockDimE"></span><span id="cupqc::NTT::BlockDim__auto"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="kt"><span class="pre">auto</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">NTT</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">BlockDim</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc3NTT8BlockDimE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The configured number of threads per block; use as the second argument to the kernel launch triple-chevron.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../cupqc_ntt_api.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">cuPQC-NTT API Reference</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="device.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Device Functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#description-operators">Description Operators</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm">Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4I_9algorithmEN5cupqc9AlgorithmEv"><code class="docutils literal notranslate"><span class="pre">Algorithm()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc9algorithmE"><code class="docutils literal notranslate"><span class="pre">algorithm</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc9algorithm3NTTE"><code class="docutils literal notranslate"><span class="pre">NTT</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direction">Direction</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4I_12nttDirectionEN5cupqc9DirectionEv"><code class="docutils literal notranslate"><span class="pre">Direction()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12nttDirectionE"><code class="docutils literal notranslate"><span class="pre">nttDirection</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12nttDirection7FORWARDE"><code class="docutils literal notranslate"><span class="pre">FORWARD</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12nttDirection7INVERSEE"><code class="docutils literal notranslate"><span class="pre">INVERSE</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4I0EN5cupqc9PrecisionEv"><code class="docutils literal notranslate"><span class="pre">Precision()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqcSt8uint16_tE"><code class="docutils literal notranslate"><span class="pre">uint16_t</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqcSt8uint32_tE"><code class="docutils literal notranslate"><span class="pre">uint32_t</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqcSt8uint64_tE"><code class="docutils literal notranslate"><span class="pre">uint64_t</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#size">Size</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4I_jEN5cupqc4SizeEv"><code class="docutils literal notranslate"><span class="pre">Size()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subsize">SubSize</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4I_jEN5cupqc7SubSizeEv"><code class="docutils literal notranslate"><span class="pre">SubSize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-operators">Execution Operators</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#block">Block</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc5BlockEv"><code class="docutils literal notranslate"><span class="pre">Block()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#blockdim">BlockDim</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4I_j_j_jEN5cupqc8BlockDimEv"><code class="docutils literal notranslate"><span class="pre">BlockDim()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptor-static-members">Descriptor static members</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT4SizeE"><code class="docutils literal notranslate"><span class="pre">Size</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc3NTT8BlockDimE"><code class="docutils literal notranslate"><span class="pre">BlockDim</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../../../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../../../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2026, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

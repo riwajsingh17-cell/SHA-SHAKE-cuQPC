@@ -1,0 +1,874 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>cuPQC-BigInt Usage &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cupqc_override.css?v=ee9d665e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+
+
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'libraries/cupqc_bigint/cupqc_bigint_usage';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="../../_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="cuPQC-BigInt API Reference" href="cupqc_bigint_api.html" />
+    <link rel="prev" title="cuPQC-BigInt: Multi-Precision Integer Arithmetic" href="cupqc_bigint_feature.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Libraries</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">cuPQC-BigInt</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cupqc_bigint_feature.html">Features</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="cupqc_bigint_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cupqc_ntt/index.html">cuPQC-NTT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_ntt/cupqc_ntt_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_ntt/cupqc_ntt_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cupqc_ntt/cupqc_ntt_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_ntt/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_ntt/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_ntt/api/host.html">Host Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_ntt/api/prime_fields.html">Prime Field Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_ntt/api/types.html">Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cupqc_hash/index.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_hash/cupqc_hash_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_hash/cupqc_hash_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cupqc_hash/cupqc_hash_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../cupqc_hash/api/hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/hash/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/hash/traits.html">Traits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/hash/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../cupqc_hash/api/merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/merkle/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/merkle/objects.html">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/merkle/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cupqc_pk/index.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_pk/cupqc_pk_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_pk/cupqc_pk_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cupqc_pk/cupqc_pk_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/host.html">Host Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../additional/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../additional/security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../additional/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">cuPQC-BigInt</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">cuPQC-BigInt Usage</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cupqc-bigint-usage">
+<span id="cupqc-bigint-usage-label"></span><h1>cuPQC-BigInt Usage<a class="headerlink" href="#cupqc-bigint-usage" title="Link to this heading">#</a></h1>
+<p>The cuPQC-BigInt library provides GPU-optimized, fixed-width multi-precision integer
+arithmetic that integrates directly into CUDA kernels: every operation is exposed as a
+<code class="docutils literal notranslate"><span class="pre">__device__</span></code> function, designed to be called directly from within your kernel rather than
+launched or dispatched from the host. A BigInt descriptor is defined by
+combining cuPQC-BigInt <a class="reference internal" href="api/operators.html#cupqc-bigint-operators-label"><span class="std std-ref">operators</span></a> to specify the bit
+width, execution mode, and (for warp execution) the number of cooperating lanes at compile
+time.</p>
+<section id="defining-a-bigint-descriptor">
+<h2>Defining a BigInt Descriptor<a class="headerlink" href="#defining-a-bigint-descriptor" title="Link to this heading">#</a></h2>
+<p>A descriptor specifies all instance parameters as a C++ type using operator composition, then
+exposes a nested <code class="docutils literal notranslate"><span class="pre">bigint</span></code> type (and a double-width <code class="docutils literal notranslate"><span class="pre">bigint_wide</span></code> type) to use in device code.</p>
+<p><strong>Thread execution</strong> — one thread owns the whole value. Use this for small to moderately wide
+integers:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bigint.hpp&gt;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">cupqc</span><span class="p">;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">BI256</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">BitWidth</span><span class="o">&lt;</span><span class="mi">256</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SM</span><span class="o">&lt;</span><span class="mi">800</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">());</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span><span class="w">           </span><span class="c1">// 256-bit value, single thread</span>
+<span class="k">using</span><span class="w"> </span><span class="n">bigint_wide</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">bigint_wide</span><span class="p">;</span><span class="w">  </span><span class="c1">// 512-bit (double-width) value</span>
+</pre></div>
+</div>
+<p><strong>Warp execution</strong> — <code class="docutils literal notranslate"><span class="pre">TPI</span></code> (Threads Per Instance) consecutive lanes cooperate on one value.
+Use this for very wide integers (RSA-class and beyond), where spreading limbs and carry
+propagation across lanes keeps per-thread register pressure and instruction count down:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">BI2048</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">BitWidth</span><span class="o">&lt;</span><span class="mi">2048</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SM</span><span class="o">&lt;</span><span class="mi">800</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">TPI</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Warp</span><span class="p">());</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI2048</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span><span class="w">           </span><span class="c1">// 2048-bit value, 32 cooperating lanes</span>
+<span class="k">using</span><span class="w"> </span><span class="n">bigint_wide</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI2048</span><span class="o">::</span><span class="n">bigint_wide</span><span class="p">;</span><span class="w">  </span><span class="c1">// 4096-bit (double-width) value</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">TPI</span></code> must be a power of two between <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1</span></code> and <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">32</span></code>, and must not exceed the instance’s limb
+count (<code class="docutils literal notranslate"><span class="pre">BitWidth</span> <span class="pre">/</span> <span class="pre">32</span></code>). A warp can host multiple independent instances at once: with
+<code class="docutils literal notranslate"><span class="pre">TPI&lt;8&gt;</span></code>, a 32-lane warp computes four independent 2048/8=256-bit-per-lane instances in
+parallel, one per group of 8 lanes.</p>
+</section>
+<section id="constructing-and-storing-values">
+<h2>Constructing and Storing Values<a class="headerlink" href="#constructing-and-storing-values" title="Link to this heading">#</a></h2>
+<p>Construct a value from a scalar, from a limb pointer, or from a batched array using an
+instance index; <code class="docutils literal notranslate"><span class="pre">store</span></code> mirrors each of the pointer-based constructors:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">construct_examples_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">batch</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// One bigint instance per TPI-lane group, not per block: this launches</span>
+<span class="w">    </span><span class="c1">// (blockDim.x / BI256::tpi) independent instances per block instead of just one.</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">global_lane</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">blockDim</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">global_lane</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">BI256</span><span class="o">::</span><span class="n">tpi</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="nf">from_scalar</span><span class="p">(</span><span class="mi">7u</span><span class="p">);</span><span class="w">            </span><span class="c1">// value 7</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="nf">from_ptr</span><span class="p">(</span><span class="n">a</span><span class="p">);</span><span class="w">                </span><span class="c1">// BIT_WIDTH/32 limbs starting at `a`</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="nf">from_batch</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span><span class="w">   </span><span class="c1">// instance `index` of a batched array</span>
+
+<span class="w">    </span><span class="n">from_scalar</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">out</span><span class="p">);</span><span class="w">            </span><span class="c1">// store starting at `out`</span>
+<span class="w">    </span><span class="n">from_scalar</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span><span class="w">     </span><span class="c1">// store to instance `index` of a batched array</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For warp-executed instances, every cooperating lane in the group must call the same
+constructor/<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">store</span></code> with the same pointer and index (as computed above, <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">index</span></code> is the same
+for all <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BI256</span><span class="o">::</span><span class="n">tpi</span></code> lanes in a group); each lane reads and writes only the limbs it owns.</p>
+</section>
+<section id="arithmetic-bitwise-and-comparison-operations">
+<h2>Arithmetic, Bitwise, and Comparison Operations<a class="headerlink" href="#arithmetic-bitwise-and-comparison-operations" title="Link to this heading">#</a></h2>
+<p>Big integers support the familiar arithmetic, bitwise, shift, and comparison operators,
+plus scalar (<code class="docutils literal notranslate"><span class="pre">uint32_t</span></code>) overloads for the common cases:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">arithmetic_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="nf">av</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">bv</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">sum</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bv</span><span class="p">;</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">diff</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">bv</span><span class="p">;</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">shifted</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">masked</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">bv</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">   </span><span class="n">is_less</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">bv</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w">    </span><span class="n">ordering</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="p">.</span><span class="n">compare</span><span class="p">(</span><span class="n">bv</span><span class="p">);</span><span class="w"> </span><span class="c1">// &lt;0, 0, or &gt;0</span>
+
+<span class="w">    </span><span class="n">sum</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="multiplication-and-wide-results">
+<h2>Multiplication and Wide Results<a class="headerlink" href="#multiplication-and-wide-results" title="Link to this heading">#</a></h2>
+<p>A full product of two <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BW</span></code>-bit values is <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">BW</span></code> bits wide, so multiplication returns a
+double-width <code class="docutils literal notranslate"><span class="pre">bigint_wide</span></code> (with <code class="docutils literal notranslate"><span class="pre">lo</span></code>/<code class="docutils literal notranslate"><span class="pre">hi</span></code> halves) unless you only need half the result:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">multiply_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">product_out</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">squared_out</span><span class="p">,</span>
+<span class="w">                                 </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="nf">av</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">bv</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">low_half</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="p">.</span><span class="n">mul_low</span><span class="p">(</span><span class="n">bv</span><span class="p">);</span><span class="w">  </span><span class="c1">// low BW bits; half the cost of a full multiply</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">high_half</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="p">.</span><span class="n">mul_high</span><span class="p">(</span><span class="n">bv</span><span class="p">);</span><span class="w"> </span><span class="c1">// high BW bits</span>
+<span class="w">    </span><span class="k">auto</span><span class="w">   </span><span class="n">product</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="p">.</span><span class="n">mul_wide</span><span class="p">(</span><span class="n">bv</span><span class="p">);</span><span class="w"> </span><span class="c1">// full 2*BW-bit product; product.lo / product.hi</span>
+<span class="w">    </span><span class="k">auto</span><span class="w">   </span><span class="n">squared</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="p">.</span><span class="n">square</span><span class="p">();</span><span class="w">     </span><span class="c1">// 2*BW-bit square</span>
+
+<span class="w">    </span><span class="c1">// bigint_wide&#39;s own store() writes both halves (2 * num_limbs limbs) in one call,</span>
+<span class="w">    </span><span class="c1">// rather than storing product.lo / product.hi separately.</span>
+<span class="w">    </span><span class="n">product</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">product_out</span><span class="p">);</span>
+<span class="w">    </span><span class="n">squared</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">squared_out</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="division-and-remainder">
+<h2>Division and Remainder<a class="headerlink" href="#division-and-remainder" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">div_rem</span></code> returns a <a class="reference internal" href="api/types.html#_CPPv4N5cupqc12bigint_errorE" title="cupqc::bigint_error"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">bigint_error</span></code></a> status and writes the quotient and remainder
+by reference. The divisor, quotient, and remainder can all be the same width as the dividend,
+or the quotient and divisor can be independently sized:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">div_rem_kernel</span><span class="p">(</span><span class="n">cupqc</span><span class="o">::</span><span class="n">bigint_error</span><span class="o">*</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="p">,</span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="nf">av</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">bv</span><span class="p">(</span><span class="n">b</span><span class="p">),</span><span class="w"> </span><span class="n">qv</span><span class="p">,</span><span class="w"> </span><span class="n">rv</span><span class="p">;</span>
+
+<span class="w">    </span><span class="o">*</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="p">.</span><span class="n">div_rem</span><span class="p">(</span><span class="n">bv</span><span class="p">,</span><span class="w"> </span><span class="n">qv</span><span class="p">,</span><span class="w"> </span><span class="n">rv</span><span class="p">);</span><span class="w"> </span><span class="c1">// qv = a / b, rv = a % b</span>
+
+<span class="w">    </span><span class="n">qv</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">q</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rv</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">r</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Convenience wrappers route failures through the OnError policy instead of</span>
+<span class="c1">// returning a status:</span>
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">div_rem_operators_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="p">,</span>
+<span class="w">                                          </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="nf">av</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">bv</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">quotient</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">bv</span><span class="p">;</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">remainder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">bv</span><span class="p">;</span>
+<span class="w">    </span><span class="n">quotient</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">q</span><span class="p">);</span>
+<span class="w">    </span><span class="n">remainder</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">r</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For a quotient narrower or wider than the divisor, pass differently sized bigint types
+explicitly:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">narrow_bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">decltype</span><span class="p">(</span><span class="n">BitWidth</span><span class="o">&lt;</span><span class="mi">128</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SM</span><span class="o">&lt;</span><span class="mi">800</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">())</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="n">wide_bigint</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span><span class="w"> </span><span class="c1">// 256-bit divisor/remainder</span>
+
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">div_rem_mixed_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">q</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="p">,</span>
+<span class="w">                                      </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">wide_bigint</span><span class="w"> </span><span class="nf">av</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">bv</span><span class="p">(</span><span class="n">b</span><span class="p">),</span><span class="w"> </span><span class="n">rv</span><span class="p">;</span>
+<span class="w">    </span><span class="n">narrow_bigint</span><span class="w"> </span><span class="n">qv</span><span class="p">;</span>
+<span class="w">    </span><span class="n">av</span><span class="p">.</span><span class="n">div_rem</span><span class="p">(</span><span class="n">bv</span><span class="p">,</span><span class="w"> </span><span class="n">qv</span><span class="p">,</span><span class="w"> </span><span class="n">rv</span><span class="p">);</span><span class="w"> </span><span class="c1">// qv is 128 bits, bv/rv are 256 bits</span>
+<span class="w">    </span><span class="n">qv</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">q</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rv</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">r</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="modular-arithmetic">
+<h2>Modular Arithmetic<a class="headerlink" href="#modular-arithmetic" title="Link to this heading">#</a></h2>
+<p>For choosing among <code class="docutils literal notranslate"><span class="pre">*_mod</span></code>, Barrett, and Montgomery, see
+<a class="reference internal" href="cupqc_bigint_feature.html#cupqc-bigint-modular-path-label"><span class="std std-ref">Choosing Modular Reduction</span></a> on the Features page.</p>
+<p><code class="docutils literal notranslate"><span class="pre">add_mod</span></code>, <code class="docutils literal notranslate"><span class="pre">sub_mod</span></code>, and <code class="docutils literal notranslate"><span class="pre">mul_mod</span></code> combine an arithmetic step with a reduction against a
+supplied modulus (<code class="docutils literal notranslate"><span class="pre">mul_mod</span></code> performs a full multiply followed by remainder, not Montgomery
+multiplication). <code class="docutils literal notranslate"><span class="pre">pow_mod</span></code> accepts either a <code class="docutils literal notranslate"><span class="pre">uint64_t</span></code> or a bigint exponent:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">mod_arithmetic_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
+<span class="w">                                       </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="nf">av</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">bv</span><span class="p">(</span><span class="n">b</span><span class="p">),</span><span class="w"> </span><span class="n">mv</span><span class="p">(</span><span class="n">m</span><span class="p">),</span><span class="w"> </span><span class="n">ev</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">sum_mod</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="p">.</span><span class="n">add_mod</span><span class="p">(</span><span class="n">bv</span><span class="p">,</span><span class="w"> </span><span class="n">mv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">prod_mod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="p">.</span><span class="n">mul_mod</span><span class="p">(</span><span class="n">bv</span><span class="p">,</span><span class="w"> </span><span class="n">mv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">pow_u64</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="p">.</span><span class="n">pow_mod</span><span class="p">(</span><span class="kt">uint64_t</span><span class="p">{</span><span class="mi">65537</span><span class="p">},</span><span class="w"> </span><span class="n">mv</span><span class="p">);</span><span class="w"> </span><span class="c1">// e.g. RSA public exponent</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">pow_big</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="p">.</span><span class="n">pow_mod</span><span class="p">(</span><span class="n">ev</span><span class="p">,</span><span class="w"> </span><span class="n">mv</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">pow_big</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="modular-inverse">
+<h2>Modular Inverse<a class="headerlink" href="#modular-inverse" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">inv_mod</span></code> computes the multiplicative inverse of a value modulo <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">m</span></code>, supporting both odd
+and even moduli, and both single-thread and warp-cooperative instances. It returns a
+<a class="reference internal" href="api/types.html#_CPPv4N5cupqc12bigint_errorE" title="cupqc::bigint_error"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">bigint_error</span></code></a> describing why the inverse does not exist (if it does not):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">inv_mod_kernel</span><span class="p">(</span><span class="n">cupqc</span><span class="o">::</span><span class="n">bigint_error</span><span class="o">*</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">out</span><span class="p">,</span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="nf">av</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">mv</span><span class="p">(</span><span class="n">m</span><span class="p">),</span><span class="w"> </span><span class="n">inverse</span><span class="p">;</span>
+
+<span class="w">    </span><span class="o">*</span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="p">.</span><span class="n">inv_mod</span><span class="p">(</span><span class="n">mv</span><span class="p">,</span><span class="w"> </span><span class="n">inverse</span><span class="p">);</span><span class="w"> </span><span class="c1">// success, or an inv_mod_* error</span>
+<span class="w">    </span><span class="n">inverse</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="montgomery-arithmetic">
+<h2>Montgomery Arithmetic<a class="headerlink" href="#montgomery-arithmetic" title="Link to this heading">#</a></h2>
+<p>For workloads that repeat many modular multiplications against the same modulus (such as
+<code class="docutils literal notranslate"><span class="pre">pow_mod</span></code>’s square-and-multiply ladder), convert operands into the Montgomery domain once,
+multiply with <code class="docutils literal notranslate"><span class="pre">mul_montgomery</span></code> (which folds in the REDC reduction), and convert back with
+<code class="docutils literal notranslate"><span class="pre">from_montgomery</span></code>. Build a <code class="docutils literal notranslate"><span class="pre">montgomery_modulus</span></code> once per modulus; it precomputes the
+Montgomery constant <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">m</span><span class="err">&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">M</span><span class="o">^</span><span class="mi">-1</span><span class="w"> </span><span class="n">mod</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">32</span></code> so it doesn’t need to be recomputed on every call:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">montgomery_mul_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">,</span>
+<span class="w">                                       </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">modulus_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">modulus</span><span class="p">;</span><span class="w"> </span><span class="c1">// montgomery_modulus&lt;...&gt;</span>
+
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="nf">av</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">bv</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="n">modulus_t</span><span class="w"> </span><span class="nf">mv</span><span class="p">(</span><span class="n">m</span><span class="p">);</span><span class="w"> </span><span class="c1">// precomputes m&#39; once</span>
+
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">aR</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="p">.</span><span class="n">to_montgomery</span><span class="p">(</span><span class="n">mv</span><span class="p">);</span><span class="w">   </span><span class="c1">// a * R mod m</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">bR</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">bv</span><span class="p">.</span><span class="n">to_montgomery</span><span class="p">(</span><span class="n">mv</span><span class="p">);</span><span class="w">   </span><span class="c1">// b * R mod m</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">abR</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">aR</span><span class="p">.</span><span class="n">mul_montgomery</span><span class="p">(</span><span class="n">bR</span><span class="p">,</span><span class="w"> </span><span class="n">mv</span><span class="p">);</span><span class="w"> </span><span class="c1">// a * b * R mod m</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">prod</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">abR</span><span class="p">.</span><span class="n">from_montgomery</span><span class="p">(</span><span class="n">mv</span><span class="p">);</span><span class="w">   </span><span class="c1">// a * b mod m</span>
+
+<span class="w">    </span><span class="n">prod</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">bigint_wide::reduce_montgomery</span></code> performs the Montgomery reduction of an already double-width
+value (for example the output of <code class="docutils literal notranslate"><span class="pre">mul_wide</span></code>) directly against a <code class="docutils literal notranslate"><span class="pre">montgomery_modulus</span></code>,
+without a separate multiply step:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">wide_reduce_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">wide_value</span><span class="p">,</span>
+<span class="w">                                    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">m</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">bigint_wide</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">bigint_wide</span><span class="p">;</span>
+<span class="w">    </span><span class="k">using</span><span class="w"> </span><span class="n">modulus_t</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256</span><span class="o">::</span><span class="n">modulus</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">bigint_wide</span><span class="w"> </span><span class="nf">value</span><span class="p">(</span><span class="n">wide_value</span><span class="p">);</span>
+<span class="w">    </span><span class="n">modulus_t</span><span class="w"> </span><span class="nf">mv</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="w">    </span><span class="n">value</span><span class="p">.</span><span class="n">reduce_montgomery</span><span class="p">(</span><span class="n">mv</span><span class="p">).</span><span class="n">store</span><span class="p">(</span><span class="n">out</span><span class="p">);</span><span class="w"> </span><span class="c1">// (value * R^-1) mod m</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="error-handling">
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading">#</a></h2>
+<p>By default (<code class="docutils literal notranslate"><span class="pre">OnErrorNone</span></code>), failures are only reported through the returned
+<a class="reference internal" href="api/types.html#_CPPv4N5cupqc12bigint_errorE" title="cupqc::bigint_error"><code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">bigint_error</span></code></a> from <code class="docutils literal notranslate"><span class="pre">div_rem</span></code> and <code class="docutils literal notranslate"><span class="pre">inv_mod</span></code>; other operations that can fail
+(<code class="docutils literal notranslate"><span class="pre">operator/</span></code>, <code class="docutils literal notranslate"><span class="pre">operator%</span></code>, <code class="docutils literal notranslate"><span class="pre">mod</span></code>, <code class="docutils literal notranslate"><span class="pre">add_mod</span></code>, <code class="docutils literal notranslate"><span class="pre">sub_mod</span></code>, <code class="docutils literal notranslate"><span class="pre">mul_mod</span></code>, <code class="docutils literal notranslate"><span class="pre">pow_mod</span></code>) do
+not return a status. Add <code class="docutils literal notranslate"><span class="pre">OnErrorTrap()</span></code> or <code class="docutils literal notranslate"><span class="pre">OnErrorPrintTrap()</span></code> to the descriptor to have
+every failure trap the kernel, with the latter also printing a diagnostic message identifying
+the failing block and thread:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">BI256Checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">BitWidth</span><span class="o">&lt;</span><span class="mi">256</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SM</span><span class="o">&lt;</span><span class="mi">800</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">()</span>
+<span class="w">                              </span><span class="o">+</span><span class="w"> </span><span class="n">OnErrorPrintTrap</span><span class="p">());</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">bigint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">BI256Checked</span><span class="o">::</span><span class="n">bigint</span><span class="p">;</span>
+
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">checked_div_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">out</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="nf">av</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">bv</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="n">bigint</span><span class="w"> </span><span class="n">quotient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">av</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">bv</span><span class="p">;</span><span class="w"> </span><span class="c1">// prints a diagnostic and traps on divide-by-zero</span>
+<span class="w">    </span><span class="n">quotient</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">out</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="example-addition-and-modular-multiplication">
+<h2>Example: Addition and Modular Multiplication<a class="headerlink" href="#example-addition-and-modular-multiplication" title="Link to this heading">#</a></h2>
+<p>The following minimal, single-thread example shows two of the most common cuPQC-BigInt
+operations end to end: plain addition and modular multiplication, using a <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">256</span></code>-bit
+<code class="docutils literal notranslate"><span class="pre">Thread</span></code> descriptor:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">BI256</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">BitWidth</span><span class="o">&lt;</span><span class="mi">256</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SM</span><span class="o">&lt;</span><span class="mi">800</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">());</span>
+
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">add_mulmod_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">sums</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">products</span><span class="p">,</span>
+<span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">global_buf_a</span><span class="p">,</span>
+<span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">global_buf_b</span><span class="p">,</span>
+<span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">global_buf_m</span><span class="p">,</span>
+<span class="w">                                   </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">blockDim</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="n">global_buf_a</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="w"> </span><span class="nf">b</span><span class="p">(</span><span class="n">global_buf_b</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">BI256</span><span class="o">::</span><span class="n">bigint</span><span class="w"> </span><span class="nf">m</span><span class="p">(</span><span class="n">global_buf_m</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 256-bit integer addition (wraps on overflow).</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// (a * b) mod m.</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">mul_mod</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">sum</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">sums</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+<span class="w">    </span><span class="n">product</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">products</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See <code class="docutils literal notranslate"><span class="pre">examples/example_bigint_addmulmod.cu</span></code> in the SDK for the complete, self-contained
+example, including host-side setup and verification.</p>
+</section>
+<section id="compilation">
+<h2>Compilation<a class="headerlink" href="#compilation" title="Link to this heading">#</a></h2>
+<p>Include <code class="docutils literal notranslate"><span class="pre">bigint.hpp</span></code> and link with the cuPQC-BigInt static library using LTO flags:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvcc<span class="w"> </span>-std<span class="o">=</span>c++17<span class="w"> </span>-dlto<span class="w"> </span>-arch<span class="o">=</span>sm_80<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-I<span class="si">${</span><span class="nv">PATH_TO_CUPQC_SDK_INCLUDE</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-L<span class="si">${</span><span class="nv">PATH_TO_STATIC_LIB</span><span class="si">}</span><span class="w"> </span>-lcupqc-bigint<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>my_bigint_program.cu<span class="w"> </span>-o<span class="w"> </span>my_bigint_program
+</pre></div>
+</div>
+<p>For CMake-based projects:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">YourProgram</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">cupqc-bigint_static</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For detailed installation and compilation instructions, see the <a class="reference internal" href="../../introduction/getting_started.html"><span class="doc">Getting Started</span></a> guide.</p>
+<p><strong>API Reference:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="cupqc_bigint_api.html"><span class="doc">cuPQC-BigInt API Reference</span></a> - cuPQC-BigInt API documentation</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cupqc_bigint_feature.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">cuPQC-BigInt: Multi-Precision Integer Arithmetic</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cupqc_bigint_api.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">cuPQC-BigInt API Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-bigint-descriptor">Defining a BigInt Descriptor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructing-and-storing-values">Constructing and Storing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-bitwise-and-comparison-operations">Arithmetic, Bitwise, and Comparison Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication-and-wide-results">Multiplication and Wide Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#division-and-remainder">Division and Remainder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular-arithmetic">Modular Arithmetic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular-inverse">Modular Inverse</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#montgomery-arithmetic">Montgomery Arithmetic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling">Error Handling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-addition-and-modular-multiplication">Example: Addition and Modular Multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation">Compilation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2026, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

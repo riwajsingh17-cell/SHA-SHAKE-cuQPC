@@ -1,0 +1,742 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Getting Started &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/cupqc_override.css?v=ee9d665e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+
+
+    <script src="../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'introduction/getting_started';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="../_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="System Requirements" href="requirements.html" />
+    <link rel="prev" title="NVIDIA cuPQC SDK Documentation" href="../index.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Libraries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../libraries/cupqc_bigint/index.html">cuPQC-BigInt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_bigint/cupqc_bigint_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_bigint/cupqc_bigint_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../libraries/cupqc_bigint/cupqc_bigint_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_bigint/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_bigint/api/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_bigint/api/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../libraries/cupqc_ntt/index.html">cuPQC-NTT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_ntt/cupqc_ntt_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_ntt/cupqc_ntt_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../libraries/cupqc_ntt/cupqc_ntt_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_ntt/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_ntt/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_ntt/api/host.html">Host Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_ntt/api/prime_fields.html">Prime Field Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_ntt/api/types.html">Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../libraries/cupqc_hash/index.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_hash/cupqc_hash_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_hash/cupqc_hash_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../libraries/cupqc_hash/cupqc_hash_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../libraries/cupqc_hash/api/hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../libraries/cupqc_hash/api/hash/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../libraries/cupqc_hash/api/hash/traits.html">Traits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../libraries/cupqc_hash/api/hash/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../libraries/cupqc_hash/api/merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../libraries/cupqc_hash/api/merkle/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../libraries/cupqc_hash/api/merkle/objects.html">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../libraries/cupqc_hash/api/merkle/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../libraries/cupqc_pk/index.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_pk/cupqc_pk_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../libraries/cupqc_pk/cupqc_pk_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../libraries/cupqc_pk/cupqc_pk_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_pk/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_pk/api/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_pk/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../libraries/cupqc_pk/api/host.html">Host Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Getting Started</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="getting-started">
+<span id="getting-started-label"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1>
+<p>The cuPQC SDK provides device-side libraries for integrating cryptographic operations directly
+into your CUDA kernels. This guide will help you get started with the SDK in just a few steps.</p>
+<section id="download-and-installation">
+<h2>Download and Installation<a class="headerlink" href="#download-and-installation" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>Download the SDK</strong></p>
+<p>Download the cuPQC SDK from the <a class="reference external" href="https://developer.nvidia.com/cupqc-download">NVIDIA cuPQC SDK website</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://developer.download.nvidia.com/compute/cupqc/redist/cupqc/cupqc-sdk-&lt;version&gt;.tar.gz
+</pre></div>
+</div>
+</li>
+<li><p><strong>Extract the Package</strong></p>
+<p>Extract the tarball to your desired location:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar<span class="w"> </span>-xzf<span class="w"> </span>cupqc-sdk-&lt;version&gt;.tar.gz<span class="w"> </span>-C<span class="w"> </span>&lt;your_directory&gt;
+</pre></div>
+</div>
+<p>After extraction, the SDK structure will be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;your_directory&gt;/include/cupqc/</span></code> - SDK header files (<code class="docutils literal notranslate"><span class="pre">bigint.hpp</span></code>, <code class="docutils literal notranslate"><span class="pre">ntt.hpp</span></code>, <code class="docutils literal notranslate"><span class="pre">hash.hpp</span></code>, <code class="docutils literal notranslate"><span class="pre">pk.hpp</span></code>, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;your_directory&gt;/include/commondx/</span></code> - CommonDx headers (required dependency)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;your_directory&gt;/lib/</span></code> - Static libraries (<code class="docutils literal notranslate"><span class="pre">libcupqc-bigint.a</span></code>, <code class="docutils literal notranslate"><span class="pre">libcupqc-ntt.a</span></code>, <code class="docutils literal notranslate"><span class="pre">libcupqc-hash.a</span></code>, <code class="docutils literal notranslate"><span class="pre">libcupqc-pk.a</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;your_directory&gt;/cmake/</span></code> - CMake configuration files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;your_directory&gt;/examples/</span></code> - Example programs</p></li>
+</ul>
+</li>
+<li><p><strong>Verify Installation</strong></p>
+<p>Check that the headers are accessible:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>&lt;your_directory&gt;/include/cupqc/
+<span class="c1"># You should see: bigint.hpp, ntt.hpp, hash.hpp, pk.hpp, database.hpp, operators.hpp, etc.</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="understanding-the-libraries">
+<h2>Understanding the Libraries<a class="headerlink" href="#understanding-the-libraries" title="Link to this heading">#</a></h2>
+<p>The SDK provides four libraries that can be used together or independently:</p>
+<dl class="simple">
+<dt><strong>cuPQC-BigInt</strong> (Multi-Precision Integer Arithmetic)</dt><dd><ul class="simple">
+<li><p>Fixed-width <strong>unsigned</strong> big-integer arithmetic, including modular operations</p></li>
+<li><p>Single-thread or warp-cooperative (<code class="docutils literal notranslate"><span class="pre">TPI</span></code>) execution for widths from 32 bits up to 4096</p></li>
+</ul>
+</dd>
+<dt><strong>cuPQC-NTT</strong> (Number Theoretic Transform)</dt><dd><ul class="simple">
+<li><p>Forward and inverse NTT for modular arithmetic in CUDA kernels</p></li>
+<li><p>Support for any custom prime, with built-in BabyBear / KoalaBear primes and constants</p></li>
+</ul>
+</dd>
+<dt><strong>cuPQC-Hash</strong> (Cryptographic Hash Functions)</dt><dd><ul class="simple">
+<li><p>SHA-2, SHA-3, SHAKE and Poseidon2 hash functions</p></li>
+<li><p>Merkle Tree API</p></li>
+</ul>
+</dd>
+<dt><strong>cuPQC-PK</strong> (Public Key)</dt><dd><ul class="simple">
+<li><p>ML-KEM (key encapsulation)</p></li>
+<li><p>ML-DSA (digital signatures)</p></li>
+<li><p>NIST-standardized post-quantum algorithms</p></li>
+</ul>
+</dd>
+</dl>
+<p>All four libraries are device-side extensions that integrate directly into your CUDA kernels.</p>
+</section>
+<section id="basic-workflow">
+<h2>Basic Workflow<a class="headerlink" href="#basic-workflow" title="Link to this heading">#</a></h2>
+<section id="include-the-library-headers">
+<h3>1. Include the Library Headers<a class="headerlink" href="#include-the-library-headers" title="Link to this heading">#</a></h3>
+<p>In your CUDA source file:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bigint.hpp&gt;</span><span class="c1"> // For cuPQC-BigInt</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ntt.hpp&gt;</span><span class="c1">    // For cuPQC-NTT</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;hash.hpp&gt;</span><span class="c1">   // For cuPQC-Hash</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;pk.hpp&gt;</span><span class="c1">     // For cuPQC-PK</span>
+</pre></div>
+</div>
+</section>
+<section id="define-your-descriptors">
+<h3>2. Define Your Descriptors<a class="headerlink" href="#define-your-descriptors" title="Link to this heading">#</a></h3>
+<p>Use operators to describe your cryptographic operations:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// Example: 256-bit big integer owned by a single thread</span>
+<span class="k">using</span><span class="w"> </span><span class="n">BI256</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">BitWidth</span><span class="o">&lt;</span><span class="mi">256</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SM</span><span class="o">&lt;</span><span class="mi">800</span><span class="o">&gt;</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">());</span>
+
+<span class="c1">// Example: forward NTT (size 1024, block execution)</span>
+<span class="k">using</span><span class="w"> </span><span class="n">ForwardNTT1024</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">Algorithm</span><span class="o">&lt;</span><span class="n">algorithm</span><span class="o">::</span><span class="n">NTT</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                                </span><span class="o">+</span><span class="w"> </span><span class="n">Direction</span><span class="o">&lt;</span><span class="n">nttDirection</span><span class="o">::</span><span class="n">FORWARD</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                                </span><span class="o">+</span><span class="w"> </span><span class="n">Precision</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                                </span><span class="o">+</span><span class="w"> </span><span class="n">Size</span><span class="o">&lt;</span><span class="mi">1024</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                                </span><span class="o">+</span><span class="w"> </span><span class="n">Block</span><span class="p">()</span>
+<span class="w">                                </span><span class="o">+</span><span class="w"> </span><span class="n">BlockDim</span><span class="o">&lt;</span><span class="mi">128</span><span class="o">&gt;</span><span class="p">());</span>
+
+<span class="c1">// Example: SHA3-256 with thread-based execution</span>
+<span class="k">using</span><span class="w"> </span><span class="n">SHA3_256_Thread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">SHA3_256</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Thread</span><span class="p">());</span>
+
+<span class="c1">// Example: ML-KEM-512 Key Generation with 128 threads</span>
+<span class="k">using</span><span class="w"> </span><span class="n">MLKEM512Key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">ML_KEM_512</span><span class="p">()</span>
+<span class="w">                           </span><span class="o">+</span><span class="w"> </span><span class="n">Function</span><span class="o">&lt;</span><span class="n">function</span><span class="o">::</span><span class="n">Keygen</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                           </span><span class="o">+</span><span class="w"> </span><span class="n">Block</span><span class="p">()</span>
+<span class="w">                           </span><span class="o">+</span><span class="w"> </span><span class="n">BlockDim</span><span class="o">&lt;</span><span class="mi">128</span><span class="o">&gt;</span><span class="p">());</span>
+</pre></div>
+</div>
+</section>
+<section id="write-your-cuda-kernel">
+<h3>3. Write Your CUDA Kernel<a class="headerlink" href="#write-your-cuda-kernel" title="Link to this heading">#</a></h3>
+<p>Call library functions directly in your kernel:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">my_crypto_kernel</span><span class="p">(</span><span class="cm">/* parameters */</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">MLKEM512Key</span><span class="p">().</span><span class="n">execute</span><span class="p">(</span><span class="cm">/* arguments */</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// ForwardNTT1024().execute(/* arguments */);  // cuPQC-NTT example</span>
+<span class="w">    </span><span class="c1">// Fuse with other GPU operations</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="compile-your-application">
+<h3>4. Compile Your Application<a class="headerlink" href="#compile-your-application" title="Link to this heading">#</a></h3>
+<p>The cuPQC SDK uses Link-Time Optimization (LTO). Compile with these flags:</p>
+<p><strong>Using nvcc directly:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvcc<span class="w"> </span>-std<span class="o">=</span>c++17<span class="w"> </span>-dlto<span class="w"> </span>-arch<span class="o">=</span>sm_XY<span class="w"> </span><span class="se">\\</span>
+<span class="w">     </span>-I&lt;your_directory&gt;/include<span class="w"> </span><span class="se">\\</span>
+<span class="w">     </span>-L&lt;your_directory&gt;/lib<span class="w"> </span>-lcupqc-&lt;lib&gt;<span class="w"> </span><span class="se">\\</span>
+<span class="w">     </span>your_program.cu<span class="w"> </span>-o<span class="w"> </span>your_program
+</pre></div>
+</div>
+<p>Replace sm_XY with your GPU architecture (<code class="docutils literal notranslate"><span class="pre">sm_80</span></code>, <code class="docutils literal notranslate"><span class="pre">sm_86</span></code>, <code class="docutils literal notranslate"><span class="pre">sm_89</span></code>, <code class="docutils literal notranslate"><span class="pre">sm_90</span></code>).
+Replace &lt;lib&gt; with the library you are using (<code class="docutils literal notranslate"><span class="pre">bigint</span></code>, <code class="docutils literal notranslate"><span class="pre">ntt</span></code>, <code class="docutils literal notranslate"><span class="pre">hash</span></code>, or <code class="docutils literal notranslate"><span class="pre">pk</span></code>).</p>
+</section>
+<section id="run-and-verify">
+<h3>5. Run and Verify<a class="headerlink" href="#run-and-verify" title="Link to this heading">#</a></h3>
+<p>Execute your compiled program:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./your_program
+</pre></div>
+</div>
+<p>Check the example programs in <code class="docutils literal notranslate"><span class="pre">&lt;your_directory&gt;/examples/</span></code> for complete working code.</p>
+</section>
+</section>
+<section id="using-cupqc-with-cmake">
+<h2>Using cuPQC with CMake<a class="headerlink" href="#using-cupqc-with-cmake" title="Link to this heading">#</a></h2>
+<p>The cuPQC SDK provides configuration files that simplify integration into CMake projects. The config files are located in <code class="docutils literal notranslate"><span class="pre">&lt;your_directory&gt;/cmake/</span></code>.</p>
+<p><strong>Find the cupqc package:</strong></p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">find_package</span><span class="p">(</span><span class="s">cupqc</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Link with the cuPQC-BigInt library:</strong></p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">YourProgram</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">cupqc-bigint_static</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Link with the cuPQC-NTT library:</strong></p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">YourProgram</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">cupqc-ntt_static</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Link with the cuPQC-Hash library:</strong></p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">YourProgram</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">cupqc-hash_static</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Link with the cuPQC-PK library:</strong></p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">YourProgram</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">cupqc-pk_static</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Link with multiple libraries:</strong></p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">YourProgram</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">cupqc-bigint_static</span><span class="w"> </span><span class="s">cupqc-ntt_static</span><span class="w"> </span><span class="s">cupqc-hash_static</span><span class="w"> </span><span class="s">cupqc-pk_static</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Build your project</strong> by setting the <code class="docutils literal notranslate"><span class="pre">CMAKE_PREFIX_PATH</span></code> to your SDK directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-DCMAKE_PREFIX_PATH<span class="o">=</span>&lt;your_directory&gt;/cmake<span class="w"> </span>..
+make
+</pre></div>
+</div>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
+<p><strong>Detailed Implementation Guides:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../libraries/cupqc_bigint/cupqc_bigint_usage.html"><span class="doc">cuPQC-BigInt Usage</span></a> - Complete guide with bigint descriptors, arithmetic, and modular reduction</p></li>
+<li><p><a class="reference internal" href="../libraries/cupqc_ntt/cupqc_ntt_usage.html"><span class="doc">cuPQC-NTT Usage</span></a> - Complete guide with NTT descriptors, twiddle factors, and execution</p></li>
+<li><p><a class="reference internal" href="../libraries/cupqc_hash/cupqc_hash_usage.html"><span class="doc">cuPQC-Hash Usage</span></a> - Complete guide with hash function and Merkle Tree examples</p></li>
+<li><p><a class="reference internal" href="../libraries/cupqc_pk/cupqc_pk_usage.html"><span class="doc">cuPQC-PK Usage</span></a> - Complete guide with ML-KEM and ML-DSA examples</p></li>
+</ul>
+<p><strong>API Reference:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../libraries/cupqc_bigint/cupqc_bigint_api.html"><span class="doc">cuPQC-BigInt API Reference</span></a> - cuPQC-BigInt API documentation</p></li>
+<li><p><a class="reference internal" href="../libraries/cupqc_ntt/cupqc_ntt_api.html"><span class="doc">cuPQC-NTT API Reference</span></a> - cuPQC-NTT API documentation</p></li>
+<li><p><a class="reference internal" href="../libraries/cupqc_hash/cupqc_hash_api.html"><span class="doc">cuPQC-Hash API Reference</span></a> - cuPQC-Hash API documentation</p></li>
+<li><p><a class="reference internal" href="../libraries/cupqc_pk/cupqc_pk_api.html"><span class="doc">cuPQC-PK API Reference</span></a> - cuPQC-PK API documentation</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">NVIDIA cuPQC SDK Documentation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="requirements.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">System Requirements</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-installation">Download and Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-libraries">Understanding the Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-workflow">Basic Workflow</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#include-the-library-headers">1. Include the Library Headers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-your-descriptors">2. Define Your Descriptors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-your-cuda-kernel">3. Write Your CUDA Kernel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compile-your-application">4. Compile Your Application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-and-verify">5. Run and Verify</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-cupqc-with-cmake">Using cuPQC with CMake</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2026, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

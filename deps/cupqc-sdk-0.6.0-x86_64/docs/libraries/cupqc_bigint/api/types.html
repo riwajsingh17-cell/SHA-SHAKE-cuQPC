@@ -1,0 +1,814 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Types &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/cupqc_override.css?v=ee9d665e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+
+
+    <script src="../../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'libraries/cupqc_bigint/api/types';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="../../../_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Device Functions" href="device.html" />
+    <link rel="prev" title="Operators" href="operators.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Libraries</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">cuPQC-BigInt</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_bigint_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_bigint_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../cupqc_bigint_api.html">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="operators.html">Operators</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cupqc_ntt/index.html">cuPQC-NTT</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_ntt/cupqc_ntt_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_ntt/cupqc_ntt_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../cupqc_ntt/cupqc_ntt_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_ntt/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_ntt/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_ntt/api/host.html">Host Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_ntt/api/prime_fields.html">Prime Field Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_ntt/api/types.html">Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cupqc_hash/index.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_hash/cupqc_hash_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_hash/cupqc_hash_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../cupqc_hash/cupqc_hash_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../cupqc_hash/api/hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/hash/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/hash/traits.html">Traits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/hash/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../cupqc_hash/api/merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/merkle/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/merkle/objects.html">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cupqc_hash/api/merkle/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../cupqc_pk/index.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_pk/cupqc_pk_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cupqc_pk/cupqc_pk_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../cupqc_pk/cupqc_pk_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_pk/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_pk/api/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_pk/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cupqc_pk/api/host.html">Host Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../additional/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../additional/security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../additional/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">cuPQC-BigInt</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../cupqc_bigint_api.html" class="nav-link">cuPQC-BigInt API Reference</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Types</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="types">
+<span id="cupqc-bigint-types-label"></span><h1>Types<a class="headerlink" href="#types" title="Link to this heading">#</a></h1>
+<section id="descriptor-accessors">
+<h2>Descriptor Accessors<a class="headerlink" href="#descriptor-accessors" title="Link to this heading">#</a></h2>
+<p>A composed BigInt descriptor <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BI</span></code> (for example
+<code class="docutils literal notranslate"><span class="pre">decltype(BitWidth&lt;256&gt;()</span> <span class="pre">+</span> <span class="pre">SM&lt;800&gt;()</span> <span class="pre">+</span> <span class="pre">Thread())</span></code>) exposes the following compile-time
+accessors and member types:</p>
+<dl class="cpp member">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc2BI9bit_widthE">
+<span id="_CPPv3N5cupqc2BI9bit_widthE"></span><span id="_CPPv2N5cupqc2BI9bit_widthE"></span><span id="cupqc::BI::bit_width__unsigned-i"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">BI</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">bit_width</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc2BI9bit_widthE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The configured <a class="reference internal" href="operators.html#_CPPv4I_jEN5cupqc8BitWidthEv" title="cupqc::BitWidth"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">BitWidth</span></code></a>, in bits.</p>
+</dd></dl>
+
+<dl class="cpp member">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc2BI7sm_archE">
+<span id="_CPPv3N5cupqc2BI7sm_archE"></span><span id="_CPPv2N5cupqc2BI7sm_archE"></span><span id="cupqc::BI::sm_arch__unsigned-i"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">BI</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">sm_arch</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc2BI7sm_archE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The configured <a class="reference internal" href="operators.html#_CPPv4I_jEN5cupqc2SMEv" title="cupqc::SM"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">SM</span></code></a> architecture value.</p>
+</dd></dl>
+
+<dl class="cpp member">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc2BI3tpiE">
+<span id="_CPPv3N5cupqc2BI3tpiE"></span><span id="_CPPv2N5cupqc2BI3tpiE"></span><span id="cupqc::BI::tpi__unsigned-i"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">BI</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">tpi</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc2BI3tpiE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The configured <a class="reference internal" href="operators.html#_CPPv4I_jEN5cupqc3TPIEv" title="cupqc::TPI"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">TPI</span></code></a> value (<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">1</span></code> for
+<a class="reference internal" href="operators.html#_CPPv4N5cupqc6ThreadEv" title="cupqc::Thread"><code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">Thread()</span></code></a> execution).</p>
+</dd></dl>
+
+<dl class="cpp member">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc2BI9num_limbsE">
+<span id="_CPPv3N5cupqc2BI9num_limbsE"></span><span id="_CPPv2N5cupqc2BI9num_limbsE"></span><span id="cupqc::BI::num_limbs__unsigned-i"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">constexpr</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">BI</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">num_limbs</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc2BI9num_limbsE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The number of 32-bit limbs in one instance: <code class="docutils literal notranslate"><span class="pre">bit_width</span> <span class="pre">/</span> <span class="pre">32</span></code>.</p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc2BI12error_policyE">
+<span id="_CPPv3N5cupqc2BI12error_policyE"></span><span id="_CPPv2N5cupqc2BI12error_policyE"></span><span id="cupqc::BI::error_policy"></span><span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">BI</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">error_policy</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc2BI12error_policyE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The configured on-error policy type—<code class="docutils literal notranslate"><span class="pre">OnErrorNone</span></code>, <code class="docutils literal notranslate"><span class="pre">OnErrorTrap</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">OnErrorPrintTrap</span></code>—used to report the failures listed under <a class="reference internal" href="#bigint-error">bigint_error</a>. Defaults to
+<code class="docutils literal notranslate"><span class="pre">OnErrorNone</span></code> when the descriptor carries no policy operator. See
+<a class="reference internal" href="operators.html"><span class="doc">Operators</span></a>.</p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc2BI6bigintE">
+<span id="_CPPv3N5cupqc2BI6bigintE"></span><span id="_CPPv2N5cupqc2BI6bigintE"></span><span id="cupqc::BI::bigint"></span><span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">BI</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">bigint</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc2BI6bigintE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The single-width big-integer type for this descriptor. See <a class="reference internal" href="#bigint">bigint</a> below.</p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc2BI11bigint_wideE">
+<span id="_CPPv3N5cupqc2BI11bigint_wideE"></span><span id="_CPPv2N5cupqc2BI11bigint_wideE"></span><span id="cupqc::BI::bigint_wide"></span><span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">BI</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">bigint_wide</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc2BI11bigint_wideE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The double-width (<code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">bit_width</span></code>-bit) big-integer type produced by wide multiplication and
+squaring, and consumed by Barrett reduction, Montgomery reduction, and double-width
+division. See <a class="reference internal" href="#bigint-wide">bigint_wide</a> below.</p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc2BI7modulusE">
+<span id="_CPPv3N5cupqc2BI7modulusE"></span><span id="_CPPv2N5cupqc2BI7modulusE"></span><span id="cupqc::BI::modulus"></span><span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">BI</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">modulus</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc2BI7modulusE" title="Link to this definition">#</a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">montgomery_modulus</span></code> specialized for this descriptor’s limb count, error policy, and
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">TPI</span></code>. See <a class="reference internal" href="#montgomery-modulus">montgomery_modulus</a> below.</p>
+</dd></dl>
+
+</section>
+<section id="bigint">
+<span id="bigint-label"></span><h2>bigint<a class="headerlink" href="#bigint" title="Link to this heading">#</a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc6bigintE">
+<span id="_CPPv3N5cupqc6bigintE"></span><span id="_CPPv2N5cupqc6bigintE"></span><span id="cupqc::bigint"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bigint</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc6bigintE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The single-width, fixed-precision big-integer type. Not named directly in user code;
+obtained as <code class="docutils literal notranslate"><span class="pre">BI::bigint</span></code> from a composed descriptor <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">BI</span></code>. All arithmetic, comparison, and
+modular operations described in <a class="reference internal" href="device.html"><span class="doc">Device functions</span></a> are members of this type.
+Storage is <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">num_limbs</span></code> 32-bit limbs (little-endian, limb <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">0</span></code> least significant), distributed
+across <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">tpi</span></code> cooperating warp lanes when <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">tpi</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span></code>.</p>
+</dd></dl>
+
+</section>
+<section id="bigint-wide">
+<span id="bigint-wide-label"></span><h2>bigint_wide<a class="headerlink" href="#bigint-wide" title="Link to this heading">#</a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc11bigint_wideE">
+<span id="_CPPv3N5cupqc11bigint_wideE"></span><span id="_CPPv2N5cupqc11bigint_wideE"></span><span id="cupqc::bigint_wide"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bigint_wide</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc11bigint_wideE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The double-width big-integer type holding <code class="code highlight cpp docutils literal highlight-cpp"><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">num_limbs</span></code> limbs, split into independent
+<code class="docutils literal notranslate"><span class="pre">lo</span></code> and <code class="docutils literal notranslate"><span class="pre">hi</span></code> halves of type <code class="docutils literal notranslate"><span class="pre">BI::bigint</span></code>. Produced by <code class="docutils literal notranslate"><span class="pre">mul_wide</span></code>, <code class="docutils literal notranslate"><span class="pre">operator*</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">square</span></code>; consumed by <code class="docutils literal notranslate"><span class="pre">reduce_barrett</span></code>, <code class="docutils literal notranslate"><span class="pre">reduce_montgomery</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">bigint_wide::div_rem</span></code>.</p>
+<dl class="cpp member">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc11bigint_wide2loE">
+<span id="_CPPv3N5cupqc11bigint_wide2loE"></span><span id="_CPPv2N5cupqc11bigint_wide2loE"></span><span id="cupqc::bigint_wide::lo__bigint"></span><a class="reference internal" href="#_CPPv4N5cupqc6bigintE" title="cupqc::bigint"><span class="n"><span class="pre">bigint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">lo</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc11bigint_wide2loE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The low <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">num_limbs</span></code>-limb half.</p>
+</dd></dl>
+
+<dl class="cpp member">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc11bigint_wide2hiE">
+<span id="_CPPv3N5cupqc11bigint_wide2hiE"></span><span id="_CPPv2N5cupqc11bigint_wide2hiE"></span><span id="cupqc::bigint_wide::hi__bigint"></span><a class="reference internal" href="#_CPPv4N5cupqc6bigintE" title="cupqc::bigint"><span class="n"><span class="pre">bigint</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hi</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc11bigint_wide2hiE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The high <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">num_limbs</span></code>-limb half.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="montgomery-modulus">
+<span id="cupqc-bigint-montgomery-modulus-label"></span><h2>montgomery_modulus<a class="headerlink" href="#montgomery-modulus" title="Link to this heading">#</a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc18montgomery_modulusE">
+<span id="_CPPv3N5cupqc18montgomery_modulusE"></span><span id="_CPPv2N5cupqc18montgomery_modulusE"></span><span id="cupqc::montgomery_modulus"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">montgomery_modulus</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5cupqc6bigintE" title="cupqc::bigint"><span class="n"><span class="pre">bigint</span></span></a><a class="headerlink" href="#_CPPv4N5cupqc18montgomery_modulusE" title="Link to this definition">#</a><br /></dt>
+<dd><p>A modulus value with its Montgomery reduction constant <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">m</span><span class="err">&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">M</span><span class="o">^</span><span class="mi">-1</span><span class="w"> </span><span class="n">mod</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">32</span></code> precomputed
+once at construction, for reuse across repeated <code class="docutils literal notranslate"><span class="pre">to_montgomery</span></code> / <code class="docutils literal notranslate"><span class="pre">from_montgomery</span></code> /
+<code class="docutils literal notranslate"><span class="pre">mul_montgomery</span></code> / <code class="docutils literal notranslate"><span class="pre">reduce_montgomery</span></code> calls against the same modulus. Publicly derives
+from <a class="reference internal" href="#bigint">bigint</a>, so the whole <a class="reference internal" href="#bigint">bigint</a> interface is available on a modulus and one can be
+passed wherever a <a class="reference internal" href="#bigint">bigint</a> is expected. Constructors are not inherited: the three below are
+the only ways to build one, so there is no scalar constructor as there is for <a class="reference internal" href="#bigint">bigint</a>.</p>
+<p>The modulus <strong>must be odd</strong>. Montgomery reduction requires <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">gcd</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span></code>, where
+<code class="code highlight cpp docutils literal highlight-cpp"><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="p">(</span><span class="n">num_limbs</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span></code>; this holds only when <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">m</span></code> is odd. Constructing a
+<code class="docutils literal notranslate"><span class="pre">montgomery_modulus</span></code> from an even value leaves <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">m</span><span class="err">&#39;</span></code> without a valid inverse, so the
+precomputed constant is meaningless and every subsequent <code class="docutils literal notranslate"><span class="pre">to_montgomery</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mul_montgomery</span></code>, <code class="docutils literal notranslate"><span class="pre">from_montgomery</span></code>, or <code class="docutils literal notranslate"><span class="pre">reduce_montgomery</span></code> call against it silently
+produces incorrect results.</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc18montgomery_modulus18montgomery_modulusERK6bigint">
+<span id="_CPPv3N5cupqc18montgomery_modulus18montgomery_modulusERK6bigint"></span><span id="_CPPv2N5cupqc18montgomery_modulus18montgomery_modulusERK6bigint"></span><span id="cupqc::montgomery_modulus::montgomery_modulus__bigintCR"></span><span class="pre">__device__</span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">montgomery_modulus</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N5cupqc6bigintE" title="cupqc::bigint"><span class="n"><span class="pre">bigint</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">modulus</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc18montgomery_modulus18montgomery_modulusERK6bigint" title="Link to this definition">#</a><br /></dt>
+<dd><p>Constructs from an already-loaded modulus value and precomputes <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">m</span><span class="err">&#39;</span></code>. <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">modulus</span></code> must be
+odd.</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc18montgomery_modulus18montgomery_modulusEPK8uint32_t">
+<span id="_CPPv3N5cupqc18montgomery_modulus18montgomery_modulusEPK8uint32_t"></span><span id="_CPPv2N5cupqc18montgomery_modulus18montgomery_modulusEPK8uint32_t"></span><span id="cupqc::montgomery_modulus::montgomery_modulus__uint32_tCP"></span><span class="pre">__device__</span><span class="w"> </span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">montgomery_modulus</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ptr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc18montgomery_modulus18montgomery_modulusEPK8uint32_t" title="Link to this definition">#</a><br /></dt>
+<dd><p>Loads the modulus from a limb pointer and precomputes <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">m</span><span class="err">&#39;</span></code>. The loaded value must be
+odd.</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc18montgomery_modulus18montgomery_modulusEPK8uint32_tj">
+<span id="_CPPv3N5cupqc18montgomery_modulus18montgomery_modulusEPK8uint32_tj"></span><span id="_CPPv2N5cupqc18montgomery_modulus18montgomery_modulusEPK8uint32_tj"></span><span id="cupqc::montgomery_modulus::montgomery_modulus__uint32_tCP.unsigned-i"></span><span class="pre">__device__</span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">montgomery_modulus</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ptr</span></span></em>, <em class="sig-param"><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N5cupqc18montgomery_modulus18montgomery_modulusEPK8uint32_tj" title="Link to this definition">#</a><br /></dt>
+<dd><p>Loads instance <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">index</span></code> of a batched modulus array and precomputes <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">m</span><span class="err">&#39;</span></code>. The loaded value
+must be odd.</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK5cupqc18montgomery_modulus7m_primeEv">
+<span id="_CPPv3NK5cupqc18montgomery_modulus7m_primeEv"></span><span id="_CPPv2NK5cupqc18montgomery_modulus7m_primeEv"></span><span id="cupqc::montgomery_modulus::m_primeC"></span><span class="pre">__device__</span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_prime</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK5cupqc18montgomery_modulus7m_primeEv" title="Link to this definition">#</a><br /></dt>
+<dd><p>Returns the precomputed Montgomery constant <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">m</span><span class="err">&#39;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">M</span><span class="o">^</span><span class="mi">-1</span><span class="w"> </span><span class="n">mod</span><span class="w"> </span><span class="mi">2</span><span class="o">^</span><span class="mi">32</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="bigint-error">
+<span id="cupqc-bigint-error-label"></span><h2>bigint_error<a class="headerlink" href="#bigint-error" title="Link to this heading">#</a></h2>
+<dl class="cpp enum-class">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12bigint_errorE">
+<span id="_CPPv3N5cupqc12bigint_errorE"></span><span id="_CPPv2N5cupqc12bigint_errorE"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bigint_error</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12bigint_errorE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Status returned by operations that can fail at run time, and passed to the configured
+on-error policy’s <code class="docutils literal notranslate"><span class="pre">handle()</span></code> function (see <a class="reference internal" href="operators.html"><span class="doc">Operators</span></a>).</p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12bigint_error7successE">
+<span id="_CPPv3N5cupqc12bigint_error7successE"></span><span id="_CPPv2N5cupqc12bigint_error7successE"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">success</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12bigint_error7successE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The operation completed successfully.</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12bigint_error14divide_by_zeroE">
+<span id="_CPPv3N5cupqc12bigint_error14divide_by_zeroE"></span><span id="_CPPv2N5cupqc12bigint_error14divide_by_zeroE"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">divide_by_zero</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12bigint_error14divide_by_zeroE" title="Link to this definition">#</a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">div_rem</span></code> (or a wrapper such as <code class="docutils literal notranslate"><span class="pre">operator/</span></code>, <code class="docutils literal notranslate"><span class="pre">operator%</span></code>, or <code class="docutils literal notranslate"><span class="pre">mod</span></code>) was called
+with a zero divisor.</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12bigint_error17quotient_overflowE">
+<span id="_CPPv3N5cupqc12bigint_error17quotient_overflowE"></span><span id="_CPPv2N5cupqc12bigint_error17quotient_overflowE"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">quotient_overflow</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12bigint_error17quotient_overflowE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The true quotient does not fit in the supplied quotient width.</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12bigint_error22barrett_divide_by_zeroE">
+<span id="_CPPv3N5cupqc12bigint_error22barrett_divide_by_zeroE"></span><span id="_CPPv2N5cupqc12bigint_error22barrett_divide_by_zeroE"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">barrett_divide_by_zero</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12bigint_error22barrett_divide_by_zeroE" title="Link to this definition">#</a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">setup_barrett</span></code> was invoked with a zero denominator.</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12bigint_error32barrett_input_invariant_violatedE">
+<span id="_CPPv3N5cupqc12bigint_error32barrett_input_invariant_violatedE"></span><span id="_CPPv2N5cupqc12bigint_error32barrett_input_invariant_violatedE"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">barrett_input_invariant_violated</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12bigint_error32barrett_input_invariant_violatedE" title="Link to this definition">#</a><br /></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">reduce_barrett</span></code> was invoked with a wide numerator <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">num</span></code> whose high half is not
+strictly less than the denominator <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">den</span></code> (<code class="docutils literal notranslate"><span class="pre">num.hi</span> <span class="pre">&lt;</span> <span class="pre">den</span></code> does not hold). <code class="code highlight cpp docutils literal highlight-cpp"><span class="n">den</span></code> must
+match the denominator most recently passed to <code class="docutils literal notranslate"><span class="pre">setup_barrett</span></code>.</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12bigint_error22inv_mod_not_invertibleE">
+<span id="_CPPv3N5cupqc12bigint_error22inv_mod_not_invertibleE"></span><span id="_CPPv2N5cupqc12bigint_error22inv_mod_not_invertibleE"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inv_mod_not_invertible</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12bigint_error22inv_mod_not_invertibleE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The value and modulus passed to <code class="docutils literal notranslate"><span class="pre">inv_mod</span></code> are not coprime, so no inverse exists.</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12bigint_error23inv_mod_invalid_modulusE">
+<span id="_CPPv3N5cupqc12bigint_error23inv_mod_invalid_modulusE"></span><span id="_CPPv2N5cupqc12bigint_error23inv_mod_invalid_modulusE"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inv_mod_invalid_modulus</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12bigint_error23inv_mod_invalid_modulusE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The modulus passed to <code class="docutils literal notranslate"><span class="pre">inv_mod</span></code> is zero or one.</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12bigint_error18inv_mod_zero_inputE">
+<span id="_CPPv3N5cupqc12bigint_error18inv_mod_zero_inputE"></span><span id="_CPPv2N5cupqc12bigint_error18inv_mod_zero_inputE"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inv_mod_zero_input</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12bigint_error18inv_mod_zero_inputE" title="Link to this definition">#</a><br /></dt>
+<dd><p>The input value passed to <code class="docutils literal notranslate"><span class="pre">inv_mod</span></code> is zero.</p>
+</dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N5cupqc12bigint_error20inv_mod_even_modulusE">
+<span id="_CPPv3N5cupqc12bigint_error20inv_mod_even_modulusE"></span><span id="_CPPv2N5cupqc12bigint_error20inv_mod_even_modulusE"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inv_mod_even_modulus</span></span></span><a class="headerlink" href="#_CPPv4N5cupqc12bigint_error20inv_mod_even_modulusE" title="Link to this definition">#</a><br /></dt>
+<dd><p>Reserved for an internal odd-modulus-only inverse routine. Not returned by <code class="docutils literal notranslate"><span class="pre">inv_mod</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="operators.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Operators</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="device.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Device Functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptor-accessors">Descriptor Accessors</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc2BI9bit_widthE"><code class="docutils literal notranslate"><span class="pre">bit_width</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc2BI7sm_archE"><code class="docutils literal notranslate"><span class="pre">sm_arch</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc2BI3tpiE"><code class="docutils literal notranslate"><span class="pre">tpi</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc2BI9num_limbsE"><code class="docutils literal notranslate"><span class="pre">num_limbs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc2BI12error_policyE"><code class="docutils literal notranslate"><span class="pre">error_policy</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc2BI6bigintE"><code class="docutils literal notranslate"><span class="pre">bigint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc2BI11bigint_wideE"><code class="docutils literal notranslate"><span class="pre">bigint_wide</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc2BI7modulusE"><code class="docutils literal notranslate"><span class="pre">modulus</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bigint">bigint</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc6bigintE"><code class="docutils literal notranslate"><span class="pre">bigint</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bigint-wide">bigint_wide</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc11bigint_wideE"><code class="docutils literal notranslate"><span class="pre">bigint_wide</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc11bigint_wide2loE"><code class="docutils literal notranslate"><span class="pre">lo</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc11bigint_wide2hiE"><code class="docutils literal notranslate"><span class="pre">hi</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#montgomery-modulus">montgomery_modulus</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc18montgomery_modulusE"><code class="docutils literal notranslate"><span class="pre">montgomery_modulus</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc18montgomery_modulus18montgomery_modulusERK6bigint"><code class="docutils literal notranslate"><span class="pre">montgomery_modulus()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc18montgomery_modulus18montgomery_modulusEPK8uint32_t"><code class="docutils literal notranslate"><span class="pre">montgomery_modulus()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc18montgomery_modulus18montgomery_modulusEPK8uint32_tj"><code class="docutils literal notranslate"><span class="pre">montgomery_modulus()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4NK5cupqc18montgomery_modulus7m_primeEv"><code class="docutils literal notranslate"><span class="pre">m_prime()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bigint-error">bigint_error</a><ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12bigint_errorE"><code class="docutils literal notranslate"><span class="pre">bigint_error</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12bigint_error7successE"><code class="docutils literal notranslate"><span class="pre">success</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12bigint_error14divide_by_zeroE"><code class="docutils literal notranslate"><span class="pre">divide_by_zero</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12bigint_error17quotient_overflowE"><code class="docutils literal notranslate"><span class="pre">quotient_overflow</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12bigint_error22barrett_divide_by_zeroE"><code class="docutils literal notranslate"><span class="pre">barrett_divide_by_zero</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12bigint_error32barrett_input_invariant_violatedE"><code class="docutils literal notranslate"><span class="pre">barrett_input_invariant_violated</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12bigint_error22inv_mod_not_invertibleE"><code class="docutils literal notranslate"><span class="pre">inv_mod_not_invertible</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12bigint_error23inv_mod_invalid_modulusE"><code class="docutils literal notranslate"><span class="pre">inv_mod_invalid_modulus</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12bigint_error18inv_mod_zero_inputE"><code class="docutils literal notranslate"><span class="pre">inv_mod_zero_input</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#_CPPv4N5cupqc12bigint_error20inv_mod_even_modulusE"><code class="docutils literal notranslate"><span class="pre">inv_mod_even_modulus</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../../../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../../../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2026, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

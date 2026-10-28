@@ -1,0 +1,858 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>cuPQC-NTT Usage &#8212; cuPQC</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=a95f357e85573c9b56d5" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/nvidia-sphinx-theme.css?v=933278ad" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cupqc_override.css?v=ee9d665e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=a95f357e85573c9b56d5"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5" />
+
+
+
+    <script src="../../_static/documentation_options.js?v=7f41d439"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'libraries/cupqc_ntt/cupqc_ntt_usage';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+
+    <link rel="icon" href="../../_static/favicon.png"/>
+
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="cuPQC-NTT API Reference" href="cupqc_ntt_api.html" />
+    <link rel="prev" title="cuPQC-NTT: Number Theoretic Transform" href="cupqc_ntt_feature.html" />
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+
+
+  </head>
+
+  <body data-default-mode="">
+
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/nvidia-logo-horiz-rgb-blk-for-screen.svg" class="logo__image only-light" alt="cuPQC - Home"/>
+    <img src="../../_static/nvidia-logo-horiz-rgb-wht-for-screen.svg" class="logo__image only-dark pst-js-only" alt="cuPQC - Home"/>
+  
+  
+    <p class="title logo__title">cuPQC</p>
+  
+</a>
+
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Table of Contents">
+  <p class="bd-links__title" role="heading" aria-level="1">Table of Contents</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Home</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/requirements.html">System Requirements</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Libraries</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cupqc_bigint/index.html">cuPQC-BigInt</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_bigint/cupqc_bigint_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_bigint/cupqc_bigint_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cupqc_bigint/cupqc_bigint_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_bigint/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_bigint/api/types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_bigint/api/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">cuPQC-NTT</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cupqc_ntt_feature.html">Features</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="cupqc_ntt_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/host.html">Host Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/prime_fields.html">Prime Field Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/types.html">Types</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cupqc_hash/index.html">cuPQC-Hash</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_hash/cupqc_hash_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_hash/cupqc_hash_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cupqc_hash/cupqc_hash_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../cupqc_hash/api/hash_index.html">Hash Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/hash/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/hash/traits.html">Traits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/hash/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../cupqc_hash/api/merkle_index.html">Merkle Trees</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/merkle/operators.html">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/merkle/objects.html">Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../cupqc_hash/api/merkle/device.html">Device Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cupqc_pk/index.html">cuPQC-PK</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_pk/cupqc_pk_feature.html">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cupqc_pk/cupqc_pk_usage.html">Usage Guide</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cupqc_pk/cupqc_pk_api.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/operators.html">Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/traits.html">Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/device.html">Device Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cupqc_pk/api/host.html">Host Functions</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../additional/release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../additional/security_notes.html">Security Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../additional/license.html">Software License Agreement</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">cuPQC-NTT</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">cuPQC-NTT Usage</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cupqc-ntt-usage">
+<span id="cupqc-ntt-usage-label"></span><h1>cuPQC-NTT Usage<a class="headerlink" href="#cupqc-ntt-usage" title="Link to this heading">#</a></h1>
+<p>The cuPQC-NTT library provides GPU-optimized Number Theoretic Transform (NTT) operations
+that integrate directly into CUDA kernels. An NTT descriptor is defined by combining
+cuPQC-NTT <a class="reference internal" href="api/operators.html#cupqc-ntt-operators-label"><span class="std std-ref">operators</span></a> to specify the algorithm, direction,
+precision, transform length, and block configuration at compile time.</p>
+<section id="defining-an-ntt-descriptor">
+<h2>Defining an NTT Descriptor<a class="headerlink" href="#defining-an-ntt-descriptor" title="Link to this heading">#</a></h2>
+<p>An NTT descriptor specifies all transform parameters as a C++ type using operator composition:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ntt.hpp&gt;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">cupqc</span><span class="p">;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">Algorithm</span><span class="o">&lt;</span><span class="n">algorithm</span><span class="o">::</span><span class="n">NTT</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Direction</span><span class="o">&lt;</span><span class="n">nttDirection</span><span class="o">::</span><span class="n">FORWARD</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Precision</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Size</span><span class="o">&lt;</span><span class="mi">1024</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Block</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">BlockDim</span><span class="o">&lt;</span><span class="mi">128</span><span class="o">&gt;</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>A descriptor for the inverse transform uses <code class="docutils literal notranslate"><span class="pre">nttDirection::INVERSE</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">InverseNTT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">Algorithm</span><span class="o">&lt;</span><span class="n">algorithm</span><span class="o">::</span><span class="n">NTT</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Direction</span><span class="o">&lt;</span><span class="n">nttDirection</span><span class="o">::</span><span class="n">INVERSE</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Precision</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Size</span><span class="o">&lt;</span><span class="mi">1024</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Block</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">BlockDim</span><span class="o">&lt;</span><span class="mi">128</span><span class="o">&gt;</span><span class="p">());</span>
+</pre></div>
+</div>
+</section>
+<section id="prime-fields-and-primitive-roots">
+<h2>Prime Fields and Primitive Roots<a class="headerlink" href="#prime-fields-and-primitive-roots" title="Link to this heading">#</a></h2>
+<p>The cuPQC-NTT library accepts any suitable prime modulus. When using a 64-bit integer
+precision type, the prime must be at most 62 bits. For convenience, the library provides
+built-in compile-time constants for the BabyBear (2<sup>31</sup> - 2<sup>27</sup> + 1) and KoalaBear
+(2<sup>31</sup> - 2<sup>24</sup> + 1) prime fields, including pre-computed primitive roots of
+unity for sizes 2<sup>10</sup> through 2<sup>24</sup>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// KoalaBear prime with pre-computed primitive root for N=1024=2^10</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cupqc</span><span class="o">::</span><span class="n">KoalaBear</span><span class="p">;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cupqc</span><span class="o">::</span><span class="n">KoalaBear_primitive_root_10</span><span class="p">;</span>
+
+<span class="c1">// BabyBear prime with pre-computed primitive root for N=1024=2^10</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">p_bb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cupqc</span><span class="o">::</span><span class="n">BabyBear</span><span class="p">;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">g_bb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cupqc</span><span class="o">::</span><span class="n">BabyBear_primitive_root_10</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="generating-twiddle-factors">
+<h2>Generating Twiddle Factors<a class="headerlink" href="#generating-twiddle-factors" title="Link to this heading">#</a></h2>
+<p>Twiddle factors are precomputed once per prime/generator pair and reused across all
+length-<em>N</em> buffers in a batch. A single-threaded kernel calls <code class="docutils literal notranslate"><span class="pre">make_twiddles()</span></code>:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">NTT</span><span class="o">&gt;</span>
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">make_twiddles_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">twiddles</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">NTT</span><span class="p">().</span><span class="n">make_twiddles</span><span class="p">(</span><span class="n">twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Allocate and generate forward and inverse twiddle tables on the device</span>
+<span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">d_twiddles</span><span class="p">;</span>
+<span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">d_inv_twiddles</span><span class="p">;</span>
+<span class="n">cudaMalloc</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">**&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d_twiddles</span><span class="p">),</span><span class="w">     </span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">));</span>
+<span class="n">cudaMalloc</span><span class="p">(</span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">**&gt;</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d_inv_twiddles</span><span class="p">),</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">));</span>
+
+<span class="n">make_twiddles_kernel</span><span class="o">&lt;</span><span class="n">ForwardNTT</span><span class="o">&gt;&lt;&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">d_twiddles</span><span class="p">,</span><span class="w">     </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">g</span><span class="p">);</span>
+<span class="c1">// Compute the inverse generator: g_inv = g^{p-2} mod p (Fermat&#39;s little theorem)</span>
+<span class="n">make_twiddles_kernel</span><span class="o">&lt;</span><span class="n">InverseNTT</span><span class="o">&gt;&lt;&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">d_inv_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">g_inv</span><span class="p">);</span>
+<span class="c1">// N_inv = N^{-1} mod p is also required for the inverse NTT normalisation step.</span>
+</pre></div>
+</div>
+<p>For Montgomery-domain workflows, convert twiddle tables to Montgomery form after generation.
+Unlike <code class="docutils literal notranslate"><span class="pre">make_twiddles</span></code>, <code class="docutils literal notranslate"><span class="pre">transform_twiddles_to_mont</span></code> is a blockwise function — launch it
+with a full block of <code class="docutils literal notranslate"><span class="pre">NTT::BlockDim</span></code> threads rather than a single thread:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">NTT</span><span class="o">&gt;</span>
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">to_mont_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">twiddles</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">NTT</span><span class="p">().</span><span class="n">transform_twiddles_to_mont</span><span class="p">(</span><span class="n">twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">to_mont_kernel</span><span class="o">&lt;</span><span class="n">ForwardNTT</span><span class="o">&gt;&lt;&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">d_twiddles</span><span class="p">,</span><span class="w">     </span><span class="n">p</span><span class="p">);</span>
+<span class="n">to_mont_kernel</span><span class="o">&lt;</span><span class="n">InverseNTT</span><span class="o">&gt;&lt;&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">InverseNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">d_inv_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="standard-ntt-execution">
+<h2>Standard NTT Execution<a class="headerlink" href="#standard-ntt-execution" title="Link to this heading">#</a></h2>
+<p>Each CUDA block runs one length-<em>N</em> transform. The execution pattern is: load data into shared
+memory (converting to Montgomery form), run the transform, then store results back to global
+memory (converting out of Montgomery form). <code class="docutils literal notranslate"><span class="pre">execute</span></code> operates entirely on the shared memory
+buffer that was populated by <code class="docutils literal notranslate"><span class="pre">load</span></code>/<code class="docutils literal notranslate"><span class="pre">load_to_mont</span></code> — always pass that same shared memory
+buffer (<code class="docutils literal notranslate"><span class="pre">sdata</span></code> below), never a global memory pointer, as the first argument to <code class="docutils literal notranslate"><span class="pre">execute</span></code>,
+and it must already be in Montgomery form, which <code class="docutils literal notranslate"><span class="pre">load_to_mont</span></code> guarantees.
+Use <code class="docutils literal notranslate"><span class="pre">NTT::Size</span></code> and <code class="docutils literal notranslate"><span class="pre">NTT::BlockDim</span></code> to derive the launch configuration, and
+<code class="docutils literal notranslate"><span class="pre">ntt_shared_workspace_size&lt;N,</span> <span class="pre">Precision&gt;()</span></code> for the required shared memory, which must hold
+<em>N</em> elements of <code class="docutils literal notranslate"><span class="pre">Precision</span></code>. Construct an <a class="reference internal" href="api/types.html#_CPPv4I0EN5cupqc8nttConstE" title="cupqc::nttConst"><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">nttConst</span></code></a> from the prime on the host and
+pass it to the kernel; twiddle tables must be in Montgomery form beforehand (see
+<a class="reference internal" href="#generating-twiddle-factors">Generating Twiddle Factors</a> above).</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">smem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ntt_shared_workspace_size</span><span class="o">&lt;</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="c1">// Build Montgomery constants on the host (usable on device too)</span>
+<span class="n">cupqc</span><span class="o">::</span><span class="n">nttConst</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">forward_ntt_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">polys</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">twiddles</span><span class="p">,</span>
+<span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="n">cupqc</span><span class="o">::</span><span class="n">nttConst</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">__shared__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">sdata</span><span class="p">[];</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">poly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polys</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="o">::</span><span class="n">Size</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ForwardNTT</span><span class="p">().</span><span class="n">load_to_mont</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ForwardNTT</span><span class="p">().</span><span class="n">execute</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">.</span><span class="n">p</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ForwardNTT</span><span class="p">().</span><span class="n">store_from_mont</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">inverse_ntt_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">polys</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">inv_twiddles</span><span class="p">,</span>
+<span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="n">cupqc</span><span class="o">::</span><span class="n">nttConst</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">,</span>
+<span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">N_inv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">__shared__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">sdata</span><span class="p">[];</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">poly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">polys</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">InverseNTT</span><span class="o">::</span><span class="n">Size</span><span class="p">;</span>
+<span class="w">    </span><span class="n">InverseNTT</span><span class="p">().</span><span class="n">load_to_mont</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="w">    </span><span class="n">InverseNTT</span><span class="p">().</span><span class="n">execute</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">inv_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">.</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">N_inv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">InverseNTT</span><span class="p">().</span><span class="n">store_from_mont</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// One block per length-N buffer</span>
+<span class="n">forward_ntt_kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">batch</span><span class="p">,</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="p">,</span><span class="w"> </span><span class="n">smem</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">d_data</span><span class="p">,</span><span class="w"> </span><span class="n">d_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="n">inverse_ntt_kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">batch</span><span class="p">,</span><span class="w"> </span><span class="n">InverseNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="p">,</span><span class="w"> </span><span class="n">smem</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">d_data</span><span class="p">,</span><span class="w"> </span><span class="n">d_inv_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">,</span><span class="w"> </span><span class="n">N_inv</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="polynomial-arithmetic-in-the-ntt-domain">
+<h2>Polynomial Arithmetic in the NTT Domain<a class="headerlink" href="#polynomial-arithmetic-in-the-ntt-domain" title="Link to this heading">#</a></h2>
+<p>After a forward NTT on Montgomery-domain data, use <code class="docutils literal notranslate"><span class="pre">mul</span></code>, <code class="docutils literal notranslate"><span class="pre">add</span></code>, or <code class="docutils literal notranslate"><span class="pre">sub</span></code> to perform
+pointwise modular arithmetic on the transformed coefficients in shared memory before
+the inverse NTT. Both operands must be in Montgomery form.</p>
+<p>The following example shows polynomial multiplication via NTT-based cyclic convolution
+(modulo <code class="docutils literal notranslate">x<sup>N</sup> - 1</code>):</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">smem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ntt_shared_workspace_size</span><span class="o">&lt;</span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">poly_mul_kernel</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">poly_a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">poly_b</span><span class="p">,</span>
+<span class="w">                                </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">result</span><span class="p">,</span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">fwd_twiddles</span><span class="p">,</span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">inv_twiddles</span><span class="p">,</span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="n">cupqc</span><span class="o">::</span><span class="n">nttConst</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">,</span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">N_inv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">__shared__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">sdata_a</span><span class="p">[];</span>
+<span class="w">    </span><span class="c1">// Allocate a second shared buffer for poly_b immediately after sdata_a</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">sdata_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sdata_a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="o">::</span><span class="n">Size</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poly_a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="o">::</span><span class="n">Size</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poly_b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="o">::</span><span class="n">Size</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w">       </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="w">  </span><span class="o">+</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="o">::</span><span class="n">Size</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">ForwardNTT</span><span class="w">  </span><span class="n">fwd</span><span class="p">;</span>
+<span class="w">    </span><span class="n">InverseNTT</span><span class="w">  </span><span class="n">inv</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Forward NTT on both inputs (into Montgomery form)</span>
+<span class="w">    </span><span class="n">fwd</span><span class="p">.</span><span class="n">load_to_mont</span><span class="p">(</span><span class="n">sdata_a</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fwd</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sdata_a</span><span class="p">,</span><span class="w"> </span><span class="n">fwd_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">.</span><span class="n">p</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">fwd</span><span class="p">.</span><span class="n">load_to_mont</span><span class="p">(</span><span class="n">sdata_b</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="w">    </span><span class="n">fwd</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sdata_b</span><span class="p">,</span><span class="w"> </span><span class="n">fwd_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">.</span><span class="n">p</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Pointwise multiply in the NTT domain (both buffers in Montgomery form)</span>
+<span class="w">    </span><span class="n">fwd</span><span class="p">.</span><span class="n">mul</span><span class="p">(</span><span class="n">sdata_a</span><span class="p">,</span><span class="w"> </span><span class="n">sdata_b</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">.</span><span class="n">p</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Inverse NTT and write result back to global memory</span>
+<span class="w">    </span><span class="n">inv</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sdata_a</span><span class="p">,</span><span class="w"> </span><span class="n">inv_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">.</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">N_inv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">inv</span><span class="p">.</span><span class="n">store_from_mont</span><span class="p">(</span><span class="n">sdata_a</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Launch with twice the shared memory to hold both sdata_a and sdata_b</span>
+<span class="n">poly_mul_kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">batch</span><span class="p">,</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">smem</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="n">d_poly_a</span><span class="p">,</span><span class="w"> </span><span class="n">d_poly_b</span><span class="p">,</span><span class="w"> </span><span class="n">d_result</span><span class="p">,</span>
+<span class="w">    </span><span class="n">d_fwd_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">d_inv_twiddles</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ntt_const</span><span class="p">,</span><span class="w"> </span><span class="n">N_inv</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">add</span></code> and <code class="docutils literal notranslate"><span class="pre">sub</span></code> follow the same pattern as <code class="docutils literal notranslate"><span class="pre">mul</span></code>.</p>
+</section>
+<section id="staged-ntt-for-large-transform-sizes">
+<h2>Staged NTT for Large Transform Sizes<a class="headerlink" href="#staged-ntt-for-large-transform-sizes" title="Link to this heading">#</a></h2>
+<p>When the transform length <em>N</em> exceeds available shared memory, use <code class="docutils literal notranslate"><span class="pre">SubSize&lt;M&gt;</span></code> to split the
+transform into two kernel passes. Given M, <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">=</span> <span class="pre">N</span> <span class="pre">/</span> <span class="pre">M</span></code> is derived automatically:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">constexpr</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">NTT_N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16384</span><span class="p">;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">NTT_M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">256</span><span class="p">;</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">NTT_K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NTT_N</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">NTT_M</span><span class="p">;</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">Algorithm</span><span class="o">&lt;</span><span class="n">algorithm</span><span class="o">::</span><span class="n">NTT</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Direction</span><span class="o">&lt;</span><span class="n">nttDirection</span><span class="o">::</span><span class="n">FORWARD</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Precision</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Size</span><span class="o">&lt;</span><span class="n">NTT_N</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">SubSize</span><span class="o">&lt;</span><span class="n">NTT_M</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Block</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">BlockDim</span><span class="o">&lt;</span><span class="mi">128</span><span class="o">&gt;</span><span class="p">());</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">InverseNTT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">decltype</span><span class="p">(</span><span class="n">Algorithm</span><span class="o">&lt;</span><span class="n">algorithm</span><span class="o">::</span><span class="n">NTT</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Direction</span><span class="o">&lt;</span><span class="n">nttDirection</span><span class="o">::</span><span class="n">INVERSE</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Precision</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Size</span><span class="o">&lt;</span><span class="n">NTT_N</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">SubSize</span><span class="o">&lt;</span><span class="n">NTT_M</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">Block</span><span class="p">()</span>
+<span class="w">                            </span><span class="o">+</span><span class="w"> </span><span class="n">BlockDim</span><span class="o">&lt;</span><span class="mi">128</span><span class="o">&gt;</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>Each stage has its own shared memory requirement and launch grid. As with the standard NTT,
+<code class="docutils literal notranslate"><span class="pre">stage_1_execute</span></code>/<code class="docutils literal notranslate"><span class="pre">stage_2_execute</span></code> operate on the shared memory buffer filled by the
+matching <code class="docutils literal notranslate"><span class="pre">stage_1_load_to_mont</span></code>/<code class="docutils literal notranslate"><span class="pre">stage_2_load</span></code> — always pass that buffer, sized as noted below, and
+never a global memory pointer, and it must already be in Montgomery form. The intermediate
+buffer between stage 1 and stage 2 is always in Montgomery form, so <code class="docutils literal notranslate"><span class="pre">stage_2_load</span></code> never
+needs a conversion; only the initial <code class="docutils literal notranslate"><span class="pre">stage_1_load</span></code> has a <code class="docutils literal notranslate"><span class="pre">_to_mont</span></code> variant for
+standard-form input (see below). Effectively we convert the input data to Montgomery form in the first stage, and it remains in that form
+until the final store in the second stage. Pass <code class="docutils literal notranslate"><span class="pre">blockIdx.x</span></code> as the <code class="docutils literal notranslate"><span class="pre">id</span></code> argument to the staged load
+and store functions:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// fwd_s1_smem/inv_s2_smem hold K = N / M elements; fwd_s2_smem/inv_s1_smem hold M elements.</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">fwd_s1_smem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd_stage_1_ntt_shared_workspace_size</span><span class="o">&lt;</span><span class="n">NTT_N</span><span class="p">,</span><span class="w"> </span><span class="n">NTT_M</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">fwd_s2_smem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fwd_stage_2_ntt_shared_workspace_size</span><span class="o">&lt;</span><span class="n">NTT_N</span><span class="p">,</span><span class="w"> </span><span class="n">NTT_M</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">inv_s1_smem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inv_stage_1_ntt_shared_workspace_size</span><span class="o">&lt;</span><span class="n">NTT_N</span><span class="p">,</span><span class="w"> </span><span class="n">NTT_M</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">inv_s2_smem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inv_stage_2_ntt_shared_workspace_size</span><span class="o">&lt;</span><span class="n">NTT_N</span><span class="p">,</span><span class="w"> </span><span class="n">NTT_M</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">fwd_stage_1_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">twiddles</span><span class="p">,</span>
+<span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="n">cupqc</span><span class="o">::</span><span class="n">nttConst</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// sdata is a shared memory buffer of size K (= NTT_N / NTT_M)</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">__shared__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">sdata</span><span class="p">[];</span>
+<span class="w">    </span><span class="n">ForwardNTT</span><span class="w"> </span><span class="n">ntt</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ntt</span><span class="p">.</span><span class="n">stage_1_load_to_mont</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ntt</span><span class="p">.</span><span class="n">stage_1_execute</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">.</span><span class="n">p</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ntt</span><span class="p">.</span><span class="n">stage_1_store</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">fwd_stage_2_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">twiddles</span><span class="p">,</span>
+<span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="n">cupqc</span><span class="o">::</span><span class="n">nttConst</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// sdata is a shared memory buffer of size M (= NTT_M)</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">__shared__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">sdata</span><span class="p">[];</span>
+<span class="w">    </span><span class="n">ForwardNTT</span><span class="w"> </span><span class="n">ntt</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ntt</span><span class="p">.</span><span class="n">stage_2_load</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ntt</span><span class="p">.</span><span class="n">stage_2_execute</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">.</span><span class="n">p</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ntt</span><span class="p">.</span><span class="n">stage_2_store_from_mont</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">inv_stage_1_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">inv_twiddles</span><span class="p">,</span>
+<span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="n">cupqc</span><span class="o">::</span><span class="n">nttConst</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// sdata is a shared memory buffer of size M (= NTT_M)</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">__shared__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">sdata</span><span class="p">[];</span>
+<span class="w">    </span><span class="n">InverseNTT</span><span class="w"> </span><span class="n">intt</span><span class="p">;</span>
+<span class="w">    </span><span class="n">intt</span><span class="p">.</span><span class="n">stage_1_load_to_mont</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="w">    </span><span class="n">intt</span><span class="p">.</span><span class="n">stage_1_execute</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">inv_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">.</span><span class="n">p</span><span class="p">);</span>
+<span class="w">    </span><span class="n">intt</span><span class="p">.</span><span class="n">stage_1_store</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">inv_stage_2_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">inv_twiddles</span><span class="p">,</span>
+<span class="w">                                   </span><span class="k">const</span><span class="w"> </span><span class="n">cupqc</span><span class="o">::</span><span class="n">nttConst</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">N_inv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// sdata is a shared memory buffer of size K (= NTT_N / NTT_M)</span>
+<span class="w">    </span><span class="k">extern</span><span class="w"> </span><span class="n">__shared__</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">sdata</span><span class="p">[];</span>
+<span class="w">    </span><span class="n">InverseNTT</span><span class="w"> </span><span class="n">intt</span><span class="p">;</span>
+<span class="w">    </span><span class="n">intt</span><span class="p">.</span><span class="n">stage_2_load</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="n">intt</span><span class="p">.</span><span class="n">stage_2_execute</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">inv_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">.</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">N_inv</span><span class="p">);</span>
+<span class="w">    </span><span class="n">intt</span><span class="p">.</span><span class="n">stage_2_store_from_mont</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span><span class="w"> </span><span class="n">poly</span><span class="p">,</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* Another method to convert twiddle tables to Montgomery form is to use the to_mont function.</span>
+<span class="cm">   This function operates on a single piece of data, so it can be used in many contexts when converting to</span>
+<span class="cm">   Montgomery form. The function from_mont is used in an analogous manner to convert back to standard form. */</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">NTT</span><span class="o">&gt;</span>
+<span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">twiddles_to_mont_kernel</span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">twiddles</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">cupqc</span><span class="o">::</span><span class="n">nttConst</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">blockDim</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">twiddles</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NTT</span><span class="p">().</span><span class="n">to_mont</span><span class="p">(</span><span class="n">twiddles</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Build Montgomery constants on the host (usable on device too)</span>
+<span class="n">cupqc</span><span class="o">::</span><span class="n">nttConst</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+
+<span class="c1">// Convert twiddle tables to Montgomery form, one thread per element</span>
+<span class="n">twiddles_to_mont_kernel</span><span class="o">&lt;</span><span class="n">ForwardNTT</span><span class="o">&gt;&lt;&lt;&lt;</span><span class="n">NTT_N</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="p">,</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="n">d_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="n">twiddles_to_mont_kernel</span><span class="o">&lt;</span><span class="n">InverseNTT</span><span class="o">&gt;&lt;&lt;&lt;</span><span class="n">NTT_N</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">InverseNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="p">,</span><span class="w"> </span><span class="n">InverseNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span>
+<span class="w">    </span><span class="n">d_inv_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+
+<span class="c1">// Forward: stage 1 (M blocks), then stage 2 (K blocks)</span>
+<span class="n">fwd_stage_1_kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">NTT_M</span><span class="p">,</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="p">,</span><span class="w"> </span><span class="n">fwd_s1_smem</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">d_poly</span><span class="p">,</span><span class="w"> </span><span class="n">d_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="n">fwd_stage_2_kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">NTT_K</span><span class="p">,</span><span class="w"> </span><span class="n">ForwardNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="p">,</span><span class="w"> </span><span class="n">fwd_s2_smem</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">d_poly</span><span class="p">,</span><span class="w"> </span><span class="n">d_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+
+<span class="c1">// Inverse: stage 1 (K blocks), then stage 2 (M blocks, applies 1/N normalisation)</span>
+<span class="n">inv_stage_1_kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">NTT_K</span><span class="p">,</span><span class="w"> </span><span class="n">InverseNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="p">,</span><span class="w"> </span><span class="n">inv_s1_smem</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">d_poly</span><span class="p">,</span><span class="w"> </span><span class="n">d_inv_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">);</span>
+<span class="n">inv_stage_2_kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">NTT_M</span><span class="p">,</span><span class="w"> </span><span class="n">InverseNTT</span><span class="o">::</span><span class="n">BlockDim</span><span class="p">,</span><span class="w"> </span><span class="n">inv_s2_smem</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">d_poly</span><span class="p">,</span><span class="w"> </span><span class="n">d_inv_twiddles</span><span class="p">,</span><span class="w"> </span><span class="n">ntt_const</span><span class="p">,</span><span class="w"> </span><span class="n">N_inv</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="compilation">
+<h2>Compilation<a class="headerlink" href="#compilation" title="Link to this heading">#</a></h2>
+<p>Include <code class="docutils literal notranslate"><span class="pre">ntt.hpp</span></code> and link with the cuPQC-NTT static library using LTO flags:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvcc<span class="w"> </span>-std<span class="o">=</span>c++17<span class="w"> </span>-dlto<span class="w"> </span>-arch<span class="o">=</span>sm_80<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-I<span class="si">${</span><span class="nv">PATH_TO_CUPQC_SDK_INCLUDE</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>-L<span class="si">${</span><span class="nv">PATH_TO_STATIC_LIB</span><span class="si">}</span><span class="w"> </span>-lcupqc-ntt<span class="w"> </span><span class="se">\</span>
+<span class="w">     </span>my_ntt_program.cu<span class="w"> </span>-o<span class="w"> </span>my_ntt_program
+</pre></div>
+</div>
+<p>For CMake-based projects:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">YourProgram</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">cupqc-ntt_static</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For detailed installation and compilation instructions, see the <a class="reference internal" href="../../introduction/getting_started.html"><span class="doc">Getting Started</span></a> guide.</p>
+<p><strong>API Reference:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="cupqc_ntt_api.html"><span class="doc">cuPQC-NTT API Reference</span></a> - cuPQC-NTT API documentation</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cupqc_ntt_feature.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">cuPQC-NTT: Number Theoretic Transform</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cupqc_ntt_api.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">cuPQC-NTT API Reference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+
+
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-an-ntt-descriptor">Defining an NTT Descriptor</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prime-fields-and-primitive-roots">Prime Fields and Primitive Roots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-twiddle-factors">Generating Twiddle Factors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-ntt-execution">Standard NTT Execution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial-arithmetic-in-the-ntt-domain">Polynomial Arithmetic in the NTT Domain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#staged-ntt-for-large-transform-sizes">Staged NTT for Large Transform Sizes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilation">Compilation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=a95f357e85573c9b56d5"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=a95f357e85573c9b56d5"></script>
+
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+<a class="footer-brand logo" href="https://www.nvidia.com">
+  <img src="../../_static/nvidia-logo-horiz-rgb-1c-blk-for-screen.svg" class="logo__image only-light" alt="NVIDIA"/>
+  <img src="../../_static/nvidia-logo-horiz-rgb-1c-wht-for-screen.svg" class="logo__image only-dark" alt="NVIDIA"/>
+</a></div>
+      
+        <div class="footer-item">
+
+<div class="footer-links">
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-policy/">Privacy Policy</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/privacy-center/">Your Privacy Choices</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/terms-of-service/">Terms of Service</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/accessibility/">Accessibility</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/about-nvidia/company-policies/">Corporate Policies</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/product-security/">Product Security</a>
+   | 
+  
+  
+  
+  <a class="external" href="https://www.nvidia.com/en-us/contact/">Contact</a>
+  
+  
+  
+</div>
+</div>
+      
+        <div class="footer-item">
+
+
+
+
+  <p class="copyright">
+    
+      Copyright © 2024-2026, NVIDIA Corporation &amp; Affiliates. All rights reserved.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+===== SHA256-128s cuPQC | Mon Oct 26 00:34:24 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 0479feda3ca3d69b
+kernel_ms (CUDA events, GPU only): 0.515 3.066 1.879
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.544 3.132 1.951
+
+===== SHA256-128f cuPQC | Mon Oct 26 00:15:31 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 56dd45682e0eea6d
+kernel_ms (CUDA events, GPU only): 0.213 0.591 4.286
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.241 0.651 4.367
+
+===== SHA256-128f cuPQC | Mon Oct 26 00:17:09 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 56dd45682e0eea6d
+kernel_ms (CUDA events, GPU only): 0.216 0.588 4.285
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.245 0.649 4.363
+
+===== SHA256-192s cuPQC | Mon Oct 26 00:31:00 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 6477ddb57d9cffb8
+kernel_ms (CUDA events, GPU only): 0.752 5.765 2.779
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.781 5.829 2.856
+
+===== SHA256-192f cuPQC | Mon Oct 26 00:51:28 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): df905942c4c11713
+kernel_ms (CUDA events, GPU only): 0.286 1.053 5.569
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.315 1.121 5.655
+
+
+===== SHA256-256f cuPQC | Sun Oct 25 23:21:57 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 872149a0f6bd12b0
+kernel_ms (CUDA events, GPU only): 0.380 1.615 5.523
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.409 1.689 5.616
+
+===== SHA256-256s cuPQC | Sun Oct 25 23:59:04 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 6eb526213549b282
+kernel_ms (CUDA events, GPU only): 0.729 7.066 3.480
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.758 7.139 3.564
+
+===== SHA256-256s cuPQC | Mon Oct 26 00:12:23 UTC 2026 =====
+parallel GPU verify of last signature: OK
+CPU reference verify of last signature: OK
+build: cupqc
+fingerprint(pk||sm): 6eb526213549b282
+kernel_ms (CUDA events, GPU only): 0.718 7.101 3.481
+keygen_ms sign_ms verify_ms (wall clock, incl. copies):
+0.744 7.154 3.545
+
